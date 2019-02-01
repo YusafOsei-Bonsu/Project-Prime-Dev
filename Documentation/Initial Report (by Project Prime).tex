@@ -1,0 +1,109 @@
+\documentclass{article}
+\title{Initial Report}
+\author{by Project Prime}
+\date{January 2019}
+\begin{document}
+\maketitle
+
+\section{Project Description}
+Project Prime consists of six members: Yusaf, Sandipan, Manny, Cameron, Shefali and Saloni. The project aim is to build a multi-host file synchroniser, which comprises of three components: a mobile and desktop client ("spokes") and a server application ("hub"). Team communication will be conducted via whatsapp and skype, and in booked rooms within Kings' premises (e.g. group study rooms). All source code will be stored in GitHub to track the development progress of each component and to share the codebase. Google Drive will contain documentation for file-editing/sharing purposes. 
+	\subsection{Project Aims}
+	\textbf{Aim: } Develop a multi-host file synchroniser compromised of two clients: mobile and desktop (the "spokes"), and a server (the "hub"). This file synchroniser should be able to manage conflicts and contain files accessible by both clients.
+	\begin{enumerate}
+	\item Develop a server application.
+		\begin{enumerate}
+		\item Define server requirements based-on research of existing file-synchroniser servers.
+		\item Build the backend using Node.js.
+		\item Must be able to connect with a MySQL database.
+		\item Must be able to communicate with the mobile and desktop clients simultaneously.
+		\item Must be able to store files.
+		\item Must be able to check for updates.
+		\item Must be able to authenticate requests. 
+		\end{enumerate}
+	\item Create the MySQL database and connect it to the Node.js server.
+	\item Develop two clients...
+		\begin{itemize}
+		\item Develop the mobile client.
+			\begin{enumerate}
+			\item Define the requirements of the mobile client based-on research of mobile apps.
+			\item Design the UI of the mobile client via sketching.
+			\item Implement the mobile app using Android Studio.
+				\begin{itemize}
+				\item Create the UI of the mobile client.
+				\item Build a nested directory for files.
+				\item Write code for uploading files.
+				\item Write code for creating a shared folder.
+				\item Write code for checking updates regularly (rsync algorithm).
+				\item Write code that handle conflicts.
+				\item Form a connection and set protocol to communicate with the database via the server.
+				\end{itemize}
+			\item Black box testing, unit testing and integration testing.
+			\end{enumerate}
+		\item Develop the desktop client.
+			\begin{enumerate}
+			\item Define the requirements of the desktop client based-on research of web file-synchronisers.
+			\item Design the UI of the desktop client via sketching.
+			\item Implement a file management system using Electron.
+				\begin{itemize}
+				\item Create the UI of the desktop client.
+				\item Build a nested directory for files.
+				\item Write a method for uploading files.
+				\item Write a method to create a shared folder.
+				\item Write a method for checking updates regularly (rsync algorithm).
+				\item Write a method that handle conflicts.
+				\item Form a connection and set protocol to communicate with the database via the server.
+				\end{itemize}
+			\item Black box testing, unit testing and integration testing.
+			\end{enumerate}
+		\end{itemize}
+	\end{enumerate}
+	
+	\subsection{Rough Timetable}
+	\textit{Level 1:}
+	\begin{enumerate}
+	\item Create and operate a server application using Node.js (by the 6th February)
+	\item Create the MySQL database and form connection between database and server (by the 6th February)
+	\item Desktop client...
+		\begin{enumerate}
+		\item Make sketches for the UI of the desktop client (by the 3rd February)
+		\item Implement the backend of the desktop client using Electron (by the end of February)
+		\end{enumerate}
+	\item Mobile client...
+		\begin{enumerate}
+		\item  Make sketches for the UI of the mobile client (by the 3rd February)
+		\item  Implement the backend of the mobile client using Android Studio (by the end of February)
+		\end{enumerate}
+	\end{enumerate}
+	\textit{Level 2:}
+	\begin{enumerate}
+	\item Implement an algorithm to handle conflicts (by the 1st week of March)
+	\item Implement the rsync algorithm to handle updates (by the 1st week of March)
+	\end{enumerate}
+	\textit{Level 3:}
+	\begin{enumerate}
+	\item Software testing of both clients and server application (by the 20th March)
+	\end{enumerate}
+
+	\subsection{Actual Progress}
+
+\section{Project Organisation}
+	\subsection{Team Roles}
+	The team is divided into three subgroups of two members and each subgroup focuses on one component.
+	\begin{itemize}
+	\item Yusaf and Sandipan = This subgroup will design, implement and test the desktop client. First, the client will be designed based-on research of similar file-synchronising web applications (e.g. Google Drive). Next, it will be created using Electron and Node.js. Afterward, the desktop client will undergo black-box, unit and integration testing. 
+	\item Manny and Cameron = This subgroup will  design, implement and test the mobile client . First, the client will be designed based-on research of file-synchronising mobile apps (e.g. Dropbox). Next, the client will be implemented using using Android Studio (which includes Java and XML) and Node.js.  Afterward, the mobile client will undergo black-box, unit and integration testing.
+	\item Shefali and Saloni = This subgroup will  design, implement and test the server application using Node.js. First, the server will be designed based-on research of existing file-synchronising servers. Next, it will be implemented using Node.js and finally, it will undergo interface testing (Ghahrai, 2018) to determine if the clients and servers have correct interaction between each other.  
+	\end{itemize}
+
+	\subsection{Peer Assessment}
+	In the peer assessment, Project Prime will possess 100 points in total and will allocate a certain amount of points to each member, where the allocation (including integers and decimals) is based-on the member's individual contribution. Furthermore, the peer assessment will be conducted in a booked room within the university premises. On its process, all non-assessed members will debate how many points the assessed member should be assigned  with, and upon agreement, the assessed member will be assigned with those points. However, if a disagreement happens, the debate continues until a consensus is met. The final member will recieve the remaining amount of points to equal the total amount of points (i.e. 100). 
+
+	\subsection{Handling Team Conflict}
+	There are two types of team conflict that can occur during the project, which are group disagreements and arguments between two individuals; for both types, we will use the fusion method (Robin, 2013) which involve the following key points:  making an effort to understand their perspectives, issues and expectations; being specific and concrete about what we want; being intentional about the questions we ask to ensure there's a quality dialogue, showing that we're open to change and options about accomplishing the work, don't let "hot button" language like "you always" and "you never" enter the conversation. 
+
+\section{References}
+\begin{itemize}
+\item Robin (2013) \textit{FUSION: A Six Step Solution to Handling Conflict Across Generations} [online] available at: https://strategichrinc.com/article/fusion-a-six-step-solution-to-handling-conflict-across-generations/ [Accessed on 29 January 2019]
+\item Ghahrai, A. (2018) \textit{Web Application Testing Techniques} [online] available at: https://www.testingexcellence.com/web-application-testing-techniques/ [Accessed on 31 January 2019]
+\end{itemize}
+\end{document}
