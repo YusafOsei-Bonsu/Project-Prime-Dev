@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mande.charitygoodwill.FoodActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Food"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:paddingTop="80dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meat, fish, eggs and dairy products" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fruit and vegetables" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chilled food, such as ready meals or drinks" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make your own food" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desserts such as cakes, muffins and other" />
+
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
