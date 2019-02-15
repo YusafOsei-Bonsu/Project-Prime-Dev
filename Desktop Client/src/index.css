@@ -48,6 +48,7 @@
 /* Add a background color on-hover to indicate response*/
 .btn-group button:hover {
     background-color: darkslategrey;
+    color: whitesmoke;
   }
 
 .btn-group button:not(:last-child) {
