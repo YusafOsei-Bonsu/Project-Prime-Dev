@@ -4,11 +4,42 @@
   <head>
     <meta charset="UTF-8">
     <title>Project Prime</title>
+    <!--Linking the html file to the css file-->
+    <link href="./index.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <h1 id="desktop_client_name">Project Prime Desktop</h1>
+    <div class="row">
+      <!--A list of buttons that display or manipulate files in some manner-->
+      <div class="column left" style="background-color:dodgerblue">
+          <div class="btn-group">
+              <!--A button that uploads files onto the server-->
+              <button>Upload File</button>
+              <!--A button that removes files from the server-->
+              <button>Delete File</button>
+              <!--Upon being pressed, the file can be shared with
+              other users-->
+              <button>Share File</button>
+              <!--Button that allows uploading of a local folder 
+              into the remote server-->
+              <button>Upload Folder</button>
+              <!--Button that removes folder from server upon being
+              pressed-->
+              <button>Delete Folder</button>
+            </div>
+            <br>
+            <br>
+            <div class="btn-group">
+              <!--Button that shows files that were recently shared-->
+              <button>Recently Shared</button>
+              <!--Button that shows a list of deleted files-->
+              <button>Show Deleted Files</button>
+            </div>
+      </div>
+      <!--This section will display the files stored in the remote server-->
+      <div class="column middle" style="background-color:white">
+          <h2><u>Files</u></h2>
+      </div>
+    </div>
   </body>
 </html>
