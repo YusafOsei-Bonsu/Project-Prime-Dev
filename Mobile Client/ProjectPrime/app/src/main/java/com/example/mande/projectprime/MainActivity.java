@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         HomeFragment homeFragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment);
+        R.id.fragment_container
         fragmentTransaction.commit();
 
 
