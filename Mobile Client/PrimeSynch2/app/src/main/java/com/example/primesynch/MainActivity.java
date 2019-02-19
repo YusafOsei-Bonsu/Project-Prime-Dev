@@ -83,10 +83,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_Upload) {
+            Intent intent = startActivity(new Intent(MainActivity.this, Upload.class));
             Upload uploadFragment = new Upload();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,uploadFragment);
             fragmentTransaction.commit();
+
 
             // Handle the camera action
         } else if (id == R.id.nav_Refresh) {
