@@ -14,13 +14,13 @@
       <div class="column left" style="background-color:dodgerblue">
           <div class="btn-group">
               <!--A button that uploads files onto the server-->
-              <button>Upload File</button>
+              <button id = "btn-readfile">Upload File</button>
               <!--A button that removes files from the server-->
               <button>Delete File</button>
               <!--Upon being pressed, the file can be shared with
               other users-->
               <button>Share File</button>
-              <!--Button that allows uploading of a local folder 
+              <!--Button that allows uploading of a local folder
               into the remote server-->
               <button>Upload Folder</button>
               <!--Button that removes folder from server upon being
@@ -41,5 +41,32 @@
           <h2><u>Files</u></h2>
       </div>
     </div>
+    <script>
+      var app = require('electron').remote;
+      var dialog = app.dialog;
+      const fs = require('fs');
+
+      document.getElementById("btn-readfile").addEventListener("click", () => {
+        dialog.showOpenDialog((filenames) => {
+          if(filenames == undefined){
+            console.log("no files were selected");
+            return;
+          }
+
+          fs.readFile(filenames[0], "utf-8", (err,data) => {
+            if(err){
+              console.log("cannot read file", err);
+              return;
+            }
+
+            console.log("The content of the file is : ");
+            console.log(data);
+
+          });
+        });
+      },false);
+
+    </script>
+
   </body>
 </html>
