@@ -1,19 +1,8 @@
-//load app server using express
+const http = require('http')
+const app = require('./app')
 
-const express = require('express')
-const app = express()
+const port = process.env.PORT || 3003
 
-app.get("/", (req, res) => {
-  console.log("Responding to root route")
-  res.send("Hello from R0000T")
-})
+const server = http.createServer(app)
 
-app.get("/users", (req, res) => {
-  var user1 = {firstname: "John", lastname: "Smith"}
-  const user2 = {firstname: "Jane", lastname: "Doe"}
-  res.json([user1, user2])
-})
-
-app.listen(3003, () => {
-  console.log("Server is up and listening on 3003...")
-})
+server.listen(port)
