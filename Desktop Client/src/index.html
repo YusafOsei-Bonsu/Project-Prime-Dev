@@ -14,13 +14,13 @@
       <div class="column left" style="background-color:dodgerblue">
           <div class="btn-group">
               <!--A button that uploads files onto the server-->
-              <button>Upload File</button>
+              <button id = "btn-createfile">Upload File</button>
               <!--A button that removes files from the server-->
               <button>Delete File</button>
               <!--Upon being pressed, the file can be shared with
               other users-->
               <button>Share File</button>
-              <!--Button that allows uploading of a local folder 
+              <!--Button that allows uploading of a local folder
               into the remote server-->
               <button>Upload Folder</button>
               <!--Button that removes folder from server upon being
@@ -41,5 +41,32 @@
           <h2><u>Files</u></h2>
       </div>
     </div>
+    <script>
+      var app = require('electron').remote;
+      var dialog = app.dialog;
+      const fs = require('fs');
+
+      document.getElementById("btn-createfile").addEventListener("click", () => {
+        let content = "test test";
+        dialog.showSaveDialog((filename) => {
+          if(filename == undefined){
+            console.log("The user clicked the button and didnt create a file");
+            return;
+          }
+
+          fs.writeFile(filename,content,(err) => {
+            if(err){
+              console.log("An error has occured" + err.message);
+              return;
+            }
+
+            alert("file successfully created!");
+
+          });
+        });
+      },false);
+
+    </script>
+
   </body>
 </html>
