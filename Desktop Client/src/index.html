@@ -14,7 +14,7 @@
       <div class="column left" style="background-color:dodgerblue">
           <div class="btn-group">
               <!--A button that uploads files onto the server-->
-              <button id = "btn-createfile">Upload File</button>
+              <button id = "btn-readfile">Upload File</button>
               <!--A button that removes files from the server-->
               <button>Delete File</button>
               <!--Upon being pressed, the file can be shared with
@@ -46,21 +46,21 @@
       var dialog = app.dialog;
       const fs = require('fs');
 
-      document.getElementById("btn-createfile").addEventListener("click", () => {
-        let content = "test test";
-        dialog.showSaveDialog((filename) => {
-          if(filename == undefined){
-            console.log("The user clicked the button and didnt create a file");
+      document.getElementById("btn-readfile").addEventListener("click", () => {
+        dialog.showOpenDialog((filenames) => {
+          if(filenames == undefined){
+            console.log("no files were selected");
             return;
           }
 
-          fs.writeFile(filename,content,(err) => {
+          fs.readFile(filenames[0], "utf-8", (err,data) => {
             if(err){
-              console.log("An error has occured" + err.message);
+              console.log("cannot read file", err);
               return;
             }
 
-            alert("file successfully created!");
+            console.log("The content of the file is : ");
+            console.log(data);
 
           });
         });
