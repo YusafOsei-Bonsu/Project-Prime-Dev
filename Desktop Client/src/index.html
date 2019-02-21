@@ -14,15 +14,19 @@
       <div class="column left" style="background-color:dodgerblue">
           <div class="btn-group">
               <!--A button that uploads files onto the server-->
-              <button id = "btn-readfile">Upload File</button>
+              <button id = "btn-uploadfile">Upload File</button>
+              
               <!--A button that removes files from the server-->
               <button>Delete File</button>
+              
               <!--Upon being pressed, the file can be shared with
               other users-->
               <button>Share File</button>
+              
               <!--Button that allows uploading of a local folder
               into the remote server-->
               <button>Upload Folder</button>
+              
               <!--Button that removes folder from server upon being
               pressed-->
               <button>Delete Folder</button>
@@ -30,8 +34,10 @@
             <br>
             <br>
             <div class="btn-group">
+              
               <!--Button that shows files that were recently shared-->
               <button>Recently Shared</button>
+              
               <!--Button that shows a list of deleted files-->
               <button>Show Deleted Files</button>
             </div>
@@ -42,12 +48,18 @@
       </div>
     </div>
     <script>
-      var app = require('electron').remote;
-      var dialog = app.dialog;
+      // Shows the dialog and enables file manipulation
       const fs = require('fs');
-
-      document.getElementById("btn-readfile").addEventListener("click", () => {
+      // Handles CRUD (Create Read Update & Delete) operations
+      var app = require('electron').remote;
+      // The dialog box
+      var dialog = app.dialog;
+      
+      // Once the upload file button is pressed...
+      document.getElementById("btn-uploadfile").addEventListener("click", () => {
+        // Open dialog box to select files
         dialog.showOpenDialog((filenames) => {
+          // Inform user that no files were chosen
           if(filenames == undefined){
             console.log("no files were selected");
             return;
@@ -58,7 +70,7 @@
               console.log("cannot read file", err);
               return;
             }
-
+            // Recieving file content
             console.log("The content of the file is : ");
             console.log(data);
 
