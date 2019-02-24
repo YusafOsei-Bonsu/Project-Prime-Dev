@@ -6,79 +6,30 @@
     <title>Project Prime</title>
     <!--Linking the html file to the css file-->
     <link href="./index.css" type="text/css" rel="stylesheet">
+    <!--CSS file from Bootstrap website-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h1 id="desktop_client_name">Project Prime Desktop</h1>
-    <div class="row">
-      <!--A list of buttons that display or manipulate files in some manner-->
-      <div class="column left" style="background-color:dodgerblue">
-          <div class="btn-group">
-              <!--A button that uploads files onto the server-->
-              <button id = "btn-uploadfile">Upload File</button>
-              
-              <!--A button that removes files from the server-->
-              <button>Delete File</button>
-              
-              <!--Upon being pressed, the file can be shared with
-              other users-->
-              <button>Share File</button>
-              
-              <!--Button that allows uploading of a local folder
-              into the remote server-->
-              <button>Upload Folder</button>
-              
-              <!--Button that removes folder from server upon being
-              pressed-->
-              <button>Delete Folder</button>
-            </div>
-            <br>
-            <br>
-            <div class="btn-group">
-              
-              <!--Button that shows files that were recently shared-->
-              <button>Recently Shared</button>
-              
-              <!--Button that shows a list of deleted files-->
-              <button>Show Deleted Files</button>
-            </div>
-      </div>
-      <!--This section will display the files stored in the remote server-->
-      <div class="column middle" style="background-color:white">
-          <h2><u>Files</u></h2>
+    <!--This form allows users to upload and delete files in the server-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 m-auto">
+            <h1 class="title display-4 my-4">Project Prime Desktop</h1>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+              <div class="custom-file mb-3">
+                <input id="file" type="file" name="file" class="custom-file-input">
+                <label for="file" class="custom-file-label">Choose File:</label>
+              </div>
+              <input type="submit" value="Submit" class="btn btn-primary btn-block">
+            </form>
+          </div>
       </div>
     </div>
-    <script>
-      // Shows the dialog and enables file manipulation
-      const fs = require('fs');
-      // Handles CRUD (Create Read Update & Delete) operations
-      var app = require('electron').remote;
-      // The dialog box
-      var dialog = app.dialog;
-      
-      // Once the upload file button is pressed...
-      document.getElementById("btn-uploadfile").addEventListener("click", () => {
-        // Open dialog box to select files
-        dialog.showOpenDialog((filenames) => {
-          // Inform user that no files were chosen
-          if(filenames == undefined){
-            console.log("no files were selected");
-            return;
-          }
 
-          fs.readFile(filenames[0], "utf-8", (err,data) => {
-            if(err){
-              console.log("cannot read file", err);
-              return;
-            }
-            // Recieving file content
-            console.log("The content of the file is : ");
-            console.log(data);
-
-          });
-        });
-      },false);
-
-    </script>
-
+    <!--JS scripts from Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
