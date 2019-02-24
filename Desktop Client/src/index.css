@@ -1,6 +1,5 @@
 /*Setting the format of the title*/
-#desktop_client_name {
-    font-family: Georgia;
+.title {
     text-align: center;
     color: dodgerblue;
 }
