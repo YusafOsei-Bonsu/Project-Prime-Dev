@@ -25,14 +25,6 @@
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
             <hr>
-                 <!--Shows files that reside in the database-->
-                <div class="card card-body mb-3">
-                    <img src="image/%= file.filename %>" alt="">
-                    <!--A button that removes files from the database-->
-                  <form method="POST" action="/files/%= file._id %>?_method=DELETE">
-                    <button class="btn btn-danger btn-block mt-4">Delete</button>
-                  </form>
-                </div>
           </div>
       </div>
     </div>
