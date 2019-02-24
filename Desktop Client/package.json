@@ -11,7 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "4.0.2",
-    "electron-packager": "^13.0.1"
+    "electron-packager": "^13.0.1",
+    "nodemon": "^1.18.10"
   },
   "dependencies": {
     "axios": "^0.18.0",
