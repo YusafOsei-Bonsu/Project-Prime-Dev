@@ -16,14 +16,18 @@
       <div class="row">
         <div class="col-md-6 m-auto">
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
+            <!--Forms a connection to the Mongo database-->
+            <script src="./index.js"></script>
             <form action="/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3">
-                <input id="file" type="file" name="file" class="custom-file-input">
+                <input id="file" name="file" type="file" class="custom-file-input">
                 <label for="file" class="custom-file-label">Choose File:</label>
               </div>
+              <!--A button that inserts files into the server-->
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
-          </div>
+            <hr>
+        </div>
       </div>
     </div>
 
