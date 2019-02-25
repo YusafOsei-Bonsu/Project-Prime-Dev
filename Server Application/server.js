@@ -1,7 +1,7 @@
 //Main server file to run the server
 
 const http = require('http')
-
+const express = require('express')
 //Adding dependency to the middleware
 const app = require('./app')
 
