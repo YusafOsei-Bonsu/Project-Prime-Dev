@@ -71,8 +71,9 @@ app.get('/', (req, res) => {
 // @route POST /upload
 // @desc  Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
-   res.json({ file: req.file })
-   res.redirect('/')
+   // res.json({file: req.file});
+   // Navigate back to the desktop client
+   res.redirect('/');
 })
 
 // @route GET /files
@@ -83,28 +84,28 @@ app.get('/files', (req, res) => {
     if (!files || files.length === 0) {
       return res.status(404).json({
         err: 'No files exist'
-      })
+      });
     }
 
     // Files exist
-    return res.json(files)
-  })
-})
+    return res.json(files);
+  });
+});
 
 // @route GET /files/:filename
 // @desc  Display single file object
 app.get('/files/:filename', (req, res) => {
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
       return res.status(404).json({
         err: 'No file exists'
-      })
+      });
     }
     // File exists
     return res.json(file)
-  })
-})
+  });
+});
 
 // @route DELETE /files/:id
 // @desc  Delete file
