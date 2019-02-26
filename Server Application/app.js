@@ -10,7 +10,7 @@ const multer = require('multer')
 const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
-
+const fileUpload = require('express-fileupload')
 const app = express()
 
 // Node.js built-in Middleware
@@ -20,6 +20,7 @@ app.use(methodOverride('_method'))
 // To serve the static CSS file
 app.use('/', express.static('./'))
 
+app.use(fileUpload())
 // Mongo URI
 const mongoURI = 'mongodb://projectPrime:projectPrime@projectprime-shard-00-00-wreg9.mongodb.net:27017,projectprime-shard-00-01-wreg9.mongodb.net:27017,projectprime-shard-00-02-wreg9.mongodb.net:27017/test?ssl=true&replicaSet=ProjectPrime-shard-0&authSource=admin&retryWrites=true'
 mongoose.set('useNewUrlParser', true);
