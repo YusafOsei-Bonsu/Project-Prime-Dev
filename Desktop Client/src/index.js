@@ -27,13 +27,6 @@ mongoose.set('useNewUrlParser', true);
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 
-// Determining if the client has connected to the server
-if (conn) {
-    alert("Connected to the database");
-} else {
-    alert("something went wrong");
-}
-
 // Init gfs
 let gfs;
 
