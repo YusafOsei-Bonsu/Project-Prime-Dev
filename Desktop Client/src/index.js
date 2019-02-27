@@ -44,10 +44,7 @@ const storage = new GridFsStorage({url: mongoURI,file: (req, file) => {
           return reject(err)
         }
         const filename = buf.toString('hex') + path.extname(file.originalname)
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        }
+        const fileInfo = {filename: filename, bucketName: 'uploads'}
         resolve(fileInfo)
       })
     })
@@ -58,7 +55,7 @@ const upload = multer({storage});
 // @route GET /
 // @desc Loads homepage
 app.get('/', (req, res) => {
-  res.sendFile('src/index.html', {root: __dirname});
+  res.sendFile('src/upload.html', {root: __dirname});
 })
 
 // @route POST /upload
