@@ -10,7 +10,6 @@ const multer = require('multer')
 const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
-const fileUpload = require('express-fileupload')
 const app = express()
 
 // Node.js built-in Middleware
@@ -20,7 +19,6 @@ app.use(methodOverride('_method'))
 // To serve the static CSS file
 app.use('/', express.static('./'))
 
-app.use(fileUpload())
 // Mongo URI
 const mongoURI = 'mongodb://projectPrime:projectPrime@projectprime-shard-00-00-wreg9.mongodb.net:27017,projectprime-shard-00-01-wreg9.mongodb.net:27017,projectprime-shard-00-02-wreg9.mongodb.net:27017/test?ssl=true&replicaSet=ProjectPrime-shard-0&authSource=admin&retryWrites=true'
 mongoose.set('useNewUrlParser', true);
@@ -58,19 +56,6 @@ const storage = new GridFsStorage({
 })
 const upload = multer({ storage })
 
-// @route GET /
-// @desc Loads homepage
-app.get('/', (req, res) => {
-  res.sendFile('./index.html', { root: __dirname })
-})
-
-// @route POST /upload
-// @desc  Uploads file to DB
-app.post('/upload', upload.single('file'), (req, res) => {
-   res.json({ file: req.file })
-   res.redirect('/')
-})
-
 // @route GET /files
 // @desc  Display all files in JSON
 app.get('/files', (req, res) => {
@@ -85,6 +70,13 @@ app.get('/files', (req, res) => {
     // Files exist
     return res.json(files)
   })
+})
+
+// @route POST /upload
+// @desc  Uploads file to DB
+app.post('/upload', upload.single('file'), (req, res) => {
+   res.json({ file: req.file })
+   res.redirect('/files')
 })
 
 // @route GET /files/:filename
@@ -109,7 +101,7 @@ app.delete('/files/:id', (req, res) => {
     if (err) {
       return res.status(404).json({ err: err })
     }
-    res.redirect('/')
+    res.redirect('/files')
   })
 })
 
