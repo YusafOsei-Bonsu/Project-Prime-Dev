@@ -1,4 +1,6 @@
 const {app, BrowserWindow} = require('electron')
+const ejse = require('ejs-electron')
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,7 +11,20 @@ function createWindow () {
   win = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  win.loadFile('src/index.html')
+  win.loadFile('src/index.ejs')
+  
+  //AJAX request server for existing files
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', "http://100.76.164.19:3003/files", true);
+  xhr.send();
+ 
+  xhr.onreadystatechange = processRequest;
+
+  function processRequest(e) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+    }
+  }
 
   // Open the DevTools.
   win.webContents.openDevTools()
