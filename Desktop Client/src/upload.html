@@ -16,9 +16,8 @@
       <div class="row">
         <div class="col-md-6 m-auto">
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
-            <!--Forms a connection to the Mongo database-->
-            <script src="./index.js"></script>
-            <form action="/upload" method="POST" enctype="multipart/form-data">
+            <!--Forms a connection to the server through HTTP POST request-->
+            <form action="http://100.76.164.19:3003/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3">
                 <input id="file" name="file" type="file" class="custom-file-input">
                 <label for="file" class="custom-file-label">Choose File:</label>
