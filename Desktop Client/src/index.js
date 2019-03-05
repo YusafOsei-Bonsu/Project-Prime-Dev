@@ -11,28 +11,28 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
-const app = express()
+const app = express();
 
 // Node.js built-in Middleware
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
 // To serve the static CSS file
-app.use('/', express.static('./'))
+app.use('/', express.static('./'));
 
 // Mongo URI
 const mongoURI = 'mongodb://projectPrime:projectPrime@projectprime-shard-00-00-wreg9.mongodb.net:27017,projectprime-shard-00-01-wreg9.mongodb.net:27017,projectprime-shard-00-02-wreg9.mongodb.net:27017/test?ssl=true&replicaSet=ProjectPrime-shard-0&authSource=admin&retryWrites=true'
 mongoose.set('useNewUrlParser', true);
 
 // Create mongo connection
-const conn = mongoose.createConnection(mongoURI);
+const connection = mongoose.createConnection(mongoURI);
 
 // Init gfs
 let gfs;
 
-conn.once('open', () => {
+connection.once('open', () => {
   // Init stream
-  gfs = Grid(conn.db, mongoose.mongo);
+  gfs = Grid(connection.database, mongoose.mongo);
   gfs.collection('uploads');
 })
 
@@ -55,7 +55,7 @@ const upload = multer({storage});
 // @route GET /
 // @desc Loads homepage
 app.get('/', (req, res) => {
-  res.sendFile('src/upload.html', {root: __dirname});
+  res.sendFile('src/upload.ejs', {root: __dirname});
 })
 
 // @route POST /upload
@@ -99,12 +99,12 @@ app.get('/files/:filename', (req, res) => {
 
 // @route DELETE /files/:id
 // @desc  Delete file
-app.delete('/files/:id', (req, res) => {
-  gfs.remove({ _id: req.params.id, root: 'uploads' }, (err, gridStore) => {
+app.delete('/files/:id', (request, response) => {
+  gfs.remove({_id: request.params.id, root: 'uploads'}, (err, gridStore) => {
     if (err) {
-      return res.status(404).json({ err: err })
+      return response.status(404).json({err: err})
     }
-    res.redirect('/')
+    response.redirect('/'); 
   })
 })
 
