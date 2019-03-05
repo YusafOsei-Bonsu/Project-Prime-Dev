@@ -23,17 +23,39 @@
             <!--Forms a connection to the server through HTTP POST request-->
             <form action="http://10.40.161.219:3003/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3">
-                <label for="file" class="custom-file-label">Choose File:</label>
-                <input id="file" name="file" type="file" class="custom-file-input">
+                <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
+                <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
               </div>
               
-              <!--Inserts files into the server-->
+              <!--Shows which file was selected by the user-->
+              <script>
+                var textFile = document.getElementById('file');
+                
+                function changeLabel() {
+                  var label = document.getElementById('fileLabel');
+                  // The filename and path of the selected file
+                  var textFileValue = textFile.value;
+                  // Finds the end of the filepath
+                  var fileNameStart = textFileValue.lastIndexOf('\\');
+                  // Isolating the filename
+                  textFileValue = textFileValue.substring(fileNameStart + 1);
+                  
+                  if (textFileValue !== '') {
+                    // Changes to show the filename
+                    label.innerText = textFileValue; 
+                  }
+                }
+                // Runs 'changeLabel' method after input filename changes 
+                textFile.addEventListener('change', changeLabel, false);
+              </script>
+              
+              <!--Inserts files into the database via the server-->
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
             <hr>
             
             <!--Mongo files are displayed here -->
-            <% if(files) { %>
+            <!-- <% if(files) { %>
               <% files.forEach(function() { %>
                   <div class="card card-body mb-3">
                     <% if(file.isImage) { %>
@@ -43,14 +65,14 @@
                     <% } %>
                     <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
 
-                      <!-- Removes files from the DB upon button press-->
-                      <button class="btn btn-danger btn-block mt-4">Delete</button>
+                      <!- Removes files from the DB upon button press-->
+                      <!-- <button class="btn btn-danger btn-block mt-4">Delete</button>
                     </form>
                   </div>
                 <% }) %>
             <% } else { %> 
               <p>No files to show</p> 
-            <% } %> 
+            <% } %>  -->
         </div>
       </div>
     </div>
