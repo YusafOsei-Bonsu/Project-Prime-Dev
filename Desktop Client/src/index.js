@@ -55,7 +55,7 @@ const upload = multer({storage});
 // @route GET /
 // @desc Loads homepage
 app.get('/', (req, res) => {
-  res.sendFile('src/upload.ejs', {root: __dirname});
+  res.sendFile('src/upload.html', {root: __dirname});
 })
 
 // @route POST /upload
