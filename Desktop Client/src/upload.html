@@ -8,7 +8,7 @@
     <!--Linking the html file to the css file-->
     <link href="./index.css" type="text/css" rel="stylesheet">
     
-    <!--CSS file from Bootstrap website-->
+    <!--Bootstap CSS file-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -22,7 +22,7 @@
             
             <!--Forms a connection to the server through HTTP POST request-->
             <form action="http://10.40.161.219:3003/upload" method="POST" enctype="multipart/form-data">
-              <div class="custom-file mb-3">
+              <div class="custom-file mb-3 ">
                 <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
               </div>
@@ -41,7 +41,7 @@
                   textFileValue = textFileValue.substring(fileNameStart + 1);
                   
                   if (textFileValue !== '') {
-                    // Changes to show the filename
+                    // Changes the label text into the filename
                     label.innerText = textFileValue; 
                   }
                 }
@@ -49,7 +49,7 @@
                 textFile.addEventListener('change', changeLabel, false);
               </script>
               
-              <!--Inserts files into the database via the server-->
+              <!--Inserts files into the database upon button press-->
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
             <hr>
