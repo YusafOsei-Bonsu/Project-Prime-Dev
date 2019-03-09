@@ -1,7 +1,6 @@
+// Importing dependencies for Electron
 const {app, BrowserWindow} = require('electron');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
-//Importing EJS as a dependency for Electron
 const electronEjs = require('electron-ejs');
 
 // Keep a global reference of the window object, if you don't, the window will
