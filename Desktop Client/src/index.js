@@ -14,8 +14,10 @@ const methodOverride = require('method-override');
 const app = express();
 
 // Node.js built-in Middleware
-app.use(bodyParser.json())
-app.use(methodOverride('_method'))
+app.use(bodyParser.json());
+
+// Use a query string to create form, in order to make a delete request
+app.use(methodOverride('_method'));
 
 // To serve the static CSS file
 app.use('/', express.static('./'));
@@ -28,12 +30,12 @@ mongoose.set('useNewUrlParser', true);
 const connection = mongoose.createConnection(mongoURI);
 
 // Init gfs
-let gfs;
+let GFS;
 
 connection.once('open', () => {
   // Init stream
-  gfs = Grid(connection.database, mongoose.mongo);
-  gfs.collection('uploads');
+  GFS = Grid(connection.database, mongoose.mongo);
+  GFS.collection('uploads');
 })
 
 // Create storage engine
@@ -46,10 +48,12 @@ const storage = new GridFsStorage({url: mongoURI,file: (req, file) => {
         const filename = buf.toString('hex') + path.extname(file.originalname)
         const fileInfo = {filename: filename, bucketName: 'uploads'}
         resolve(fileInfo)
-      })
-    })
+      });
+    });
   }
-})
+});
+
+// Use as middleware so it uploads to the DB
 const upload = multer({storage});
 
 // @route GET /
@@ -59,17 +63,18 @@ app.get('/', (req, res) => {
 })
 
 // @route POST /upload
-// @desc  Uploads file to DB
+// @desc  Uploads 1 file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
-   // res.json({file: req.file});
-   // Navigate back to the desktop client
-   res.redirect('/');
+  // Responds with file properties 
+  res.json({file: req.file});
+  // Navigate back to the desktop client
+  // res.redirect('/');
 })
 
 // @route GET /files
 // @desc  Display all files in JSON
 app.get('/files', (req, res) => {
-  gfs.files.find().toArray((err, files) => {
+  GFS.files.find().toArray((err, files) => {
     // Check if files exist
     if (!files || files.length === 0) {
       return res.status(404).json({
@@ -85,7 +90,7 @@ app.get('/files', (req, res) => {
 // @route GET /files/:filename
 // @desc  Display single file object
 app.get('/files/:filename', (req, res) => {
-  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
+  GFS.files.findOne({filename: req.params.filename}, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
       return res.status(404).json({
@@ -100,7 +105,7 @@ app.get('/files/:filename', (req, res) => {
 // @route DELETE /files/:id
 // @desc  Delete file
 app.delete('/files/:id', (request, response) => {
-  gfs.remove({_id: request.params.id, root: 'uploads'}, (err, gridStore) => {
+  GFS.remove({_id: request.params.id, root: 'uploads'}, (err, gridStore) => {
     if (err) {
       return response.status(404).json({err: err})
     }
