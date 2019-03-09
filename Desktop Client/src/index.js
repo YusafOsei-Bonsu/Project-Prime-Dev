@@ -58,32 +58,52 @@ const upload = multer({storage});
 
 // @route GET /
 // @desc Loads homepage
-app.get('/', (req, res) => {
-  res.sendFile('src/upload.html', {root: __dirname});
+app.get('/', (req, response) => {
+  // res.sendFile('src/upload.html', {root: __dirname});
+  
+  GFS.files.find().toArray((err, files) => {
+    // Check if files exist
+    if (!files || files.length === 0) {
+      // No files
+      response.render('upload', {files: false});
+    } else {
+      files.map(file => {
+        if(file.contentType == 'image/jpeg' || file.contentType === 'image/png') {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+      });
+      response.render('upload', {files: files});
+    }
+
+    // Files exist
+    return response.json(files);
+  });
 })
 
 // @route POST /upload
 // @desc  Uploads 1 file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
-  // Responds with file properties 
-  res.json({file: req.file});
+  // Responds with file properties (in JSON)
+  // res.json({file: req.file});
   // Navigate back to the desktop client
-  // res.redirect('/');
+  res.redirect('/');
 })
 
 // @route GET /files
 // @desc  Display all files in JSON
-app.get('/files', (req, res) => {
+app.get('/files', (req, response) => {
   GFS.files.find().toArray((err, files) => {
     // Check if files exist
     if (!files || files.length === 0) {
-      return res.status(404).json({
+      return response.status(404).json({
         err: 'No files exist'
       });
     }
 
     // Files exist
-    return res.json(files);
+    return response.json(files);
   });
 });
 
