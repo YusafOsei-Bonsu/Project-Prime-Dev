@@ -4,28 +4,75 @@
   <head>
     <meta charset="UTF-8">
     <title>Project Prime</title>
+    
     <!--Linking the html file to the css file-->
     <link href="./index.css" type="text/css" rel="stylesheet">
-    <!--CSS file from Bootstrap website-->
+    
+    <!--Bootstap CSS file-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    
     <!--This form allows users to upload and delete files in the server-->
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto">
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
+            
             <!--Forms a connection to the server through HTTP POST request-->
-            <form action="http://100.76.164.19:3003/upload" method="POST" enctype="multipart/form-data">
-              <div class="custom-file mb-3">
-                <input id="file" name="file" type="file" class="custom-file-input">
-                <label for="file" class="custom-file-label">Choose File:</label>
+            <form action="http://10.40.161.219:3003/upload" method="POST" enctype="multipart/form-data">
+              <div class="custom-file mb-3 ">
+                <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
+                <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
               </div>
-              <!--A button that inserts files into the server-->
+              
+              <!--Shows which file was selected by the user-->
+              <script>
+                var textFile = document.getElementById('file');
+                
+                function changeLabel() {
+                  var label = document.getElementById('fileLabel');
+                  // The filename and path of the selected file
+                  var textFileValue = textFile.value;
+                  // Finds the end of the filepath
+                  var fileNameStart = textFileValue.lastIndexOf('\\');
+                  // Isolating the filename
+                  textFileValue = textFileValue.substring(fileNameStart + 1);
+                  
+                  if (textFileValue !== '') {
+                    // Changes the label text into the filename
+                    label.innerText = textFileValue; 
+                  }
+                }
+                // Runs 'changeLabel' method after input filename changes 
+                textFile.addEventListener('change', changeLabel, false);
+              </script>
+              
+              <!--Inserts files into the database upon button press-->
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
             <hr>
+            
+            <!--Mongo files are displayed here -->
+            <!-- <% if(files) { %>
+              <% files.forEach(function() { %>
+                  <div class="card card-body mb-3">
+                    <% if(file.isImage) { %>
+                      <img src="image/<%= file.filename %>" alt="">
+                    <% } else { %>
+                      <%= file.filename %>
+                    <% } %>
+                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+
+                      <!- Removes files from the DB upon button press-->
+                      <!-- <button class="btn btn-danger btn-block mt-4">Delete</button>
+                    </form>
+                  </div>
+                <% }) %>
+            <% } else { %> 
+              <p>No files to show</p> 
+            <% } %>  -->
         </div>
       </div>
     </div>
