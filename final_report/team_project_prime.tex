@@ -9,12 +9,76 @@ In this project, we were tasked with building a multi-host file synchroniser con
 \section{\underline{Review}}
 
 \section{\underline{Requirements and Design}}
+The requirements will divided into three sections : The Server Application, The Desktop Client and The Mobile Client. They will be analysed using the MoSCoW prioritisation technique and the categories consist of :
+
+Must Have - These requirements are critical for the success of this project and therefore has the highest priority.
+
+Should Have - These requirements are important but not necessary for the final delivery of the project
+
+Could Have - These requirements have low priority and will only be implemented if time permits
+
+Won't Have - These are the least critical requirements and won't be required for the success of the project.
 
 \subsection{\underline{Server Application}}
 
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\multicolumn{3}{|c|}{\textbf{MoSCoW requirements for Server Application}} \\
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Priority}\\
+\hline
+1 & Has to be connected to a database in order to store and retrieve files & Must Have \\
+\hline
+2 & Must be able to communicate with the Desktop and Mobile Clients simultaneously & Must Have \\
+\hline
+3 & Handle conflicts using Rsync(?) & Must Have \\
+\hline
+4 & Use HTTP requests to send data to the clients & Should Have \\
+\hline
+5 & Use security encryption to protect the data & Could Have\\
+\hline
+\end{tabular}
+
 \subsection{\underline{Desktop Client}}
 
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\multicolumn{3}{|c|}{\textbf{MoSCoW requirements for The Desktop Client}} \\
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Priority}\\
+\hline
+1 & Must be able to communicate with the Server Application & Must Have \\
+\hline
+2 & Has to include an Upload and Download file functionality & Must Have \\
+\hline
+3 & Make use of a file management system to upload any file from the user's system & Must Have \\
+\hline
+4 & Check for updates regularly so that the desktop client is in sync with the Server and Mobile Client & Must Have\\
+\hline
+5 & Display the current list of files from the database in the centre of the page & Should Have \\
+\hline
+6 & Include a delete file functionality   & Should Have \\
+\hline
+7 & Provide a way to track and check recent changes to files & Could Have\\
+\hline
+8 & include a search bar to quickly find files if the list of files is too large & Could Have \\
+\hline
+9 & Have User profiles for personalised access & Won't Have \\
+\hline
+\end{tabular}
+
 \subsection{\underline{Mobile Client}}
+
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\multicolumn{3}{|c|}{\textbf{MoSCoW requirements for The Mobile Client}} \\
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Priority}\\
+\hline
+1 & Must be able to communicate with the Server Application & Must Have \\
+\hline
+\end{tabular}
+
 
 \section{\underline{Implementation}}
 
