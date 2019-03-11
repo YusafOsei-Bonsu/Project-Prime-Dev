@@ -12,7 +12,7 @@ In this project, we were tasked with building a multi-host file synchroniser con
 Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (Important but unnecessary requirements for the final product), \textit{Could Have} (Lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (Least critical requirements that are unrequired for project success). In addition, the subsections will show the designs that reflect the corresponding component.
 
 \subsection{\underline{Desktop Client}}
-\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
 \hline
 \multicolumn{3}{|c|}{\textbf{MoSCoW requirements for The Desktop Client}} \\
 \hline
@@ -34,14 +34,14 @@ Requirements have been derived for each component. The requirements have been an
 \hline
 8 & Provide a way to track and check recent changes to files & Could Have\\
 \hline
-9 & include a search bar to quickly find files if the list of files is too large & Could Have \\
+9 & Include a search bar to quickly find files if the list of files is too large & Could Have \\
 \hline
 10 & Have User profiles for personalised access & Won't Have \\
 \hline
 \end{tabular}
 
 \subsection{\underline{Mobile Client}}
-\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
 \hline
 \multicolumn{3}{|c|}{\textbf{MoSCoW requirements for The Mobile Client}} \\
 \hline
@@ -61,7 +61,7 @@ Requirements have been derived for each component. The requirements have been an
 
 \subsection{\underline{Server Application}}
 
-\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
 \hline
 \multicolumn{3}{|c|}{\textbf{MoSCoW requirements for Server Application}} \\
 \hline
@@ -71,9 +71,9 @@ Requirements have been derived for each component. The requirements have been an
 \hline
 2 & Must be able to communicate with the Desktop and Mobile Clients simultaneously & Must Have \\
 \hline
-3 & Handle conflicts using Rsync(?) & Must Have \\
+3 & Use HTTP requests to send data to the clients & Must Have \\
 \hline
-4 & Use HTTP requests to send data to the clients & Should Have \\
+4 & Handle conflicts using Rsync & Should Have \\
 \hline
 5 & Use security encryption to protect the data & Could Have\\
 \hline
@@ -81,19 +81,19 @@ Requirements have been derived for each component. The requirements have been an
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-Saloni and Shefali developed the server application using Node.js.
+The server application is developed using Node.js and the database used is a cloud service by MongoDB.
 
 \subsection{\underline{Desktop Client}}
-Yusaf and Sandipan built the desktop application using the Electron framework; thus, its implementation primarily involved HTML, Javascript and CSS coding.
+The desktop application is built using the Electron framework; thus, the implementation primarily involved HTML, Javascript and CSS coding.
 
 \subsection{\underline{Mobile Client}}
-Manny and Cameron developed the mobile application using Android Studio; thus, its implementation primarily involved Java and XML.
+The mobile application is developed using Android Studio; thus, the implementation primarily involved Java and XML.
 
 \section{\underline{Teamwork}}
 Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app known as "Whatsapp", which allowed us to arrange group sessions at a certain date-and-time, notify teammates of submitted pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github where the project implementation was contained in a public repository called "Project Prime Dev". In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate from the master branch and subsequently, the former would be merged into the latter branch.
 
 \section{\underline{Evaluation}}
-From start to finish, the team experienced  positive and negative events of the project. To start with the positives, the biggest highlight of this project was the strong team communication, as each member confidently conveyed their own thoughts and opinions during group discussions in physical meetings and WhatsApp. In addition, when disagreements regarding the project arose, debates were conducted in a respectful manner by not saying rude or offensive statements. Each member also made the effort to attend each group meeting throughout the project, unless there was a genuine reason for their absence. Another positive was our ability to quickly adapt to changing circumstances. For instance, as initially planned, we were going to contain files in an SQL database, but upon discovering that SQL databases were not ideal for file storage, we got stuck in a dillemma. Fortunately, after thorough research, we decided to use a Mongo database since the latter is a document-oriented database system that's recommended for storing files. However, moving onto the negatives, the biggest drawback was how weak the plan was since each member was inexperienced in developing a multi-host file synchroniser, which led to us being unsure of how to approach the task. In addition, the level of inexperience formerly impacted our confidence to build the system. However, as the project progressed, the Internet became a major learning tool to gain new skills to become confident in achieving the project aims.
+From start to finish, the team experienced  positive and negative events of the project. To start with the positives, the biggest highlight of this project was the strong team communication, as each member confidently conveyed their own thoughts and opinions during group discussions in physical meetings and WhatsApp. In addition, when disagreements regarding the project arose, debates were conducted in a respectful manner by not saying rude or offensive statements. Each member also made the effort to attend each group meeting throughout the project, unless there was a genuine reason for their absence. Another positive was our ability to quickly adapt to changing circumstances. For instance, as initially planned, we were going to contain files in an SQL database, but upon discovering that SQL databases were not ideal for file storage, we got stuck in a dilemma. Fortunately, after thorough research, we decided to use a MongoDB database since the latter is a document-oriented database system that's recommended for storing files. However, moving onto the negatives, the biggest drawback was how weak the plan was since each member was inexperienced in developing a multi-host file synchroniser, which led to us being unsure of how to approach the task. In addition, the level of inexperience formerly impacted our confidence to build the system. However, as the project progressed, the Internet became a major learning tool to gain new skills to become confident in achieving the project aims.
 
 In conclusion, this project caused the realisation that despite our computer science backgrounds, our technical prowess is still very basic and there is much for us to learn. In response to this discovery, we will commit to thoroughly relearning and practising how to use different technologies in our spare time, including programming languages and Git (e.g. BitBucket). In retrospect, if this project was repeated, our different approach would be to partner stronger members with novice ones, in terms of technological skill; thus, providing novice members with the opportunity to enhance their skills by learning whilst working on the job.   
 
