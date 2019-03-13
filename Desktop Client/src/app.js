@@ -86,9 +86,9 @@ app.get('/', (req, response) => {
 // @desc  Uploads 1 file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
   // Responds with file properties (in JSON)
-  // res.json({file: req.file});
+  res.json({file: req.file});
   // Navigate back to the desktop client
-  res.redirect('/');
+  // res.redirect('/');
 })
 
 // @route GET /files
