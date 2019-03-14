@@ -54,28 +54,19 @@
             </form>
             <hr>
             <!--Showing the files stored in the DB-->
-            <form name="serverFiles" action="http://10.40.161.219:3003/files" method="GET">
-
-            </form>
-            <!--Mongo files are displayed here -->
-            <!-- <% if(files) { %>
-              <% files.forEach(function() { %>
-                  <div class="card card-body mb-3">
-                    <% if(file.isImage) { %>
-                      <img src="image/<%= file.filename %>" alt="">
-                    <% } else { %>
-                      <%= file.filename %>
-                    <% } %>
-                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
-
-                      <!- Removes files from the DB upon button press-->
-                      <!-- <button class="btn btn-danger btn-block mt-4">Delete</button>
-                    </form>
-                  </div>
-                <% }) %>
-            <% } else { %> 
-              <p>No files to show</p> 
-            <% } %>  -->
+            <div id="demo">
+              <script>
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var fileObj = JSON.parse(this.responseText);
+                    document.getElementById("demo").innerHTML = fileObj[0].filename;
+                  }
+                };
+                xmlhttp.open("GET", "http://10.40.216.196:3003/files", true);
+                xmlhttp.send();
+              </script>
+            </div>
         </div>
       </div>
     </div>
