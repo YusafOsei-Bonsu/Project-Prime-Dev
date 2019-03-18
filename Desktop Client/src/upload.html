@@ -21,7 +21,11 @@
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
             
             <!--Forms a connection to the server through HTTP POST request-->
-            <form action="http://10.40.161.219:3003/upload" method="POST" enctype="multipart/form-data">
+            <!-- Possible IP addresses: 
+                 Saloni Home = 100.76.160.86:3003, 
+                 King's room = 10.40.161.219:3003
+                -->
+            <form action="http://100.76.160.86:3003/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
                 <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
@@ -53,26 +57,20 @@
               <input type="submit" value="Submit" class="btn btn-primary btn-block">
             </form>
             <hr>
-            
-            <!--Mongo files are displayed here -->
-            <!-- <% if(files) { %>
-              <% files.forEach(function() { %>
-                  <div class="card card-body mb-3">
-                    <% if(file.isImage) { %>
-                      <img src="image/<%= file.filename %>" alt="">
-                    <% } else { %>
-                      <%= file.filename %>
-                    <% } %>
-                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
-
-                      <!- Removes files from the DB upon button press-->
-                      <!-- <button class="btn btn-danger btn-block mt-4">Delete</button>
-                    </form>
-                  </div>
-                <% }) %>
-            <% } else { %> 
-              <p>No files to show</p> 
-            <% } %>  -->
+            <!--Showing the files stored in the DB-->
+            <div id="demo">
+              <script>
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var fileObj = JSON.parse(this.responseText);
+                    document.getElementById("demo").innerHTML = fileObj[0].filename;
+                  }
+                };
+                xmlhttp.open("GET", "http://100.76.160.86:3003/files", true);
+                xmlhttp.send();
+              </script>
+            </div>
         </div>
       </div>
     </div>
