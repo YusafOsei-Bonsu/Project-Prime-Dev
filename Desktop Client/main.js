@@ -15,7 +15,7 @@ function createWindow () {
   window = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  window.loadFile('src/index.html');
+  window.loadFile('src/upload.html');
   
   //AJAX request server for existing files
   var xhr = new XMLHttpRequest();
