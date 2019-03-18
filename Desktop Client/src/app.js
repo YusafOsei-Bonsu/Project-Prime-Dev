@@ -43,10 +43,7 @@ const storage = new GridFsStorage({
           return reject(err)
         }
         const filename = buf.toString('hex') + path.extname(file.originalname)
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        }
+        const fileInfo = {filename: filename, bucketName: 'uploads'}
         resolve(fileInfo)
       })
     })
@@ -76,7 +73,7 @@ app.get('/files', (req, res) => {
 app.post('/upload', upload.single('file'), (req, res) => {
   console.log('POST request to /upload');
    res.json({file: req.file});
-   //res.redirect('/files');
+   res.redirect('/files');
 })
 
 // @route GET /files/:filename
