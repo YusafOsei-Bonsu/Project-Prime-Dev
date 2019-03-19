@@ -19,5 +19,5 @@ public class EditFragment extends Fragment {
         return inflater.inflate(R.layout.edit_page, container, false);
     }
 
-w
+
 }
