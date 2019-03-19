@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.5)  14 MAR 2019 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.5)  19 MAR 2019 14:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -27,7 +27,7 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
-No file team_project_prime.aux.
+(./team_project_prime.aux)
 \openout1 = `team_project_prime.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -52,90 +52,122 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 7.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 16.
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
-[]\OT1/cmr/bx/n/10 Requirement
- []
-
-
-Underfull \hbox (badness 1603) in paragraph at lines 30--30
-\OT1/cmr/m/n/10 that the desk-top client is in
- []
-
-
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 16--43
-[] 
- []
-
-[1
+ [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
-[]\OT1/cmr/bx/n/10 Requirement
- []
-
-
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 45--62
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
-[]\OT1/cmr/bx/n/10 Requirement
- []
-
-
-Underfull \hbox (badness 6063) in paragraph at lines 71--71
-[]\OT1/cmr/m/n/10 Has to be con-nected to a
- []
-
-
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 65--82
-[] 
- []
-
-[2] [3]
-Overfull \hbox (4.66736pt too wide) in paragraph at lines 94--95
-\OT1/cmr/m/n/10 Project Prime con-sists of six mem-bers: Yusaf, Sandi-pan, Sa-l
-oni, She-fali, Cameron
- []
-
-[4] [5]
-Overfull \hbox (68.43301pt too wide) in paragraph at lines 108--117
-[] 
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 18.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
- [6]
-(./team_project_prime.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 33.
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--37
+[]\OT1/cmr/bx/n/10 Requirement
+ []
+
+
+Underfull \hbox (badness 1603) in paragraph at lines 47--47
+\OT1/cmr/m/n/10 that the desk-top client is in
+ []
+
+
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 33--60
+[] 
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 66--66
+[]\OT1/cmr/bx/n/10 Requirement
+ []
+
+
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 62--79
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
+[]\OT1/cmr/bx/n/10 Requirement
+ []
+
+
+Underfull \hbox (badness 6063) in paragraph at lines 88--88
+[]\OT1/cmr/m/n/10 Has to be con-nected to a
+ []
+
+
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 82--99
+[] 
+ []
+
+[3]
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 104--113
+[][] 
+ []
+
+[4]
+Underfull \hbox (badness 2285) in paragraph at lines 123--123
+\OT1/cmr/m/n/10 into the database
+ []
+
+
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 117--126
+[][] 
+ []
+
+
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 130--139
+[][] 
+ []
+
+
+Overfull \hbox (4.66736pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/n/10 Project Prime con-sists of six mem-bers: Yusaf, Sandi-pan, Sa-l
+oni, She-fali, Cameron
+ []
+
+[5] [6]
+Overfull \hbox (68.43301pt too wide) in paragraph at lines 155--164
+[] 
+ []
+
+
+Overfull \hbox (36.13974pt too wide) in paragraph at lines 169--170
+\OT1/cmr/m/n/10 able at: https://blogs.dropbox.com/tech/2014/07/streaming-file-
+synchronization/
+ []
+
+
+Overfull \hbox (17.41739pt too wide) in paragraph at lines 170--171
+\OT1/cmr/m/n/10 Avail-able at: https://www.dropbox.com/business/trust/security/
+architecture
+ []
+
+[7] [8] (./team_project_prime.aux) ) 
 Here is how much of TeX's memory you used:
- 260 strings out of 492649
- 3180 string characters out of 6129623
+ 262 strings out of 492649
+ 3226 string characters out of 6129623
  70838 words of memory out of 5000000
  4212 multiletter control sequences out of 15000+600000
  8856 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  23i,8n,21p,1525b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb>
-Output written on team_project_prime.pdf (6 pages, 110871 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb>
+Output written on team_project_prime.pdf (8 pages, 117091 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
