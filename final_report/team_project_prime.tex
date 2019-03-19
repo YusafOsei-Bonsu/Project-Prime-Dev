@@ -12,8 +12,8 @@ In this project, we were tasked with building a multi-host file synchroniser con
 
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
-Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to [1], the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in [2]. 
-Therefore, the protocol described in [1] for Dropbox’s desktop client is as follows:
+Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d). 
+Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop client is as follows:
 	\begin{itemize}
 	\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
 	\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
@@ -166,7 +166,7 @@ To start with what went well, one positive aspect was the firm strength of team 
 \begin{itemize}
 \item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
 \item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
-\item [1]NIPUUN KOORAPATI. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
-\item [2]DROPBOX BUSINESS. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
+\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
+\item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
 \end{itemize}
 \end{document}

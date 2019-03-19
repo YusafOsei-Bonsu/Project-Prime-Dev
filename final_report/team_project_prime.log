@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.5)  19 MAR 2019 14:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.5)  19 MAR 2019 14:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -136,15 +136,9 @@ Overfull \hbox (68.43301pt too wide) in paragraph at lines 155--164
  []
 
 
-Overfull \hbox (58.91759pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 Avail-able at: https://blogs.dropbox.com/tech/2014/07/streaming
--file-synchronization/
- []
-
-
-Overfull \hbox (14.10774pt too wide) in paragraph at lines 170--171
-[]\OT1/cmr/m/n/10 DROPBOX BUSI-NESS. (n.d) \OT1/cmr/m/it/10 Un-der the hood: Ar
--chi-tec-ture Overview\OT1/cmr/m/n/10 [online].
+Overfull \hbox (36.13974pt too wide) in paragraph at lines 169--170
+\OT1/cmr/m/n/10 able at: https://blogs.dropbox.com/tech/2014/07/streaming-file-
+synchronization/
  []
 
 
@@ -170,7 +164,7 @@ e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
 ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmti10.pfb>
-Output written on team_project_prime.pdf (8 pages, 117039 bytes).
+Output written on team_project_prime.pdf (8 pages, 117091 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  41 compressed objects within 1 object stream
