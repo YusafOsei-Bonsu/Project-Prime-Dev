@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class EditFragment extends Fragment {
 
@@ -12,12 +13,27 @@ public class EditFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+    TextView typeName;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.edit_page, container, false);
+
+        //test
+        View view = inflater.inflate(R.layout.edit_page, container, false);
+        TextView fileName = (TextView) view.findViewById(R.id.editFileView);
+        String key = getArguments().getString("FileName");
+        String key2 = getArguments().getString("contentType");
+        System.out.println(key);
+        fileName.setText(key);
+        System.out.println("the file should be: "+fileName.getText());
+
+        return view;
+
+
+
     }
 
-w
+
 }
