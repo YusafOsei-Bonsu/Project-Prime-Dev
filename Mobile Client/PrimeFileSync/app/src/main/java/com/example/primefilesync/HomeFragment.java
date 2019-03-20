@@ -1,10 +1,12 @@
 package com.example.primefilesync;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -87,6 +89,20 @@ public class HomeFragment extends Fragment {
                         }
                         CustomListAdapter listvieweg = new CustomListAdapter(getActivity(), nameArray, typeArray, imageArray);
                         listView = (ListView) rootview.findViewById(R.id.simpleListView);
+                        //test
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent intent = new Intent (HomeFragment.this.getActivity(), EditFragment.class);
+                                EditFragment editFragment = new EditFragment();
+                                Bundle args =new Bundle();
+                                args.putString("FileName",listView.getItemAtPosition(position).toString());
+                                //test
+                                //args.putString("contentType",listView.getItemAtPosition(position+1).toString());
+                                editFragment.setArguments(args);
+                                getFragmentManager().beginTransaction().replace(R.id.fragment_container, editFragment).addToBackStack(null).commit();
+                            }
+                        });
                         listView.setAdapter(listvieweg);
 
                     }
