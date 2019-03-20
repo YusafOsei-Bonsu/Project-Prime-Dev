@@ -7,23 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    //test
-    //create arrays for the listview
-    String[] nameArray = {"test1","test2","test3","test4","test5","test6","test7","test8","test9","test10"};
-    String[] authorArray = {"test11","test22","test33","test44","test55","test66","test77","test88","test99","test1010"};
-    Integer[] imageArray = {R.drawable.ic_menu_gallery, R.drawable.ic_menu_gallery,R.drawable.ic_menu_gallery, R.drawable.ic_menu_gallery,R.drawable.ic_menu_gallery, R.drawable.ic_menu_gallery,R.drawable.ic_menu_gallery, R.drawable.ic_menu_gallery,R.drawable.ic_menu_gallery, R.drawable.ic_menu_gallery};
     ListView listView;
     View rootview;
+    RequestQueue queue;
 
-    //test ends
 
     public HomeFragment() {
         // Required empty public constructor
@@ -33,44 +32,76 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        /*for list view (url = server url) - starts by connecting to server and ends by disconnecting
-        try {
-            URL url = new URL("mongodb://projectPrime:projectPrime@projectprime-shard-00-00-wreg9.mongodb.net:27017,projectprime-shard-00-01-wreg9.mongodb.net:27017,projectprime-shard-00-02-wreg9.mongodb.net:27017/test?ssl=true&replicaSet=ProjectPrime-shard-0&authSource=admin&retryWrites=true");
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            try {
-
-                //what to do from the server URL (here fill the list maybe)
-
-
-
-                //InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                //readStream(in);
-            //} catch (IOException ex) {
-             //   urlConnection.disconnect();
-            } finally {
-                urlConnection.disconnect();
-            }
-        } catch (IOException ex2) {
-            System.out.print("Cant connect to server");
-        }
-
-           */
-
         rootview=inflater.inflate(R.layout.home_page,container, false);
         init();
         return rootview;
 
 
-
-
-
     }
+
+
 
     public void init(){
 
-        CustomListAdapter listvieweg = new CustomListAdapter(this.getActivity() , nameArray, authorArray, imageArray);
-        listView = (ListView) rootview.findViewById(R.id.simpleListView);
-        listView.setAdapter(listvieweg);
+        queue = Volley.newRequestQueue(this.getContext());
+        String url = "http:/130.43.169.231:3003/files";
+
+        final ArrayList<String> nameAL = new ArrayList<String>();
+        final ArrayList<String> typeAL = new ArrayList<String>();
+        final ArrayList<Integer> picAL = new ArrayList<Integer>();
+        String[] nameArray = new String[0];
+        String[] typeArray = new String[0];
+        Integer[] imageArray = new Integer[0];
+
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
+
+                @Override
+                public void onResponse(JSONArray response) {
+                    try {
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject file = response.getJSONObject(i);
+                            String fileName = file.getString("filename");
+                            nameAL.add(fileName);
+                            String fileType = file.getString("contentType");
+                            typeAL.add(fileType);
+                            picAL.add(R.drawable.ic_menu_gallery);
+                        }
+                    }catch(JSONException e){
+
+                    }finally{
+                        String[] nameArray = new String[nameAL.size()];
+                        for(int i=0; i<nameAL.size();i++){
+                            nameArray[i]=nameAL.get(i);
+
+                        }
+
+                        String[] typeArray = new String[typeAL.size()];
+                        for(int j=0; j<nameAL.size();j++){
+                            typeArray[j]=typeAL.get(j);
+
+                        }
+
+                        Integer[] imageArray = new Integer[picAL.size()];
+                        for(int k=0; k<picAL.size();k++){
+                            imageArray[k]=picAL.get(k);
+                        }
+                        CustomListAdapter listvieweg = new CustomListAdapter(getActivity(), nameArray, typeArray, imageArray);
+                        listView = (ListView) rootview.findViewById(R.id.simpleListView);
+                        listView.setAdapter(listvieweg);
+
+                    }
+                }
+
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+
+       queue.add(jsonArrayRequest);
+        //make sure can connect to server,
 
     }
 
