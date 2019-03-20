@@ -1,5 +1,11 @@
-/*Setting the format of the title*/
+/* Setting the format of the title */
 .title {
     text-align: center;
     color: dodgerblue;
+}
+
+/* Making the div (containing the files) scrollable */
+div .ex1 {
+    overflow: scroll;
+    width: 550px;
 }
