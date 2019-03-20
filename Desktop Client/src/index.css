@@ -8,4 +8,6 @@
 div .ex1 {
     overflow: scroll;
     width: 550px;
+    height: 400px;
+    margin: auto;
 }
