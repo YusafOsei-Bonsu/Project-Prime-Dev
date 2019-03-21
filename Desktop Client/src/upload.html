@@ -21,9 +21,12 @@
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
             
             <!--Forms a connection to the server through HTTP POST request-->
-            <form action="http://10.40.161.219:3003/upload" method="POST" enctype="multipart/form-data">
+            <!-- Possible IP addresses:  
+                 King's room = 10.40.200.41:3003 (IP address changes)
+                -->
+            <form action="http://10.40.200.41:3003/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
-                <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
+                <label id="fileLabel" for="file" class="custom-file-label">Choose a File...</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
               </div>
               
@@ -50,29 +53,68 @@
               </script>
               
               <!--Inserts files into the database upon button press-->
-              <input type="submit" value="Submit" class="btn btn-primary btn-block">
+              <input type="submit" value="Submit" class="btn btn-primary btn-block" onclick="revert()">
+
+              <script>
+                // Shows the initial label after pressing submit button
+                function revert() {
+                  var label = document.getElementById('fileLabel');
+                  label.innerText = 'Choose a File...';
+                }
+              </script>
+
             </form>
             <hr>
             
-            <!--Mongo files are displayed here -->
-            <!-- <% if(files) { %>
-              <% files.forEach(function() { %>
-                  <div class="card card-body mb-3">
-                    <% if(file.isImage) { %>
-                      <img src="image/<%= file.filename %>" alt="">
-                    <% } else { %>
-                      <%= file.filename %>
-                    <% } %>
-                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+            <!-- Displaying files that are stored in the database -->
+            <div id="server-files" class="card card-body mb-3">
+            <h3><u>Your Files</u></h3>
+                <script>
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var fileObj = JSON.parse(this.responseText);
+                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
+                    
+                    for (var i = 0; i < fileObj.length; i++) {
+                      // File container
+                      var block = document.createElement('div');
+                      
+                      // Pressing delete button removes file from db via server
+                      var deleteBtn = document.createElement('button');
+                      
+                      // Defining the properties of both buttons and the file-containing block
+                      block.className = "inner-block";
+                      deleteBtn.className = "btn btn-danger btn-block mt-1";
+                      
+                      // Adding button names
+                      deleteBtn.appendChild(document.createTextNode('Delete'));
+                      
+                      /* Adding a file-containing div (showing the filename) and two buttons 
+                      inside the parent div (i.e. server-files)*/ 
+                      document.getElementById('server-files').appendChild(block);
+                      block.appendChild(document.createTextNode(fileObj[i].filename));
+                      document.getElementById('server-files').appendChild(deleteBtn);
+                    }
+                  }
+                }
+                xmlhttp.open("GET", "http://10.40.200.41:3003/files", true);
+                xmlhttp.send();
+              </script>
+            </div>
 
-                      <!- Removes files from the DB upon button press-->
-                      <!-- <button class="btn btn-danger btn-block mt-4">Delete</button>
-                    </form>
-                  </div>
-                <% }) %>
-            <% } else { %> 
-              <p>No files to show</p> 
-            <% } %>  -->
+            <!-- -->
+              <!-- <script>
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var fileObj = JSON.parse(this.responseText);
+                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
+                  }
+                };
+                xmlhttp.open("GET", "http://10.40.242.65:3003/files", true);
+                xmlhttp.send();
+              </script>  -->
         </div>
       </div>
     </div>
