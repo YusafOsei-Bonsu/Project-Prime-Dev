@@ -76,7 +76,7 @@ app.get('/files', (req, res) => {
 // @desc  Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
   console.log('POST request to /upload')
-   res.json({ file: req.file })
+   //res.json({ file: req.file })
 })
 
 // @route GET /files/:filename
