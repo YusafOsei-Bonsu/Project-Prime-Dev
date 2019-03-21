@@ -26,7 +26,7 @@
                 -->
             <form action="http://10.40.242.65:3003/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
-                <label id="fileLabel" for="file" class="custom-file-label">Choose File:</label>
+                <label id="fileLabel" for="file" class="custom-file-label">Choose a File...</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
               </div>
               
@@ -53,23 +53,89 @@
               </script>
               
               <!--Inserts files into the database upon button press-->
-              <input type="submit" value="Submit" class="btn btn-primary btn-block">
+              <input type="submit" value="Submit" class="btn btn-primary btn-block" onclick="revert()">
+
+              <script>
+                // Shows the initial label after pressing submit button
+                function revert() {
+                  var label = document.getElementById('fileLabel');
+                  label.innerText = 'Choose a File...';
+                }
+              </script>
+
             </form>
             <hr>
-            <!--Showing the files stored in the DB-->
-            <div id="demo">
-              <script>
+            
+            <!-- Displaying files that are stored in the database -->
+            <div id="server-files" class="card card-body mb-3">
+            <h3><u>Your Files</u></h3>
+                <script>
+                
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
                   if (this.readyState == 4 && this.status == 200) {
                     var fileObj = JSON.parse(this.responseText);
-                    document.getElementById("demo").innerHTML = fileObj[0].filename;
+                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
+                    
+                    for (var i = 0; i < fileObj.length; i++) {
+                      // File container
+                      var block = document.createElement('div');
+                      
+                      // Pressing delete button removes file from db via server
+                      var deleteBtn = document.createElement('button');
+                      
+                      // Pressing download button retrieves file from db via server
+                      var downloadBtn = document.createElement('button');
+                      
+                      // Defining the properties of both buttons and the file-containing block
+                      block.className = "inner-block";
+                      deleteBtn.className = "btn btn-danger btn-block mt-1";
+                      downloadBtn.className = "btn btn-primary btn-block mb-4";
+                      
+                      // Adding button names
+
+                      deleteBtn.appendChild(document.createTextNode('Delete'));
+                      downloadBtn.appendChild(document.createTextNode('Download'));
+                      
+                      /* Adding a file-containing div (showing the filename) and two buttons 
+                      inside the parent div (i.e. server-files)*/ 
+                      document.getElementById('server-files').appendChild(block);
+                      block.appendChild(document.createTextNode(fileObj[i].filename));
+                      document.getElementById('server-files').appendChild(deleteBtn);
+                      document.getElementById('server-files').appendChild(downloadBtn);
+                    }
+                  }
+                }
+
+                
+                
+                // var xmlhttp = new XMLHttpRequest();
+                // xmlhttp.onreadystatechange = function() {
+                //     if (this.readyState == 4 && this.status == 200) {
+                //       var filesInServer = JSON.parse(this.responseText);
+                //       var numberOfFiles = Object.keys(filesInServer).length;
+                //       for (var i = 1; i <= 3; i++) {
+                //         var block = document.createElement('div');
+                //         block.className = "inner-block";
+                //         document.getElementById('server-files').appendChild(block);
+                //       } 
+                //     }
+                //   };
+              </script>
+            </div>
+
+            <!-- -->
+              <!-- <script>
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var fileObj = JSON.parse(this.responseText);
+                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
                   }
                 };
                 xmlhttp.open("GET", "http://10.40.242.65:3003/files", true);
                 xmlhttp.send();
-              </script>
-            </div>
+              </script>  -->
         </div>
       </div>
     </div>
