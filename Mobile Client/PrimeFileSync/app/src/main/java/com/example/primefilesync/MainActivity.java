@@ -92,14 +92,6 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container,homeFragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_Edit) {
-            //test
-            EditFragment editFragment = new EditFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container,editFragment);
-            fragmentTransaction.commit();
-
-
         } else if (id == R.id.nav_Help) {
             HelpFragment helpFragment = new HelpFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
