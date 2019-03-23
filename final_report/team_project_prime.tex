@@ -3,12 +3,18 @@
 \title{Final Report}
 \author{By Project Prime}
 \begin{document}
- \maketitle
+\[\maketitle
  \section{\underline{Introduction}}
 In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, and mobile and desktop client. The server is the "hub" whilst the clients are "spokes". The server was created using Node.js, where it acted as an interface between both clients and the database (which was created using MongoDB). In addition, this server processed HTTP GET and POST requests to deliver/updates files on the client's behalf. The mobile client was made using Java and XML on Android Studio, whereas the desktop client was created using Javascript, HTML and CSS on Electron. The result of this project is a fully-functioning file synchroniser that interacts with and manages multiple, heterogeneous clients via a Node.js server. Furthermore, this synchroniser possesses the necessary algorithms (e.g. rsync) to resolve file conflicts caused by clients. 
 
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
+As mentioned before the server application is created using Node.js. The server waits for requests from other clients and responds to them, thus providing a service upon their request. Thus the server application is responsible for handling requests, responding to them appropriately and for establishing the database connection.  We decided using Node.js to build the server as it allows us to write the application in JavaScript. Besides that, Node.js provides us the ability to use JavaScript on both frontend and backend.
+ 
+To store and retrieve files we decided to use MongoDb. Unlike a relational database where data is stored in rows and columns, MongoDb stores JSON documents in collections with dynamic schemas.
+
+Furthermore, we have used Express, which is a flexible Node application framework. It allowed us to set up the middleware and helps us to manage everything from routes to handling requests.
+
 
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
@@ -169,4 +175,5 @@ To start with what went well, one positive aspect was the firm strength of team 
 \item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
 \item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
 \end{itemize}
+\]
 \end{document}
