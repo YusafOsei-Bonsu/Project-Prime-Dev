@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--This is the starting point of the desktop client development-->
 <html>
   <head>
     <meta charset="UTF-8">
@@ -14,13 +13,12 @@
   </head>
   <body>
     
-    <!--This form allows users to upload and delete files in the server-->
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto">
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
             
-            <!--Forms a connection to the server through HTTP POST request-->
+            <!--Uploads a file into the DB via the node.js server (in the Heroku cloud) after pressing Submit-->
             <form action="https://rocky-plateau-19773.herokuapp.com/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
                 <label id="fileLabel" for="file" class="custom-file-label">Choose a File...</label>
@@ -70,13 +68,16 @@
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
                   if (this.readyState == 4 && this.status == 200) {
+                    //fileObj = A list of files residing in the server
                     var fileObj = JSON.parse(this.responseText);
                     var block, deleteForm, deleteBtn;
+                    // Traverses through each file
                     for (var i = 0; i < fileObj.length; i++) {
-                      // Creating sections that 
+                      // File-containing blocks
                       block = document.createElement('div');
                       block.className = "inner-block mb-1";
                       
+                      // Deletes the file by removing it from the DB via the server
                       deleteForm = document.createElement('form');
                       deleteForm.setAttribute('method', 'POST');
                       deleteForm.setAttribute('action','https://rocky-plateau-19773.herokuapp.com/files/'+ fileObj[i]._id + '?_method=DELETE');
@@ -86,6 +87,7 @@
                       deleteBtn.setAttribute('value', 'Delete');
                       deleteForm.appendChild(deleteBtn);
 
+                      // Creates and displays the files and delete buttons on the desktop client
                       document.getElementById('server-files').appendChild(block);
                       block.appendChild(document.createTextNode(fileObj[i].filename));
                       document.getElementById('server-files').appendChild(deleteForm);
