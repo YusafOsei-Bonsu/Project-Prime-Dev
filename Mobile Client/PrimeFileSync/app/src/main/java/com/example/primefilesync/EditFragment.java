@@ -1,6 +1,9 @@
 package com.example.primefilesync;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
@@ -24,6 +27,7 @@ import java.net.URL;
 public class EditFragment extends Fragment {
 
     RequestQueue queue;
+    DownloadManager downloadManager;
 
     public EditFragment() {
         // Required empty public constructor
@@ -51,18 +55,8 @@ public class EditFragment extends Fragment {
             public void onClick(View v) {
                 try {
 
-                    System.out.println("attempting delete");
-                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-                    StrictMode.setThreadPolicy(policy);
-                    URL url = new URL("http://10.40.20.172:3003/files/" + fileName.getText());
-                    HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-                   // httpCon.setDoInput(true);
-                    httpCon.setRequestProperty(
-                            "Content-Type", "application/x-www-form-urlencoded");
-                    httpCon.setRequestMethod("DELETE");
-                    httpCon.setConnectTimeout(1000);
-                    httpCon.setReadTimeout(1000);
-                    httpCon.getInputStream().close();
+                    URL url = new URL("http://10.40.10.83:3003/files/" + fileName.getText());
+                    new RemoveFileTask().execute(url);
 
                 }catch(Exception e){
                     e.printStackTrace();
@@ -75,6 +69,21 @@ public class EditFragment extends Fragment {
                 }
             }
         });
+
+        //Download button
+
+        Button downloadbtn = (Button) view.findViewById(R.id.Downloadbutton);
+            downloadbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                    Uri uri = Uri.parse("http://10.40.10.83:3003/files/" + fileName.getText());
+                    DownloadManager.Request request = new DownloadManager.Request(uri);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    Long reference = downloadManager.enqueue(request);
+                }
+            });
+
 
 
         return view;

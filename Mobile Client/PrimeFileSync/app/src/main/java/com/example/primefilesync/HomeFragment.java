@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -24,6 +25,7 @@ public class HomeFragment extends Fragment {
     ListView listView;
     View rootview;
     RequestQueue queue;
+    private static final int READ_REQUEST_CODE = 42;
 
 
     public HomeFragment() {
@@ -35,18 +37,37 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         rootview=inflater.inflate(R.layout.home_page,container, false);
+        initupload();
         init();
         return rootview;
 
 
     }
 
+    private void initupload() {
+
+
+        Button uploadB = (Button) rootview.findViewById(R.id.uploadButton);
+        uploadB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent upIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                upIntent.setType("*/*");
+                upIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(upIntent, READ_REQUEST_CODE);
+            }
+        });
+
+
+
+
+    }
 
 
     public void init(){
 
         queue = Volley.newRequestQueue(this.getContext());
-        String url = "http://10.40.20.172:3003/files";
+        String url = "http://10.40.10.83:3003/files";
 
         final ArrayList<String> nameAL = new ArrayList<String>();
         final ArrayList<String> typeAL = new ArrayList<String>();
