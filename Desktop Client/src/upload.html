@@ -71,27 +71,24 @@
                 xmlhttp.onreadystatechange = function() {
                   if (this.readyState == 4 && this.status == 200) {
                     var fileObj = JSON.parse(this.responseText);
-                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
-                    
+                    var block, deleteForm, deleteBtn;
                     for (var i = 0; i < fileObj.length; i++) {
-                      // File container
-                      var block = document.createElement('div');
+                      // Creating sections that 
+                      block = document.createElement('div');
+                      block.className = "inner-block mb-1";
                       
-                      // Pressing delete button removes file from db via server
-                      var deleteBtn = document.createElement('button');
-                      
-                      // Defining the properties of both buttons and the file-containing block
-                      block.className = "inner-block mb-2";
-                      deleteBtn.className = "btn btn-danger btn-block mb-2";
-                      
-                      // Adding button names
-                      deleteBtn.appendChild(document.createTextNode('Delete'));
-                      
-                      /* Adding a file-containing div (showing the filename) and two buttons 
-                      inside the parent div (i.e. server-files)*/ 
+                      deleteForm = document.createElement('form');
+                      deleteForm.setAttribute('method', 'POST');
+                      deleteForm.setAttribute('action','https://rocky-plateau-19773.herokuapp.com/files/'+ fileObj[i]._id + '?_method=DELETE');
+                      deleteBtn = document.createElement('input');
+                      deleteBtn.setAttribute('type', 'submit');
+                      deleteBtn.setAttribute('class', 'btn btn-danger btn-block mb-2');
+                      deleteBtn.setAttribute('value', 'Delete');
+                      deleteForm.appendChild(deleteBtn);
+
                       document.getElementById('server-files').appendChild(block);
                       block.appendChild(document.createTextNode(fileObj[i].filename));
-                      document.getElementById('server-files').appendChild(deleteBtn);
+                      document.getElementById('server-files').appendChild(deleteForm);
                     }
                   }
                 }
