@@ -21,10 +21,7 @@
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
             
             <!--Forms a connection to the server through HTTP POST request-->
-            <!-- Possible IP addresses:  
-                 King's room = 10.40.200.41:3003 (IP address changes)
-                -->
-            <form action="http://10.40.200.41:3003/upload" method="POST" enctype="multipart/form-data">
+            <form action="https://rocky-plateau-19773.herokuapp.com/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
                 <label id="fileLabel" for="file" class="custom-file-label">Choose a File...</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
@@ -84,8 +81,8 @@
                       var deleteBtn = document.createElement('button');
                       
                       // Defining the properties of both buttons and the file-containing block
-                      block.className = "inner-block";
-                      deleteBtn.className = "btn btn-danger btn-block mt-1";
+                      block.className = "inner-block mb-2";
+                      deleteBtn.className = "btn btn-danger btn-block mb-2";
                       
                       // Adding button names
                       deleteBtn.appendChild(document.createTextNode('Delete'));
@@ -98,23 +95,10 @@
                     }
                   }
                 }
-                xmlhttp.open("GET", "http://10.40.200.41:3003/files", true);
+                xmlhttp.open("GET", "https://rocky-plateau-19773.herokuapp.com/files", true);
                 xmlhttp.send();
               </script>
             </div>
-
-            <!-- -->
-              <!-- <script>
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    var fileObj = JSON.parse(this.responseText);
-                    //document.getElementById("demo").innerHTML = fileObj[0].filename;
-                  }
-                };
-                xmlhttp.open("GET", "http://10.40.242.65:3003/files", true);
-                xmlhttp.send();
-              </script>  -->
         </div>
       </div>
     </div>

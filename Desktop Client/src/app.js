@@ -10,6 +10,7 @@ const multer = require('multer')
 const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
+const rsync = require('rsync');
 
 const app = express()
 
@@ -23,39 +24,45 @@ const mongoURI = 'mongodb://projectPrime:projectPrime@projectprime-shard-00-00-w
 mongoose.set('useNewUrlParser', true);
 
 // Create mongo connection
-const connection = mongoose.createConnection(mongoURI)
+const conn = mongoose.createConnection(mongoURI)
 
 // Init gfs
-let GFS
+let gfs
 
-connection.once('open', () => {
+conn.once('open', () => {
   // Init stream
-  GFS = Grid(connection.db, mongoose.mongo)
-  GFS.collection('uploads')
+  gfs = Grid(conn.db, mongoose.mongo)
+  gfs.collection('uploads')
 })
 
 // Create storage engine
 const storage = new GridFsStorage({
-  url: mongoURI, file: (req, file) => {
+  url: mongoURI,
+  file: (req, file) => {
     return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err)
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname)
-        const fileInfo = {filename: filename, bucketName: 'uploads'}
-        resolve(fileInfo)
-      })
+      const fileInfo = {
+        filename: file.originalname,
+          /** With gridfs we can store aditional meta-data along with the file */
+        metadata: function(req, file, cb) {
+          cb(null, { originalname: file.originalname });
+        },
+        bucketName: 'uploads'
+      }
+      resolve(fileInfo)
     })
   }
 })
-const upload = multer({storage})
+const upload = multer({ storage })
+
+app.get('/', (req, res) => {
+  res.sendFile('./index.html', {root: __dirname})
+})
 
 // @route GET /files
 // @desc  Display all files in JSON
 app.get('/files', (req, res) => {
   console.log('GET request to /files')
-  GFS.files.find().toArray((err, files) => {
+  gfs.files.find().toArray((err, files) => {
     // Check if files exist
     if (!files || files.length === 0) {
       return res.status(404).json({
@@ -71,15 +78,14 @@ app.get('/files', (req, res) => {
 // @route POST /upload
 // @desc  Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
-  console.log('POST request to /upload');
-   res.json({file: req.file});
-   res.redirect('/files');
+  console.log('POST request to /upload')
+   //res.json({ file: req.file })
 })
 
 // @route GET /files/:filename
 // @desc  Display single file object
 app.get('/files/:filename', (req, res) => {
-  GFS.files.findOne({ filename: req.params.filename }, (err, file) => {
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
       return res.status(404).json({
@@ -91,10 +97,27 @@ app.get('/files/:filename', (req, res) => {
   })
 })
 
+// @route GET /download
+// @desc  Download single file object
+app.get('/download/:filename', (req, res) => {
+  // Check file exists on MongoDB
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+    // Check if file
+    if (!file || file.length === 0) {
+      return res.status(404).json({
+        err: 'No file exists'
+      })
+    }
+    console.log("File Found")
+    var readstream = gfs.createReadStream({ filename: req.params.filename });
+    readstream.pipe(res);            
+  });
+});  
+
 // @route DELETE /files/:id
 // @desc  Delete file
 app.delete('/files/:id', (req, res) => {
-  GFS.remove({ _id: req.params.id, root: 'uploads' }, (err, gridStore) => {
+  gfs.remove({ _id: req.params.id, root: 'uploads' }, (err, gridStore) => {
     if (err) {
       return res.status(404).json({ err: err })
     }
