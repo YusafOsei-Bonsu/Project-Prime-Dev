@@ -19,7 +19,7 @@ function createWindow () {
   
   //AJAX request server for existing files
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', "http://100.76.164.19:3003/files", true);
+  xhr.open('GET', "https://rocky-plateau-19773.herokuapp.com/files", true);
   xhr.send();
  
   xhr.onreadystatechange = processRequest;
