@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
     public void init(){
 
         queue = Volley.newRequestQueue(this.getContext());
-        String url = "http:/130.43.169.231:3003/files";
+        String url = "http://10.40.20.172:3003/files";
 
         final ArrayList<String> nameAL = new ArrayList<String>();
         final ArrayList<String> typeAL = new ArrayList<String>();
