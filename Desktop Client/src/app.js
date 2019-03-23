@@ -104,12 +104,10 @@ app.get('/download/:filename', (req, res) => {
   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No file exists'
-      })
+      return res.status(404).json({err: 'No file exists'});
     }
     console.log("File Found")
-    var readstream = gfs.createReadStream({ filename: req.params.filename });
+    var readstream = gfs.createReadStream({filename: req.params.filename});
     readstream.pipe(res);            
   });
 });  
