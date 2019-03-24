@@ -5,7 +5,7 @@
 \begin{document}
  \maketitle
  \section{\underline{Introduction}}
-In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, and mobile and desktop client. The server is the "hub" whilst the clients are "spokes". The server was created using Node.js, where it acted as an interface between both clients and the database (which was created using MongoDB). In addition, this server processed HTTP GET and POST requests to deliver/updates files on the client's behalf. The mobile client was made using Java and XML on Android Studio, whereas the desktop client was created using Javascript, HTML and CSS on Electron. The result of this project is a fully-functioning file synchroniser that interacts with and manages multiple, heterogeneous clients via a Node.js server. Furthermore, this synchroniser possesses the necessary algorithms (e.g. rsync) to resolve file conflicts caused by clients. 
+In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, a mobile client and desktop client. The server is the \textit{hub} while the clients are the \textit{spokes}. The server was created using Node.js, where it adopted the role of an interface between the clients and MongoDB database. In addition, the server is stored in the Heroku cloud platform to provide both clients with universal file access and processing. The Node.js server can also process HTTP requests to allow both clients to upload, delete and download files. The mobile client was developed using Java and XML on Android Studio, whereas the desktop client was developed using Javascript, HTML and CSS on Electron. The output of the project is a fully-functioning file synchroniser that interacts with both clients via the Node.js server.
 
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
@@ -99,7 +99,7 @@ Requirements have been derived for each component. The requirements have been an
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-The server was developed using Node.js and the database used is a cloud service by MongoDB.
+The server was developed using Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform.
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
@@ -120,7 +120,15 @@ The desktop client was developed using the Electron framework; thus, the impleme
 \hline
 \textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail/Solved} \\
 \hline
-1 & Upload file & A file gets uploaded into the database through server after pressing \textit{Submit} button. & ... & ... \\
+1 & Connection to server & A JSON object will be returned to indicate the connection between the server and client.  & As expected & PASS \\
+\hline
+2 & Display file(s) & Display files stored in the Mongo database. & As expected & PASS \\
+\hline
+3 & Upload file & A file gets uploaded into the database via server after pressing the \textit{Submit} button. Next, the file is displayed in the list of documents stored in the server. & File was uploaded but does not appear in the list unless the page is refreshed. & 1/2 \\
+\hline
+4 & Delete file & A file gets removed from the database via server after pressing \textit{Delete} button. Next, the list of documents is displayed without the deleted file. & File was deleted but isn't removed from the list unless the page is refreshed. & 1/2 \\
+\hline
+5 & Download file & A file gets downloaded into the local host after pressing the \textit{Download} button. & As expected & PASS \\
 \hline
 \end{tabular}
 
