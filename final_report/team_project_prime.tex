@@ -1,5 +1,9 @@
 \documentclass{article}
 \usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\graphicspath{ {./fragments/desktop/} }
 \title{Final Report}
 \author{By Project Prime}
 \begin{document}
@@ -118,9 +122,22 @@ The server was developed using Node.js and the database used is a cloud service 
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
-The desktop client was developed using the Electron framework where HTML, Javascript and CSS were primarily involved in the client's development. Electron provides pre-written HTML code (Electron, n.d.) to create a basic desktop app; this pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. Furthermore on the desktop client's front-end, Bootstrap CSS files and JS scripts were also included to style certain elements (e.g. headers) of the client's UI, along with CSS files written by the desktop subgroup. 
+The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; this pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. Furthermore on the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to style certain elements of the client's UI, along with CSS files written by the desktop subgroup.
 
-Below is a set of black-box test cases. Each test case executes an external functionality of the desktop client to determine if the corresponding MoSCoW requirements were achieved.
+\begin{figure}[h]
+\caption{\textbf{CSS files provided by Bootstrap}}
+\includegraphics[width=12cm, height=2cm]{BootstrapCSSfiles}
+\end{figure}
+
+\begin{figure}[h]
+\caption{\textbf{JS scripts provided by Bootstrap file}}
+\includegraphics[width=12cm, height=2cm]{BootstrapJSscripts}
+\end{figure}
+
+\begin{figure}[h]
+\caption{\textbf{CSS file written by the desktop subgroup}}
+\includegraphics[width=8cm, height=5cm]{css}
+\end{figure}
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
@@ -154,7 +171,7 @@ The mobile client was developed using Android Studio; thus, the implementation p
 \end{tabular}
 
 \section{\underline{Teamwork}}
-Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. Whatsapp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called "Project Prime Dev". In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate to the master branch and subsequently, the former would be merged into the latter branch.
+Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. Whatsapp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called \textit{Project Prime Dev}. In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate to the master branch and subsequently, the former would be merged into the latter branch.
 
 \section{\underline{Evaluation}}
 To start with what went well, one positive aspect was the firm strength of team communication, as all members proactively shared their thoughts and concerns in physical meetings and in the WhatsApp group. In addition, communication was carried-out in a respectful manner at all times; thus, there were no verbal conflicts during the project. Another positive aspect was the fairness in workload distribution by creating subgroups that were assigned to the development of a specific component. The rationale behind the formation of subgroups was to avoid the possibility of one member feeling overwhelmed from having lots of work. Furthermore, by assembling subgroups, this influenced the members of the subgroup to cooperate together to build the component; thus, being in a subgroup generated a sense of teamwork. Finally, a notable positive aspect was our ability to adapt to changing circumstances. For instance, it was initially planned to store files in a SQL database. Unfortunately, we discovered SQL databases were unideal for file storage since it is limited by file size. In response, we decided to migrate to MongoDB, which is a cloud service that allows the creation of document-oriented database systems that can contain files of any size.
@@ -180,9 +197,10 @@ To start with what went well, one positive aspect was the firm strength of team 
 	
 \section{\underline{References}}
 \begin{itemize}
-\item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
-\item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
-\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
+\item Bootstrap (n.d) \textit{Introduction | Bootstrap}[online].  Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction [Accessed on 25 March 2019]
 \item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
+\item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
+\item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
+\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
 \end{itemize}
 \end{document}
