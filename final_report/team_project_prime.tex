@@ -29,7 +29,6 @@ This protocol shows that both the desktop client and server application in Dropb
 
 \subsection{\underline{Mobile Client}}
 
-
 \section{\underline{Requirements and Design}}
 Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (important but unnecessary requirements for the final product), \textit{Could Have} (lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (least critical requirements that are unrequired for project success). In addition, the subsections will show the designs that reflect the corresponding component.
 
@@ -137,7 +136,21 @@ After setting the foundation, the desktop subgroup concentrated on displaying fi
 
 \includegraphics[width=12cm]{display3}
 
-After displaying the files, the subgroup focused on  
+Next, the subgroup wrote code that enabled the client to upload files into the database via the server. After pressing the \textit{Browse} button, the local host's file manager opens, which enables the user to choose a file and subsequently, the label of the file upload bar changes to the name of the selected file; therefore, indicating which file was selected by the user. Afterwards, the user would press the \textit{Submit} button which transmits a http post request to the server, which causes the latter to store the selected file inside the database. In addition, the label of the file upload bar will revert to its initial form (i.e. "Choose a File...") after the \textit{Submit} button is pressed. 
+
+\includegraphics[width=12cm]{upload}
+
+\includegraphics[width=12cm]{upload2}
+
+\includegraphics[width=12cm]{upload3}
+
+Moving on to file deletion, the desktop subgroup wrote code that enabled the client to delete files; as a result, removing the corresponding document from the database. To add to this, deleting a file resulted in removing that file from the list of documents displayed on the client's UI. After pressing the \textit{Delete} button, the client would send a delete request to the server and this request would include the file's unique ID; therefore, the use of unique identification ensures the prevention of multiple files of the same name being deleted, for example. 
+
+\includegraphics[width=12cm]{delete}
+
+Finally, the desktop subgroup wrote code that enabled the client to download files from the database; as a result, bringing the corresponding document into the storage of the local host. After pressing the \textit{Download} button, the client sends a GET request to the server, which causes the server to return the file in the local host's file manager and the user stores the file in the local host's storage by pressing \textit{save}. 
+
+\includegraphics[width=12cm]{download}
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
