@@ -18,13 +18,13 @@ In this project, we were tasked with building a multi-host file synchroniser con
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
 Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d). 
 Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop client is as follows:
-	\begin{itemize}
-	\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
-	\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
-	\item The process is repeated and any updates to the file can be checked by only talking to the metadata server.
-	\item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
-	\item The download client now contacts the block data server directly to access the new file.
-	\end{itemize}
+\begin{itemize}
+\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
+\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
+\item The process is repeated and any updates to the file can be checked by only talking to the metadata server.
+\item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
+\item The download client now contacts the block data server directly to access the new file.
+\end{itemize}
 This protocol shows that both the desktop client and server application in Dropbox are equally involved in the synchronization process. However, this is not always the case in other software, for example Unison, an open-source file sync. 
 
 \subsection{\underline{Mobile Client}}
@@ -122,22 +122,22 @@ The server was developed using Node.js and the database used is a cloud service 
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
-The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; this pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. Furthermore on the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to style certain elements of the client's UI, along with CSS files written by the desktop subgroup.
-
-\begin{figure}[h]
-\caption{\textbf{CSS files provided by Bootstrap}}
+The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
 \includegraphics[width=12cm, height=2cm]{BootstrapCSSfiles}
-\end{figure}
 
-\begin{figure}[h]
-\caption{\textbf{JS scripts provided by Bootstrap file}}
 \includegraphics[width=12cm, height=2cm]{BootstrapJSscripts}
-\end{figure}
 
-\begin{figure}[h]
-\caption{\textbf{CSS file written by the desktop subgroup}}
-\includegraphics[width=8cm, height=5cm]{css}
-\end{figure}
+\includegraphics[width=8cm, height=6cm]{css}
+
+After setting the foundation, the desktop subgroup concentrated on displaying files that resided in the database. To do so, the server would return a JSON object (which contains each file in the database) after a connection was formed between the desktop client and server. Using a loop, the object was traversed through and for every file encountered, that file would be presented on the client's UI. In addition, each file would be encapsulated in a file container (presented as a grey-bordered box).
+
+\includegraphics[width=12cm]{display1}
+
+\includegraphics[width=12cm]{display2}
+
+\includegraphics[width=12cm]{display3}
+
+After displaying the files, the subgroup focused on  
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
