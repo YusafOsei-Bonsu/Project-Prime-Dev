@@ -1,5 +1,9 @@
 \documentclass{article}
 \usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\graphicspath{ {./fragments/desktop/} }
 \title{Final Report}
 \author{By Project Prime}
 \begin{document}
@@ -14,17 +18,16 @@ In this project, we were tasked with building a multi-host file synchroniser con
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
 Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d). 
 Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop client is as follows:
-	\begin{itemize}
-	\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
-	\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
-	\item The process is repeated and any updates to the file can be checked by only talking to the metadata server.
-	\item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
-	\item The download client now contacts the block data server directly to access the new file.
-	\end{itemize}
+\begin{itemize}
+\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
+\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
+\item The process is repeated and any updates to the file can be checked by only talking to the metadata server.
+\item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
+\item The download client now contacts the block data server directly to access the new file.
+\end{itemize}
 This protocol shows that both the desktop client and server application in Dropbox are equally involved in the synchronization process. However, this is not always the case in other software, for example Unison, an open-source file sync. 
 
 \subsection{\underline{Mobile Client}}
-
 
 \section{\underline{Requirements and Design}}
 Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (important but unnecessary requirements for the final product), \textit{Could Have} (lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (least critical requirements that are unrequired for project success). In addition, the subsections will show the designs that reflect the corresponding component.
@@ -118,9 +121,36 @@ The server was developed using Node.js and the database used is a cloud service 
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
-The desktop client was developed using the Electron framework where HTML, Javascript and CSS were primarily involved in the client's development. Electron provides pre-written HTML code (Electron, n.d.) to create a basic desktop app; this pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. Furthermore on the desktop client's front-end, Bootstrap CSS files and JS scripts were also included to style certain elements (e.g. headers) of the client's UI, along with CSS files written by the desktop subgroup. 
+The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
+\includegraphics[width=12cm, height=2cm]{BootstrapCSSfiles}
 
-Below is a set of black-box test cases. Each test case executes an external functionality of the desktop client to determine if the corresponding MoSCoW requirements were achieved.
+\includegraphics[width=12cm, height=2cm]{BootstrapJSscripts}
+
+\includegraphics[width=8cm, height=6cm]{css}
+
+After setting the foundation, the desktop subgroup concentrated on displaying files that resided in the database. To do so, the server would return a JSON object (which contains each file in the database) after a connection was formed between the desktop client and server. Using a loop, the object was traversed through and for every file encountered, that file would be presented on the client's UI. In addition, each file would be encapsulated in a file container (presented as a grey-bordered box).
+
+\includegraphics[width=12cm]{display1}
+
+\includegraphics[width=12cm]{display2}
+
+\includegraphics[width=12cm]{display3}
+
+Next, the subgroup wrote code that enabled the client to upload files into the database via the server. After pressing the \textit{Browse} button, the local host's file manager opens, which enables the user to choose a file and subsequently, the label of the file upload bar changes to the name of the selected file; therefore, indicating which file was selected by the user. Afterwards, the user would press the \textit{Submit} button which transmits a http post request to the server, which causes the latter to store the selected file inside the database. In addition, the label of the file upload bar will revert to its initial form (i.e. "Choose a File...") after the \textit{Submit} button is pressed. 
+
+\includegraphics[width=12cm]{upload}
+
+\includegraphics[width=12cm]{upload2}
+
+\includegraphics[width=12cm]{upload3}
+
+Moving on to file deletion, the desktop subgroup wrote code that enabled the client to delete files; as a result, removing the corresponding document from the database. To add to this, deleting a file resulted in removing that file from the list of documents displayed on the client's UI. After pressing the \textit{Delete} button, the client would send a delete request to the server and this request would include the file's unique ID; therefore, the use of unique identification ensures the prevention of multiple files of the same name being deleted, for example. 
+
+\includegraphics[width=12cm]{delete}
+
+Finally, the desktop subgroup wrote code that enabled the client to download files from the database; as a result, bringing the corresponding document into the storage of the local host. After pressing the \textit{Download} button, the client sends a GET request to the server, which causes the server to return the file in the local host's file manager and the user stores the file in the local host's storage by pressing the \textit{save} button of the file manager. 
+
+\includegraphics[width=12cm]{download}
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
@@ -154,7 +184,7 @@ The mobile client was developed using Android Studio; thus, the implementation p
 \end{tabular}
 
 \section{\underline{Teamwork}}
-Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. Whatsapp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called "Project Prime Dev". In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate to the master branch and subsequently, the former would be merged into the latter branch.
+Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. Whatsapp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called \textit{Project Prime Dev}. In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate to the master branch and subsequently, the former would be merged into the latter branch.
 
 \section{\underline{Evaluation}}
 To start with what went well, one positive aspect was the firm strength of team communication, as all members proactively shared their thoughts and concerns in physical meetings and in the WhatsApp group. In addition, communication was carried-out in a respectful manner at all times; thus, there were no verbal conflicts during the project. Another positive aspect was the fairness in workload distribution by creating subgroups that were assigned to the development of a specific component. The rationale behind the formation of subgroups was to avoid the possibility of one member feeling overwhelmed from having lots of work. Furthermore, by assembling subgroups, this influenced the members of the subgroup to cooperate together to build the component; thus, being in a subgroup generated a sense of teamwork. Finally, a notable positive aspect was our ability to adapt to changing circumstances. For instance, it was initially planned to store files in a SQL database. Unfortunately, we discovered SQL databases were unideal for file storage since it is limited by file size. In response, we decided to migrate to MongoDB, which is a cloud service that allows the creation of document-oriented database systems that can contain files of any size.
@@ -180,9 +210,10 @@ To start with what went well, one positive aspect was the firm strength of team 
 	
 \section{\underline{References}}
 \begin{itemize}
-\item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
-\item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
-\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
+\item Bootstrap (n.d) \textit{Introduction | Bootstrap}[online].  Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction [Accessed on 25 March 2019]
 \item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
+\item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
+\item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
+\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
 \end{itemize}
 \end{document}
