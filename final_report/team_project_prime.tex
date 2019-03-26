@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \captionsetup{justification=raggedright, singlelinecheck=false}
-\graphicspath{ {./fragments/desktop/} }
+\graphicspath{ {./images/} }
 \title{Final Report}
 \author{By Project Prime}
 \begin{document}
@@ -13,6 +13,26 @@ In this project, we were tasked with building a multi-host file synchroniser con
 
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
+The different techniques which can be used by the the server and client can communicate are...
+\begin{itemize}
+\item \textbf{XMLHttpRequest:} XMLHttpRequest objects are used to interact with the server. The data can be retrieved from the URL itself. It is heavily used in AJAX programming.
+\item \textbf{Server-Sent Events:} SSE is a technology enabling the browser to receive automatic updates from a server by means of HTTP connection.
+\item \textbf{WebSocket:} WebSocket is a communication protocol, which provides full duplex communication channel i.e. bi-directional communication between the client and server.
+\item \textbf{Hypertext Transfer Protocol (HTTP):} HTTP is a request-response protocol and is stateless. The user initiates requests and the server responds accordingly.
+
+Moving on, according to Jim, Pierce and Vouillon (2002), the connection between client and server can be done in two ways: Socket mode and Tunneling mode. In socket mode, both processes are manually started and the client connects to the server on a predetermined port. In tunneling mode, the client process starts first, it uses SSH to start the server process and communication is conducted using pipes. For example, Unison is more client-oriented which adopts a simple client-server architecture.
+\end{itemize}
+ 
+Another application that is commonly used is Dropbox. Dropbox is more server-oriented. According to the Dropbox website (Dropbox Business, n.d), Dropbox possesses different server components...
+\begin{itemize}
+\item Block servers
+\item Metadata servers
+\item Storage Servers
+\item Paper application servers
+\item Paper image servers
+\end{itemize}
+
+In our application, the communication is between a server and two clients: desktop and mobile. The clients send a HTTP request to the server and the server responds to the request accordingly. HTTP is a generic stateless protocol. The server recieves the request and responds to the clients with certain results and subsequently, the connection disconnects. So the client and server know about each other during current request and response only. Any kind of media can be sent using HTTP.
 
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
@@ -41,6 +61,8 @@ The advantage of having a heavy Client-Side functionality is robustness. Having 
 Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (important but unnecessary requirements for the final product), \textit{Could Have} (lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (least critical requirements that are unrequired for project success). In addition, the subsections will show the designs that reflect the corresponding component.
 
 \subsection{\underline{Desktop Client}}
+
+\subsubsection{\underline{Requirements for Desktop Client}}
 \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
 \hline
 \multicolumn{3}{|c|}{\textbf{MoSCoW requirements for The Desktop Client}} \\
@@ -68,6 +90,24 @@ Requirements have been derived for each component. The requirements have been an
 10 & Have User profiles for personalised access & Won't Have \\
 \hline
 \end{tabular}
+
+\subsubsection{\underline{Designs for Desktop Client}}
+
+\includegraphics[width=12.1cm]{/design/desktop/architecture}
+
+Above is an architectural diagram of the desktop client. After analysing the requirements, the main functionalities chosen were \textit{Upload}, \textit{Download}, \textit{Delete} and \textit{Display}. The rationale behind this was wanting to focus on the core functionalities to ensure the working client could be tested with the server.
+
+The user will interact with the client through the UI containing three buttons: upload, download and delete. In addition, they will view the files in the server as a list. Interacting with the upload button would access the user’s local filesystem and allow them to select any type of file. Once a file is selected, the client will send a POST request to the server asking it to store the file. The Download button sends a GET Request to the server asking for the specific file to be retrieved and opens the user’s local filesystem to save the file. Delete simply sends a DELETE request to the server asking it to remove the file from the database.
+
+The Display functionality displays all the files in the system by sending a GET request to the server. This allows the user to check for any changes to the metadata such as the filename or any additions/ deletions of files.
+
+\includegraphics[width=9cm]{/design/desktop/UI}
+
+Following the design philosophy, the above mock UI was sketched using MockFlow. This sketch provided an idea of what the client may look like.
+
+\includegraphics[width=8cm]{/design/desktop/UseCase}
+
+Working under the design philosophy, above is the use-case diagram of the desktop client, which entails the client's functionalities: allowing users to select, upload, delete and download files.
 
 \subsection{\underline{Mobile Client}}
 \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
@@ -129,38 +169,38 @@ The server was developed using Node.js and the database used is a cloud service 
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
-\includegraphics[width=12cm]{frontEnd}
+\includegraphics[width=12cm]{/fragments/desktop/frontEnd}
 
 The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
-\includegraphics[width=12cm, height=2cm]{BootstrapCSSfiles}
+\includegraphics[width=12cm, height=2cm]{/fragments/desktop/BootstrapCSSfiles}
 
-\includegraphics[width=12cm, height=2cm]{BootstrapJSscripts}
+\includegraphics[width=12cm, height=2cm]{/fragments/desktop/BootstrapJSscripts}
 
-\includegraphics[width=8cm, height=6cm]{css}
+\includegraphics[width=8cm, height=6cm]{/fragments/desktop/css}
 
 After setting the foundation, the desktop subgroup concentrated on displaying files that resided in the database. To do so, the server would return a JSON object (which contains each file in the database) after a connection was formed between the desktop client and server. Using a loop, the object was traversed through and for every file encountered, that file would be presented on the client's UI. In addition, each file would be encapsulated in a file container (presented as a grey-bordered box).
 
-\includegraphics[width=12cm]{display1}
+\includegraphics[width=12cm]{/fragments/desktop/display1}
 
-\includegraphics[width=12cm]{display2}
+\includegraphics[width=12cm]{/fragments/desktop/display2}
 
-\includegraphics[width=12cm]{display3}
+\includegraphics[width=12cm]{/fragments/desktop/display3}
 
 Next, the subgroup wrote code that enabled the client to upload files into the database via the server. After pressing the \textit{Browse} button, the local host's file manager opens, which enables the user to choose a file and subsequently, the label of the file upload bar changes to the name of the selected file; therefore, indicating which file was selected by the user. Afterwards, the user would press the \textit{Submit} button which transmits a http post request to the server, which causes the latter to store the selected file inside the database. In addition, the label of the file upload bar will revert to its initial form (i.e. "Choose a File...") after the \textit{Submit} button is pressed. 
 
-\includegraphics[width=12cm]{upload}
+\includegraphics[width=12cm]{/fragments/desktop/upload}
 
-\includegraphics[width=12cm]{upload2}
+\includegraphics[width=12cm]{/fragments/desktop/upload2}
 
-\includegraphics[width=12cm]{upload3}
+\includegraphics[width=12cm]{/fragments/desktop/upload3}
 
 Moving on to file deletion, the desktop subgroup wrote code that enabled the client to delete files; as a result, removing the corresponding document from the database. To add to this, deleting a file resulted in removing that file from the list of documents displayed on the client's UI. After pressing the \textit{Delete} button, the client would send a delete request to the server and this request would include the file's unique ID; therefore, the use of unique identification ensures the prevention of multiple files of the same name being deleted, for example. 
 
-\includegraphics[width=12cm]{delete}
+\includegraphics[width=12cm]{/fragments/desktop/delete}
 
 Finally, the desktop subgroup wrote code that enabled the client to download files from the database; as a result, bringing the corresponding document into the storage of the local host. After pressing the \textit{Download} button, the client sends a GET request to the server, which causes the server to return the file in the local host's file manager and the user stores the file in the local host's storage by pressing the \textit{save} button of the file manager. 
 
-\includegraphics[width=12cm]{download}
+\includegraphics[width=12cm]{/fragments/desktop/download}
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
