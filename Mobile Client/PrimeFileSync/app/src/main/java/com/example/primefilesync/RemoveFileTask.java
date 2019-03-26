@@ -8,13 +8,13 @@ import java.net.URL;
 
 public class RemoveFileTask extends AsyncTask<URL, Integer, Long> {
 
+    //asynchronous task to ensure the UI doesnt lock up during connection
 
     @Override
     protected Long doInBackground(URL... urls) {
 
 
         try {
-            System.out.println("attempting delete");
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
             for(int i=0; i<urls.length;i++) {

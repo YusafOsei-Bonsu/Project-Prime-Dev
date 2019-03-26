@@ -1,12 +1,26 @@
 package com.example.primefilesync;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.OpenableColumns;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -14,16 +28,34 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.*;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+
+import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
 
     ListView listView;
     View rootview;
     RequestQueue queue;
+    //private static final int READ_REQUEST_CODE = 42;
+    ProgressDialog progress;
+    Button uploadB;
+    String displayName;
 
 
     public HomeFragment() {
@@ -36,17 +68,161 @@ public class HomeFragment extends Fragment {
 
         rootview=inflater.inflate(R.layout.home_page,container, false);
         init();
+        initupload();
         return rootview;
 
 
     }
 
+//initialise the upload file button and settings
+    public void initupload() {
 
 
+        uploadB = (Button) rootview.findViewById(R.id.uploadButton);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+                return;
+            }
+        }
+        enable_button();
+    }
+
+//set up the button to select file
+    public void enable_button (){
+
+
+        uploadB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //test
+                Intent upIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                upIntent.setType("*/*");
+                upIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(upIntent, 10);
+
+            }
+
+            });
+        }
+
+    //on result from file selection
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 100 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+            enable_button();
+        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},100);
+
+
+        }
+
+
+
+    }
+
+    //on result from file selection
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
+
+
+        if (requestCode == 10 && resultCode == RESULT_OK){
+
+                progress = new ProgressDialog(getActivity());
+                progress.setTitle("Uploading");
+                progress.setMessage("Please Wait.....");
+                progress.show();
+
+
+            Thread t = new Thread(new Runnable() {
+
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                @Override
+                public void run() {
+
+                    Uri uri = null;
+                    if (data != null) {
+                        uri = data.getData();
+                        Log.i(TAG, "Uri: " + uri.toString());
+
+                        Cursor cursor = getActivity().getContentResolver()
+                                .query(uri, null, null, null, null, null);
+                        if (cursor != null && cursor.moveToFirst()) {
+                            displayName = cursor.getString(
+                                    cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                            Log.i(TAG, "Display Name: " + displayName);
+                        }else{
+
+                        }
+
+
+                        File f = new File( Environment.getExternalStorageDirectory() + "/download/"+ displayName);
+                        String content_type = getMimeType(displayName);
+
+                        String file_path = f.getAbsolutePath();
+                        OkHttpClient client = new OkHttpClient();
+                        RequestBody file_body = RequestBody.create(MediaType.parse(content_type), f);
+
+
+                        RequestBody request_body = new MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("type", content_type)
+                                .addFormDataPart("file", file_path.substring(file_path.lastIndexOf
+                                        ("/") + 1), file_body)
+                                .build();
+
+
+                        okhttp3.Request request = new okhttp3.Request.Builder()
+                                .url("http://10.40.6.85:3003/upload")
+                                .post(request_body)
+                                .build();
+
+                        try {
+                            okhttp3.Response response = client.newCall(request).execute();
+
+                            if (!response.isSuccessful()) {
+                                throw new IOException("Error  : " + response);
+
+                            }
+                            progress.dismiss();
+
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            progress.dismiss();
+                        }finally {
+                            Intent intent = new Intent (    HomeFragment.this.getActivity(), HomeFragment.class);
+                            HomeFragment homeFragment = new HomeFragment();
+                            getFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).addToBackStack(null).commit();
+                        }
+
+
+                    }
+                }
+            });
+
+            t.start();
+            }
+    }
+
+    //get file type
+    public String getMimeType (String path){
+        String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+
+    }
+
+
+
+    //initialise the List View
     public void init(){
 
         queue = Volley.newRequestQueue(this.getContext());
-        String url = "http://10.40.20.172:3003/files";
+        String url = "http://10.40.6.85:3003/files";
 
         final ArrayList<String> nameAL = new ArrayList<String>();
         final ArrayList<String> typeAL = new ArrayList<String>();
@@ -97,8 +273,6 @@ public class HomeFragment extends Fragment {
                                 EditFragment editFragment = new EditFragment();
                                 Bundle args =new Bundle();
                                 args.putString("FileName",listView.getItemAtPosition(position).toString());
-                                //test
-                                //args.putString("contentType",listView.getItemAtPosition(position+1).toString());
                                 editFragment.setArguments(args);
                                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, editFragment).addToBackStack(null).commit();
                             }
