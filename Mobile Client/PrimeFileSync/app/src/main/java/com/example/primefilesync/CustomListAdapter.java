@@ -11,16 +11,15 @@ import android.widget.TextView;
 
 public class CustomListAdapter extends ArrayAdapter {
 
-    //to reference the Activity
     private final Activity context;
 
-    //to store the animal images
+    //images
     private final Integer[] imageIDarray;
 
-    //to store the list of countries
+    //list of file name
     private final String[] nameArray;
 
-    //to store the list of countries
+    //list of file types
     private final String[] infoArray;
 
 
@@ -38,12 +37,12 @@ public class CustomListAdapter extends ArrayAdapter {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.listview_row, null,true);
 
-        //this code gets references to objects in the listview_row.xml file
+        //gets the refrences to objects in the listview
         TextView nameTextField = (TextView) rowView.findViewById(R.id.FileNameID);
         TextView infoTextField = (TextView) rowView.findViewById(R.id.AuthorID);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView3);
 
-        //this code sets the values of the objects to values from the arrays
+        //sets value of objects to the value of the arrays
         nameTextField.setText(nameArray[position]);
         infoTextField.setText(infoArray[position]);
         imageView.setImageResource(imageIDarray[position]);
