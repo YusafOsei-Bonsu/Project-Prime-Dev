@@ -1,21 +1,23 @@
 \documentclass{article}
 \usepackage{parskip}
+\usepackage{graphicx}
 \title{Final Report}
 \author{By Project Prime}
 \begin{document}
-\[\maketitle
+\maketitle
  \section{\underline{Introduction}}
-In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, and mobile and desktop client. The server is the "hub" whilst the clients are "spokes". The server was created using Node.js, where it acted as an interface between both clients and the database (which was created using MongoDB). In addition, this server processed HTTP GET and POST requests to deliver/updates files on the client's behalf. The mobile client was made using Java and XML on Android Studio, whereas the desktop client was created using Javascript, HTML and CSS on Electron. The result of this project is a fully-functioning file synchroniser that interacts with and manages multiple, heterogeneous clients via a Node.js server. Furthermore, this synchroniser possesses the necessary algorithms (e.g. rsync) to resolve file conflicts caused by clients. 
-
+In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, and mobile and desktop client. The server is the "hub" whilst the clients are "spokes". The server was created using Node.js, where it acted as an interface between both clients and the database (which was created using MongoDB). In addition, this server processed HTTP GET and POST requests to deliver/updates files on the client's behalf. The mobile client was made using Java and XML on Android Studio, whereas the desktop client was created using Javascript, HTML and CSS on Electron. The result of this project is a fully-functioning file synchroniser that interacts with and manages multiple, heterogeneous clients via a Node.js server. Furthermore, this synchroniser possesses the necessary algorithms (e.g. rsync) to resolve file conflicts caused by clients.
+\begin{figure}[h!]
+\includegraphics[width=\linewidth]{serverpic.png}
+\end{figure}
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
-As mentioned before the server application is created using Node.js. The server waits for requests from other clients and responds to them, thus providing a service upon their request. Thus the server application is responsible for handling requests, responding to them appropriately and for establishing the database connection.  We decided using Node.js to build the server as it allows us to write the application in JavaScript. Besides that, Node.js provides us the ability to use JavaScript on both frontend and backend.
- 
-To store and retrieve files we decided to use MongoDb. Unlike a relational database where data is stored in rows and columns, MongoDb stores JSON documents in collections with dynamic schemas.
-
-Furthermore, we have used Express, which is a flexible Node application framework. It allowed us to set up the middleware and helps us to manage everything from routes to handling requests.
-
-
+The server application is created using Node.js. The server waits for requests from clients and responds to them, thus providing a service upon their request. It is responsible for handling requests, responding to them appropriately as well as for establishing and maintaining the database connection.  We decided on using Node.js to build the server as it allows writing and maintaining JavaScript based backend server applications easily and provides with simple-to-use APIs by the clients.
+Furthermore, we have used Express, which is a flexible Node application framework. It allows to set up the middleware and helps to manage everything from routes to handling requests.
+To store and retrieve files we decided to use a NoSQL database - MongoDB. Unlike a relational database where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas.
+\begin{figure}[h!]
+\includegraphics[width=\linewidth]{expresspic.png}
+\end{figure}
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
 Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d). 
@@ -107,6 +109,37 @@ Requirements have been derived for each component. The requirements have been an
 \subsection{\underline{Server Application}}
 The server was developed using Node.js and the database used is a cloud service by MongoDB.
 
+The following packages were used for implementing the server application: -
+\begin{table}[h!]
+\begin {center}
+\caption{List of packages used}
+\begin{tabular}{l|l}
+\hline
+\textbf{Package Name} & \textbf{Description}\\
+\hline
+multer & Used for uploads\\
+mongoose & Used to connect to database\\
+method-overide & To make a delete request without making an AJAX call\\
+\end{tabular}
+\end{center}
+\end{table}
+
+API calls to the server: -
+\begin{table}[h!]
+\begin {center}
+\caption{API calls to the server}
+\begin{tabular}{l|c|r}
+\hline
+\textbf{Name} & \textbf{URL} & \textbf{Description}\\
+\hline
+Display(GET) & (/files) & Returns all files in the database\\
+Upload(POST) & (/upload) & Uploads a file to database\\
+Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
+Delete & (/files/:filename)  & Deletes the requested file from database.\\
+\end{tabular}
+\end{center}
+\end{table}
+
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
 \multicolumn{5}{|c|}{\textbf{Test Cases for Server Application}} \\
@@ -175,5 +208,6 @@ To start with what went well, one positive aspect was the firm strength of team 
 \item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
 \item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
 \end{itemize}
-\]
+\
+
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.5)  19 MAR 2019 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.31)  26 MAR 2019 09:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -27,147 +27,259 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
 (./team_project_prime.aux)
 \openout1 = `team_project_prime.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 6.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 7.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 7.
- [1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 18.
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count88
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count89
+\nofMParguments=\count90
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count91
+\MPscratchDim=\dimen106
+\MPnumerator=\count92
+\makeMPintoPDFobject=\count93
+\everyMPtoPDFconversion=\toks16
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 8.
+<serverpic.png, id=1, 829.0975pt x 496.85625pt>
+File: serverpic.png Graphic file (type png)
+<use serverpic.png>
+Package pdftex.def Info: serverpic.png  used on input line 11.
+(pdftex.def)             Requested size: 345.0pt x 206.74493pt.
+
+[1
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./serve
+rpic.png>]
+<expresspic.png, id=13, 964.60374pt x 556.0775pt>
+File: expresspic.png Graphic file (type png)
+<use expresspic.png>
+Package pdftex.def Info: expresspic.png  used on input line 21.
+(pdftex.def)             Requested size: 345.0pt x 198.88104pt.
+ [2 <./expresspic.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 28.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 33.
+(Font)              <5> on input line 43.
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--37
+Underfull \hbox (badness 10000) in paragraph at lines 47--47
 []\OT1/cmr/bx/n/10 Requirement
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 47--47
+Underfull \hbox (badness 1603) in paragraph at lines 57--57
 \OT1/cmr/m/n/10 that the desk-top client is in
  []
 
 
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 33--60
-[] 
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 66--66
-[]\OT1/cmr/bx/n/10 Requirement
- []
-
-
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 62--79
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
-[]\OT1/cmr/bx/n/10 Requirement
- []
-
-
-Underfull \hbox (badness 6063) in paragraph at lines 88--88
-[]\OT1/cmr/m/n/10 Has to be con-nected to a
- []
-
-
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 82--99
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 43--70
 [] 
  []
 
 [3]
-Overfull \hbox (84.88579pt too wide) in paragraph at lines 104--113
-[][] 
- []
-
-[4]
-Underfull \hbox (badness 2285) in paragraph at lines 123--123
-\OT1/cmr/m/n/10 into the database
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
+[]\OT1/cmr/bx/n/10 Requirement
  []
 
 
-Overfull \hbox (84.88579pt too wide) in paragraph at lines 117--126
-[][] 
- []
-
-
-Overfull \hbox (84.88579pt too wide) in paragraph at lines 130--139
-[][] 
- []
-
-
-Overfull \hbox (4.66736pt too wide) in paragraph at lines 141--142
-\OT1/cmr/m/n/10 Project Prime con-sists of six mem-bers: Yusaf, Sandi-pan, Sa-l
-oni, She-fali, Cameron
- []
-
-[5] [6]
-Overfull \hbox (68.43301pt too wide) in paragraph at lines 155--164
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 72--89
 [] 
  []
 
 
-Overfull \hbox (36.13974pt too wide) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]\OT1/cmr/bx/n/10 Requirement
+ []
+
+
+Underfull \hbox (badness 6063) in paragraph at lines 98--98
+[]\OT1/cmr/m/n/10 Has to be con-nected to a
+ []
+
+
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 92--109
+[] 
+ []
+
+[4]
+Overfull \hbox (70.32022pt too wide) in paragraph at lines 133--142
+ [] 
+ []
+
+
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 145--154
+[][] 
+ []
+
+[5]
+Underfull \hbox (badness 2285) in paragraph at lines 164--164
+\OT1/cmr/m/n/10 into the database
+ []
+
+
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 158--167
+[][] 
+ []
+
+
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 171--180
+[][] 
+ []
+
+
+Overfull \hbox (4.66736pt too wide) in paragraph at lines 182--183
+\OT1/cmr/m/n/10 Project Prime con-sists of six mem-bers: Yusaf, Sandi-pan, Sa-l
+oni, She-fali, Cameron
+ []
+
+[6] [7]
+Overfull \hbox (68.43301pt too wide) in paragraph at lines 196--205
+[] 
+ []
+
+[8]
+Overfull \hbox (36.13974pt too wide) in paragraph at lines 210--211
 \OT1/cmr/m/n/10 able at: https://blogs.dropbox.com/tech/2014/07/streaming-file-
 synchronization/
  []
 
 
-Overfull \hbox (17.41739pt too wide) in paragraph at lines 170--171
+Overfull \hbox (17.41739pt too wide) in paragraph at lines 211--212
 \OT1/cmr/m/n/10 Avail-able at: https://www.dropbox.com/business/trust/security/
 architecture
  []
 
-[7] [8] (./team_project_prime.aux) ) 
+[9] (./team_project_prime.aux) ) 
 Here is how much of TeX's memory you used:
- 262 strings out of 492649
- 3226 string characters out of 6129623
- 70838 words of memory out of 5000000
- 4212 multiletter control sequences out of 15000+600000
+ 1476 strings out of 492649
+ 21672 string characters out of 6129622
+ 92248 words of memory out of 5000000
+ 5359 multiletter control sequences out of 15000+600000
  8856 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 23i,8n,21p,1525b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb>
-Output written on team_project_prime.pdf (8 pages, 117091 bytes).
+ 41i,8n,25p,1525b,243s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti10.pfb>
+Output written on team_project_prime.pdf (9 pages, 172136 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 67 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
