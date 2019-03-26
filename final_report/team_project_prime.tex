@@ -25,7 +25,15 @@ Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop c
 \item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
 \item The download client now contacts the block data server directly to access the new file.
 \end{itemize}
-This protocol shows that both the desktop client and server application in Dropbox are equally involved in the synchronization process. However, this is not always the case in other software, for example Unison, an open-source file sync. 
+This protocol shows that both the desktop client and server application in Dropbox are equally involved in the synchronization process. However, this is not always the case in other software, for example Unison, an open-source file sync.
+
+In (Jim, Pierce and Vouillon, 2002), it is mentioned that “most of Unison’s functionality is concentrated on the client side”. At the start of a process, two roots are specified (to a create a replica) and then the client goes through the following steps:
+\begin{itemize}
+\item \textbf{Update Detection:} The metadata from older version of the files are compared to their current states and each host is notified whether the contents of the files are changed or not.
+\item \textbf{Reconciliation:} The list of changed contents are merged together into a “task list” and used to handle conflicts. A conflict is detected if a path is updated in the replica, whether its descendants have also been updated in the other replica, or the contents in the two replicas are not equal. The task list is then displayed to the user through the UI. 
+\item \textbf{Propagation:} The changes in the task list are propagated through both the replicas and the server is then notified about the new contents of the file paths that were updated in the process. 
+\end{itemize}
+The advantage of having a heavy Client-Side functionality is robustness. Having less burden on their server application increases their crash resistance as indicated in (Jim, Pierce, Vouillon, 2002). 
 
 \subsection{\underline{Mobile Client}}
 
@@ -121,6 +129,11 @@ The server was developed using Node.js and the database used is a cloud service 
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
+\begin{figure}[h]
+\caption{The front-end of the desktop client}
+\includegraphics[width=12cm]{frontEnd}
+\end{figure}
+
 The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
 \includegraphics[width=12cm, height=2cm]{BootstrapCSSfiles}
 
@@ -210,10 +223,11 @@ To start with what went well, one positive aspect was the firm strength of team 
 	
 \section{\underline{References}}
 \begin{itemize}
-\item Bootstrap (n.d) \textit{Introduction | Bootstrap}[online].  Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction [Accessed on 25 March 2019]
-\item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview}[online].  Available at: https://www.dropbox.com/business/trust/security/architecture [viewed 17th March]
+\item Bootstrap (n.d.) \textit{Introduction} [online] Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction/ [Accessed on 25th March]
+\item Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview} [online] Available at: https://www.dropbox.com/business/trust/security/architecture [Accessed on 17th March]
 \item Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019]
 \item Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019]
-\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online]. Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [viewed 17th March]
+\item Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online] Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [Accessed on 17th March]
+\item Jim, T., Pierce, B., Vouillon, J.  (2002) \textit{How to build a File Synchronizer} [online] Available at: http://web.mit.edu/6.033/2005/wwwdocs/papers/unisonimpl.pdf [Accessed on 26th March]
 \end{itemize}
 \end{document}
