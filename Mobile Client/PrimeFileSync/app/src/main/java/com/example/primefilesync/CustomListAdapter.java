@@ -1,7 +1,6 @@
 package com.example.primefilesync;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ public class CustomListAdapter extends ArrayAdapter {
 
     private final Activity context;
 
-    //images
+    //list of images
     private final Integer[] imageIDarray;
 
     //list of file name
@@ -25,6 +24,7 @@ public class CustomListAdapter extends ArrayAdapter {
 
     public CustomListAdapter(Activity context, String[] nameArrayParam, String[] infoArrayParam, Integer[] imageIDArrayParam){
 
+        //pass the recieved  data into the arrays in the class
         super(context, R.layout.listview_row , nameArrayParam);
         this.context=context;
         this.imageIDarray = imageIDArrayParam;

@@ -32,6 +32,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //open home fragment on opening the app
+        HomeFragment homeFragment = new HomeFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container,homeFragment);
+        fragmentTransaction.commit();
+
     }
 
 
@@ -73,12 +79,14 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        //open home page from nav
         if (id == R.id.nav_Home) {
             HomeFragment homeFragment = new HomeFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,homeFragment);
             fragmentTransaction.commit();
 
+            //open helppage from nav
         } else if (id == R.id.nav_Help) {
             HelpFragment helpFragment = new HelpFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
