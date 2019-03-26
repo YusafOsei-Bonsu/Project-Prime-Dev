@@ -10,6 +10,7 @@
  \maketitle
  \section{\underline{Introduction}}
 In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, a mobile client and desktop client. The server is the \textit{hub} while the clients are the \textit{spokes}. The server was created using Node.js, where it adopted the role of an interface between the clients and MongoDB database. In addition, the server is stored in the Heroku cloud platform to provide both clients with universal file access and processing. The Node.js server can also process HTTP requests to allow both clients to upload, delete and download files. The mobile client was developed using Java and XML on Android Studio, whereas the desktop client was developed using Javascript, HTML and CSS on Electron. The output of the project is a fully-functioning file synchroniser that interacts with both clients via the Node.js server. This project addresses the problem of long durations to complete tasks; thus, the solution will take the form of two clients that minimise the duration to complete tasks as low as possible.
+\includegraphics[width=12cm]{/server/serverpic}
 
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
@@ -113,7 +114,7 @@ The Display functionality displays all the files in the system by sending a GET 
 
 \includegraphics[width=9cm]{/design/desktop/UI}
 
-Following the design philosophy, the above mock UI was sketched using MockFlow. This sketch provided an idea of what the client may look like.
+Following the design philosophy, the above mock UI was sketched using MockFlow. This sketch provided a prediction of the client's appearence.
 
 \includegraphics[width=8cm]{/design/desktop/UseCase}
 
@@ -164,9 +165,49 @@ Working under the design philosophy, above is the use-case diagram of the deskto
 \hline
 \end{tabular}
 
+The server was created using Node.js. The server waits for client requests and responds to them; thus, providing a service upon their request. It is responsible for handling requests, responding to them appropriately, as well as for establishing and maintaining the database connection.  We decided to use Node.js to build the server as it allows simple writing and maintenance of JS-based backend servers with easy-to-use APIs by the clients. Furthermore, we have used a flexible Node application framework called Express, which creates the middleware and helps to manage everything from routes to handling requests. To store and retrieve files we decided to use a NoSQL database - MongoDB. Unlike a relational database where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas.
+
+\begin{figure}[h!]
+\includegraphics[width=12cm]{/server/expresspic}
+\captionsetup{justification=centering}
+\caption{Middleware}
+\end{figure}
+
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
 The server was developed using Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform.
+
+In table 1, the following packages were used for implementing the server application... 
+\begin{table}[h!]
+\begin {center}
+\captionsetup{justification=centering}
+\caption{List of packages used}
+\begin{tabular}{l|l}
+\hline
+\textbf{Package Name} & \textbf{Description}\\
+\hline
+multer & Used for uploads\\
+mongoose & Used to connect to database\\
+method-overide & To make a delete request without making an AJAX call\\
+\end{tabular}
+\end{center}
+\end{table}
+
+In table 2, the following API calls were also used in the implementation of the server...
+\begin{table}[h!]
+\begin {center}
+\caption{API calls to the server}
+\begin{tabular}{l|c|r}
+\hline
+\textbf{Name} & \textbf{URL} & \textbf{Description}\\
+\hline
+Display(GET) & (/files) & Returns all files in the database\\
+Upload(POST) & (/upload) & Uploads a file to database\\
+Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
+Delete & (/files/:filename)  & Deletes the requested file from database.\\
+\end{tabular}
+\end{center}
+\end{table}
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
