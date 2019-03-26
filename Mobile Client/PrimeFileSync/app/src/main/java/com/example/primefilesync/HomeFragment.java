@@ -37,7 +37,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -52,7 +51,6 @@ public class HomeFragment extends Fragment {
     ListView listView;
     View rootview;
     RequestQueue queue;
-    //private static final int READ_REQUEST_CODE = 42;
     ProgressDialog progress;
     Button uploadB;
     String displayName;
@@ -74,9 +72,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-//initialise the upload file button and settings
+    //initialise the upload file button and permissions
     public void initupload() {
-
 
         uploadB = (Button) rootview.findViewById(R.id.uploadButton);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -88,17 +85,17 @@ public class HomeFragment extends Fragment {
         enable_button();
     }
 
-//set up the button to select file
+    //set up the button to select file using android ACTION_OPEN_DOCUMENT
     public void enable_button (){
-
 
         uploadB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //test
+                //set up intent to pass to the upload process
                 Intent upIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 upIntent.setType("*/*");
                 upIntent.addCategory(Intent.CATEGORY_OPENABLE);
+                //gets the intent and sets the request code, will be used in onActivityResult
                 startActivityForResult(upIntent, 10);
 
             }
@@ -111,16 +108,16 @@ public class HomeFragment extends Fragment {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        // if request code is 100 set up the button
         if (requestCode == 100 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
             enable_button();
         }else {
+            //set read external storage permissions
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},100);
 
 
         }
-
-
 
     }
 
@@ -128,15 +125,16 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
 
-
+    //if request code is 10 start the process of the upload
         if (requestCode == 10 && resultCode == RESULT_OK){
 
+            //set up progress dialog to show upload in progress
                 progress = new ProgressDialog(getActivity());
                 progress.setTitle("Uploading");
                 progress.setMessage("Please Wait.....");
                 progress.show();
 
-
+    //start a new thread to start the file upload
             Thread t = new Thread(new Runnable() {
 
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -148,6 +146,7 @@ public class HomeFragment extends Fragment {
                         uri = data.getData();
                         Log.i(TAG, "Uri: " + uri.toString());
 
+                        //get info from the uri
                         Cursor cursor = getActivity().getContentResolver()
                                 .query(uri, null, null, null, null, null);
                         if (cursor != null && cursor.moveToFirst()) {
@@ -159,14 +158,16 @@ public class HomeFragment extends Fragment {
                         }
 
 
+                        //reference the selected
                         File f = new File( Environment.getExternalStorageDirectory() + "/download/"+ displayName);
                         String content_type = getMimeType(displayName);
-
                         String file_path = f.getAbsolutePath();
+
+                        //start the okHttpClient
                         OkHttpClient client = new OkHttpClient();
                         RequestBody file_body = RequestBody.create(MediaType.parse(content_type), f);
 
-
+                        //fill requesty body with file contents
                         RequestBody request_body = new MultipartBody.Builder()
                                 .setType(MultipartBody.FORM)
                                 .addFormDataPart("type", content_type)
@@ -174,19 +175,21 @@ public class HomeFragment extends Fragment {
                                         ("/") + 1), file_body)
                                 .build();
 
-
+                        //build the request
                         okhttp3.Request request = new okhttp3.Request.Builder()
-                                .url("http://10.40.6.85:3003/upload")
+                                .url("https://rocky-plateau-19773.herokuapp.com/upload/")
                                 .post(request_body)
                                 .build();
 
                         try {
+                            //attempt request
                             okhttp3.Response response = client.newCall(request).execute();
 
                             if (!response.isSuccessful()) {
                                 throw new IOException("Error  : " + response);
 
                             }
+                            //dissmiss the progress dialog
                             progress.dismiss();
 
 
@@ -194,6 +197,7 @@ public class HomeFragment extends Fragment {
                             e.printStackTrace();
                             progress.dismiss();
                         }finally {
+                            //reopen homefragment to see the new uploaded file in the list
                             Intent intent = new Intent (    HomeFragment.this.getActivity(), HomeFragment.class);
                             HomeFragment homeFragment = new HomeFragment();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).addToBackStack(null).commit();
@@ -203,7 +207,7 @@ public class HomeFragment extends Fragment {
                     }
                 }
             });
-
+            //start the thread
             t.start();
             }
     }
@@ -221,21 +225,22 @@ public class HomeFragment extends Fragment {
     //initialise the List View
     public void init(){
 
+        //new requestqueue queue
         queue = Volley.newRequestQueue(this.getContext());
-        String url = "http://10.40.6.85:3003/files";
+        String url = "https://rocky-plateau-19773.herokuapp.com/files";
 
+        //create arraylists to fill from the json file
         final ArrayList<String> nameAL = new ArrayList<String>();
         final ArrayList<String> typeAL = new ArrayList<String>();
         final ArrayList<Integer> picAL = new ArrayList<Integer>();
-        String[] nameArray = new String[0];
-        String[] typeArray = new String[0];
-        Integer[] imageArray = new Integer[0];
 
+            //jsonarrayrequest to retrieve the json for the file list
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,null, new Response.Listener<JSONArray>() {
 
                 @Override
                 public void onResponse(JSONArray response) {
                     try {
+                        //for each file, add filename and filetype and pic to the corresponding arraylists
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject file = response.getJSONObject(i);
                             String fileName = file.getString("filename");
@@ -247,6 +252,7 @@ public class HomeFragment extends Fragment {
                     }catch(JSONException e){
 
                     }finally{
+                        //add the files in the arraylists into seperate arrays
                         String[] nameArray = new String[nameAL.size()];
                         for(int i=0; i<nameAL.size();i++){
                             nameArray[i]=nameAL.get(i);
@@ -263,9 +269,10 @@ public class HomeFragment extends Fragment {
                         for(int k=0; k<picAL.size();k++){
                             imageArray[k]=picAL.get(k);
                         }
+                        //use the customlistadapter to take the array from above and fill the listview
                         CustomListAdapter listvieweg = new CustomListAdapter(getActivity(), nameArray, typeArray, imageArray);
                         listView = (ListView) rootview.findViewById(R.id.simpleListView);
-                        //test
+                        //set up what happens when a file is clicked in listview (in this cause open the edit fragment to get the file options
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -289,9 +296,8 @@ public class HomeFragment extends Fragment {
                     error.printStackTrace();
                 }
             });
-
+        //add it to request queue
        queue.add(jsonArrayRequest);
-        //make sure can connect to server,
 
     }
 
