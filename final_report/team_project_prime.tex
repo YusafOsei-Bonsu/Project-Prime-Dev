@@ -174,11 +174,18 @@ A use-case diagram is a diagram that illustrates a system's functionalities thro
 \end{tabular}
 
 \subsubsection{\underline{Designs for Mobile Client}}
+
 \includegraphics[width=12cm]{/design/mobile/UI}
+
+There are three pages in the mobile applicaiton. The app will have a navigation menu, which can be accessed by clicking on the hamburger menu on the top left of the app. Once the menu is pressed, a slider will appear and display all options the user can navigate through. The app has the following options: \textit{Home}, \textit{Download}, \textit{Upload} and \textit{Help}. In the main page, it will display all files residing in the database. The files will be displayed in a listview. The user also has the option to remove the file by clicking on the \textit{Remove} button. The UI is designed in an understandable fashion for the user to naviage through the app.
 
 \includegraphics[width=12cm]{/design/mobile/architecture}
 
+The mobile architecture consists of the user navigating through the app. The user will have many features that they can select. If they want to upload a file, a POST request will be made to the Node Js Server. If clicked on upload or download a get request will be made to the Node js server. If the user wants to delete a file, a DELETE request will be sent to the server, which removes the corresponding file in the database.
+
 \includegraphics[width=12cm]{/design/mobile/usecase}
+
+A use case diagram was created to describe the interactions between the user and the app. The user can update, download and delete, and these requests will communicate with the server. The user can navigate through the pages using buttons and the navigation menu. Finally, the user can also open the help page, which will contain instructions on how to use the app.
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
