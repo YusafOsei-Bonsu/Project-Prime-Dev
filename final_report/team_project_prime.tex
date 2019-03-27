@@ -174,48 +174,80 @@ The server was created using Node.js. The server waits for client requests and r
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-The server was developed using Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform.
+The server was developed using Node.js and the database used is a cloud service by MongoDB. The Node.js server resides in the Heroku cloud platform. In Table 1, the following packages were used for implementing the server... 
 
-In table 1, the following packages were used for implementing the server application... 
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
 \caption{List of packages used}
-\begin{tabular}{l|l}
+\begin{tabular}{| l | l |}
 \hline
 \textbf{Package Name} & \textbf{Description}\\
 \hline
 multer & Used for uploads\\
+\hline
 mongoose & Used to connect to database\\
+\hline
 method-overide & To make a delete request without making an AJAX call\\
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-In table 2, the following API calls were also used in the implementation of the server...
+In Table 2, the following API calls were also used in the implementation of the server...
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
 \caption{API calls to the server}
-\begin{tabular}{l|c|r}
+\begin{tabular}{| l | c | r |}
 \hline
 \textbf{Name} & \textbf{URL} & \textbf{Description}\\
 \hline
 Display(GET) & (/files) & Returns all files in the database\\
+\hline
 Upload(POST) & (/upload) & Uploads a file to database\\
+\hline
 Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
+\hline
 Delete & (/files/:filename)  & Deletes the requested file from database.\\
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
+\begin{tabular}{|p{2cm}|p{4cm}|p{3cm}|p{2cm}|p{1.7cm}|}
 \hline
-\multicolumn{5}{|c|}{\textbf{Test Cases for Server Application}} \\
+\multicolumn{5}{| c |}{\textbf{Test Cases for Server Application (Desktop Client)}} \\
 \hline
-\textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail/Solved} \\
+\textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\
 \hline
-1 & ... & ... & ... & ... \\
+1 & Server connection & After desktop client attempts to upload a file, return JSON object containing each file to indicate connection between server and client. & As expected & PASS \\
+\hline
+2 & Return files for display & After desktop client opens, all database files will display themselves in a list. & As expected & PASS \\
+\hline
+3 & Upload file into database & After a file has been selected and the \textit{Submit} button has been pressed, the file will appear in the database & As expected & PASS \\
+\hline
+4 & Remove database file & After the \textit{Delete} button has been pressed, the server will remove the corresponding database file & As expected & PASS \\
+\hline
+5 & Return files for download & After the \textit{Download} button has been pressed, the server will return the corresponding file to the  host's file manager to be saved. & As expected & PASS \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|p{2cm}|p{4cm}|p{3cm}|p{2.5cm}|p{1.7cm}|}
+\hline
+\multicolumn{5}{| c |}{\textbf{Test Cases for Server Application (Mobile Client)}} \\
+\hline
+\textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\
+\hline
+1 & Server connection & After mobile client attempts to upload a file, return JSON object containing each file to indicate connection between server and client & As expected & PASS \\
+\hline
+2 & Return files for display &  After opening the mobile app, all database files will display themselves in a list. & As expected & PASS \\
+\hline
+3 & Upload files into database & ... & ... & PASS \\
+\hline
+4 & Remove database files & ... & ... & PASS \\
+\hline
+5 & Return files for download & ... & ... & PASS \\
 \hline
 \end{tabular}
 
@@ -286,6 +318,7 @@ Nodejs was used to connect the android app to the server. Node.js is an open-sou
 The User Experience was very important in the design of this application, so this aspect of the application was carefully considered. The navigation around the application was simple enough for the user to understand. It was decided that the application should follow a consistent design throughout, this meant determining a suitable colour scheme which will be used in all the pages of the application. A navigation menu is used for simplicity reasons to save space on the pages of the application. In the application there are 3 main sections: homepage, file options page and help page. 
 
 \underline{Permissions and Dependencies}
+
 To implement the features of this application, some permissions had to be changed and libraries had to be added. In terms of permissions, we had to add three new permissions into the manifest. 
 
 \begin{itemize}
@@ -319,7 +352,6 @@ When a file is selected the Intent and a request code of 10 is passed using 'sta
 
 This is created using a MultipartBody builder which prepares the requests body containing the selected files contents. Following this, a request is sent to the target URL with a POST method containing the request body created. If there are no errors the file should be uploaded and the Home Fragment is called again, to display the new file in the list view. 
 
-
 \underline{File Options page}
 
 When a file has been selected from the list view on the home page, a new fragment is called which will display the name of the file and two buttons ‘remove’ and ‘download’. Firstly, when the Remove button is clicked, an asynchronous task called RemoveFileTask is executed. 
@@ -335,7 +367,6 @@ Secondly, the download button on the file options page uses the android predefin
 \underline{Help Page}
 
 This page contains text which will provide information to the user on how the application works.  
-
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
@@ -357,7 +388,6 @@ This page contains text which will provide information to the user on how the ap
 \hline
 7 & Upload button (Home page) & Pressing upload will result in opening a file selection window, once a file is selected only the file selected will be uploaded to the server, & As expected  & Pass \\
 \hline
-
 \end{tabular}
 
 \section{\underline{Teamwork}}
