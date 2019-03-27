@@ -243,11 +243,11 @@ Delete & (/files/:filename)  & Deletes the requested file from database.\\
 \hline
 2 & Return files for display &  After opening the mobile app, all database files will display themselves in a list. & As expected & PASS \\
 \hline
-3 & Upload files into database & ... & ... & PASS \\
+3 & Upload files into database & After a file is selected from the Android internal storage, it will be uploaded into the database by the server. & As expected & PASS \\
 \hline
-4 & Remove database files & ... & ... & PASS \\
+4 & Remove database files & After pressing the \textit{Delete} button next to a file, the corresponding document will be removed from the database by the server. & As expected & PASS \\
 \hline
-5 & Return files for download & ... & ... & PASS \\
+5 & Return files for download & After pressing the \textit{Download} button, the server returns a file into the phone's internal storage & As expected & PASS \\
 \hline
 \end{tabular}
 
@@ -289,7 +289,7 @@ Finally, the desktop subgroup wrote code that enabled the client to download fil
 \hline
 \multicolumn{5}{|c|}{\textbf{Test Cases for Desktop Client}} \\
 \hline
-\textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail/Solved} \\
+\textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\
 \hline
 1 & Connection to server & A JSON object will be returned to indicate the connection between the server and client.  & As expected & PASS \\
 \hline
