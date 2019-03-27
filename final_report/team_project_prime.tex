@@ -61,7 +61,7 @@ File synchronization (file sync) is a method of keeping files that are stored in
 
 There are many existing applications that use file synchronisers. For example FreeFileSync uses a synchronisation software that creates and manages backup copies of all your important files. Instead of copying each file every time, FreeFileSync determines the differences between a source and a target folder and transfers only the minimum amount of data needed. FreeFileSync is a open source Software. Moreover, another example of an app in the market is FileyApp. This app allows you to get all you email attachments in one place and can be available in different platforms such as iphone, ipad and windows. (Otherinbox.com, 2019).  FileyApp has many features for instance, automatically download of attachments, track file versions over emails, get notified of new files and share your files and attachments. With all these features implemented in the app, the user has more options rather than just downloading or opening a file.
 
-\underline{Send anywhere App}
+\subsubsection{\underline{Send Anywhere app}}
 
 Send anywhere app is an android application that  is a file sharing that lets you quickly transfer files of any size. In order for this application to work, it needs to be connected via Wifi direct. This application also has other features such as cloud storage service where you can move your files to the cloud once it is uploaded. The files transferred within this app are not stored on any servers and there is no limit ot the files that you can share.
 
@@ -141,11 +141,11 @@ The Display functionality displays all the files in the system by sending a GET 
 
 \includegraphics[width=9cm]{/design/desktop/UI}
 
-Following the design philosophy, the above mock UI was sketched using MockFlow. This sketch provided a prediction of the client's appearence.
+The above mock UI was sketched using MockFlow. This sketch provided a prediction of the client's appearence. In addition, it supported the desktop subgroup during the implementation of the client's front-end. 
 
 \includegraphics[width=8cm]{/design/desktop/UseCase}
 
-Working under the design philosophy, above is the use-case diagram of the desktop client, which entails the client's functionalities: allowing users to select, upload, delete and download files.
+A use-case diagram is a diagram that illustrates a system's functionalities through the end-user's perspective (Gibilisco, 2015). The above use-case diagram represents the desktop client's functionalities, which allows the user to selec files through their local file manager, upload files into the database via the server, delete database files using the server and download database files into the user's local storage.
 
 \subsection{\underline{Mobile Client}}
 \begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
@@ -174,9 +174,7 @@ Working under the design philosophy, above is the use-case diagram of the deskto
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-The server is written in Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform.
-
-In table 1, the following packages were used for implementing the server application:
+The server is written in Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform. Table 1 shows the packages involved in the implementation of the server, whereas table 2 shows the API calls involved in the implementation...
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
@@ -186,20 +184,25 @@ In table 1, the following packages were used for implementing the server applica
 \textbf{Package Name} & \textbf{Description}\\
 \hline
 Express & Web framework to support API building\\
+\hline
 Multer & Used for uploads\\
+\hline
 Mongoose & Used to connect to database\\
+\hline
 method-override & To make a delete request without making an AJAX call\\
+\hline
 GridFS & To store and retrieve files larger than 16MB\\
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-In table 2, the following API calls were also used in the implementation of the server:
+
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
 \caption{API calls to the server}
-\begin{tabular}{l|l|l}
+\begin{tabular}{| l | l | l |}
 \hline
 \textbf{Name} & \textbf{URL} & \textbf{Description}\\
 \hline
@@ -208,12 +211,14 @@ Display(GET) & (/files) & Returns all files in the database\\
 Upload(POST) & (/upload) & Uploads a file to database\\
 \hline
 Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
+\hline
 Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\begin{tabular}{|p{2cm}|p{4cm}|p{3cm}|p{2cm}|p{1.7cm}|}
+\begin{tabular}{|p{2cm}|p{3cm}|p{4cm}|p{2cm}|p{1.7cm}|}
 \hline
 \multicolumn{5}{| c |}{\textbf{Test Cases for Server Application (Desktop Client)}} \\
 \hline
@@ -231,7 +236,7 @@ Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
 \hline
 \end{tabular}
 
-\begin{tabular}{|p{2cm}|p{4cm}|p{3cm}|p{2.5cm}|p{1.7cm}|}
+\begin{tabular}{|p{2cm}|p{3cm}|p{3cm}|p{2.5cm}|p{1.7cm}|}
 \hline
 \multicolumn{5}{| c |}{\textbf{Test Cases for Server Application (Mobile Client)}} \\
 \hline
@@ -420,11 +425,15 @@ To start with what went well, one positive aspect was the firm strength of team 
 \hline
 \multicolumn{1}{|c|}{\textbf{Reference List}} \\
 \hline
+Bhagwat, P., 2001. Bluetooth: technology for short-range wireless apps. IEEE Internet Computing, 5(3), pp.96-103. \\
+\hline
 Bootstrap (n.d.) \textit{Introduction} [online] Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction/ [Accessed on 25th March] \\
 \hline
 Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview} [online] Available at: https://www.dropbox.com/business/trust/security/architecture [Accessed on 17th March] \\
 \hline
 Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019] \\
+\hline
+Gibilisco, S. (2015) \textit{use case diagram (UML use case diagram)} [online] Available at: https://whatis.techtarget.com/definition/use-case-diagram [Accessed on 27 March 2019]\\
 \hline
 Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019] \\
 \hline
@@ -436,14 +445,11 @@ Chiang, J.K., 2013. Authentication, Authorization and File Synchronization for H
 \hline
 Send-anywhere.com. (2019). Send Anywhere. [online] Available at: https://send-anywhere.com [Accessed 24 Mar. 2019]. \\
 \hline
- Bhagwat, P., 2001. Bluetooth: technology for short-range wireless apps. IEEE Internet Computing, 5(3), pp.96-103. \\
-\hline
 Joe Karlson. (2016) Complete Guide to Node Client- Server Communication [online] Available at: https://medium.com/@joekarlsson/complete-guide-to-node-client-server-communication-b156440c029 \\
 \hline
 tutorialspoint. Http-Overview [online] Available at: https://www.tutorialspoint.com/http/http\_overview.htm \\
 \hline
 Otherinbox.com. (2019). Filey | OtherInbox, the App Store for Email. [online] Available at: https://www.otherinbox.com/filey/ [Accessed 26 Mar. 2019]. \\
 \hline
-
 \end{tabular}
 \end{document}
