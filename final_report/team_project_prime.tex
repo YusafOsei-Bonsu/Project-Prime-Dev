@@ -14,7 +14,7 @@ In this project, we were tasked with building a multi-host file synchroniser con
 
 \section{\underline{Review}}
 \subsection{\underline{Server Application}}
-The different techniques which can be used by the the server and client can communicate are...
+The different techniques which can be used by the the server and client can communicate are:
 \begin{itemize}
 \item \textbf{XMLHttpRequest:} XMLHttpRequest objects are used to interact with the server. The data can be retrieved from the URL itself. It is heavily used in AJAX programming.
 \item \textbf{Server-Sent Events:} SSE is a technology enabling the browser to receive automatic updates from a server by means of HTTP connection.
@@ -23,8 +23,8 @@ The different techniques which can be used by the the server and client can comm
 
 Moving on, according to Jim, Pierce and Vouillon (2002), the connection between client and server can be done in two ways: Socket mode and Tunneling mode. In socket mode, both processes are manually started and the client connects to the server on a predetermined port. In tunneling mode, the client process starts first, it uses SSH to start the server process and communication is conducted using pipes. For example, Unison is more client-oriented which adopts a simple client-server architecture.
 \end{itemize}
- 
-Another application that is commonly used is Dropbox. Dropbox is more server-oriented. According to the Dropbox website (Dropbox Business, n.d), Dropbox possesses different server components...
+
+Another application that is commonly used is Dropbox. Dropbox is more server-oriented. According to the Dropbox website (Dropbox Business, n.d), Dropbox possesses different server components:
 \begin{itemize}
 \item Block servers
 \item Metadata servers
@@ -37,7 +37,7 @@ In our application, the communication is between a server and two clients: deskt
 
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
-Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d). 
+Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d).
 Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop client is as follows:
 \begin{itemize}
 \item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
@@ -51,24 +51,52 @@ This protocol shows that both the desktop client and server application in Dropb
 In (Jim, Pierce and Vouillon, 2002), it is mentioned that “most of Unison’s functionality is concentrated on the client side”. At the start of a process, two roots are specified (to a create a replica) and then the client goes through the following steps:
 \begin{itemize}
 \item \textbf{Update Detection:} The metadata from older version of the files are compared to their current states and each host is notified whether the contents of the files are changed or not.
-\item \textbf{Reconciliation:} The list of changed contents are merged together into a “task list” and used to handle conflicts. A conflict is detected if a path is updated in the replica, whether its descendants have also been updated in the other replica, or the contents in the two replicas are not equal. The task list is then displayed to the user through the UI. 
-\item \textbf{Propagation:} The changes in the task list are propagated through both the replicas and the server is then notified about the new contents of the file paths that were updated in the process. 
+\item \textbf{Reconciliation:} The list of changed contents are merged together into a “task list” and used to handle conflicts. A conflict is detected if a path is updated in the replica, whether its descendants have also been updated in the other replica, or the contents in the two replicas are not equal. The task list is then displayed to the user through the UI.
+\item \textbf{Propagation:} The changes in the task list are propagated through both the replicas and the server is then notified about the new contents of the file paths that were updated in the process.
 \end{itemize}
-The advantage of having a heavy client-side functionality is robustness. Having less burden on their server increases their crash resistance as indicated in (Jim, Pierce, Vouillon, 2002). 
+The advantage of having a heavy client-side functionality is robustness. Having less burden on their server increases their crash resistance as indicated in (Jim, Pierce, Vouillon, 2002).
 
 \subsection{\underline{Mobile Client}}
-File synchronization (file sync) is a method of keeping files that are stored in several different physical locations up to date. Cloud and storage vendors often offer software that helps with this process. Recent Studies have shown that file synchronisation has rapidly increased for enterprises/organisations to use the cloud as a means for collaboration. (Bhagwat, 2001) File sync is also commonly used for backup and for mobile access to files. Using a mobile device, you can access the files from anywhere if the user has access to the internet. However, file synching often presents security concerns to enterprises whose employees use consumer-grade applications to access business files. With the use of file synchronisation for public cloud, businesses and organisations are able to utilise their business in lower costs and higher efficiency. (Chiang, 2013) It ensures that the data is kept secure and manages integrity between local storages and the cloud server. However, there are issues that have arisen for example if third parties are able to access the information and the information management crisis. 
+File synchronization (file sync) is a method of keeping files that are stored in several different physical locations up to date. Cloud and storage vendors often offer software that helps with this process. Recent Studies have shown that file synchronisation has rapidly increased for enterprises/organisations to use the cloud as a means for collaboration. (Bhagwat, 2001) File sync is also commonly used for backup and for mobile access to files. Using a mobile device, you can access the files from anywhere if the user has access to the internet. However, file synching often presents security concerns to enterprises whose employees use consumer-grade applications to access business files. With the use of file synchronisation for public cloud, businesses and organisations are able to utilise their business in lower costs and higher efficiency. (Chiang, 2013) It ensures that the data is kept secure and manages integrity between local storages and the cloud server. However, there are issues that have arisen for example if third parties are able to access the information and the information management crisis.
 
-There are many existing applications that use file synchronisers. For example FreeFileSync uses a synchronisation software that creates and manages backup copies of all your important files. Instead of copying each file every time, FreeFileSync determines the differences between a source and a target folder and transfers only the minimum amount of data needed. FreeFileSync is a open source Software. Moreover, another example of an app in the market is FileyApp. This app allows you to get all you email attachments in one place and can be available in different platforms such as iphone, ipad and windows. (Otherinbox.com, 2019).  FileyApp has many features for instance, automatically download of attachments, track file versions over emails, get notified of new files and share your files and attachments. With all these features implemented in the app, the user has more options rather than just downloading or opening a file. 
+There are many existing applications that use file synchronisers. For example FreeFileSync uses a synchronisation software that creates and manages backup copies of all your important files. Instead of copying each file every time, FreeFileSync determines the differences between a source and a target folder and transfers only the minimum amount of data needed. FreeFileSync is a open source Software. Moreover, another example of an app in the market is FileyApp. This app allows you to get all you email attachments in one place and can be available in different platforms such as iphone, ipad and windows. (Otherinbox.com, 2019).  FileyApp has many features for instance, automatically download of attachments, track file versions over emails, get notified of new files and share your files and attachments. With all these features implemented in the app, the user has more options rather than just downloading or opening a file.
 
 \underline{Send anywhere App}
 
-Send anywhere app is an android application that  is a file sharing that lets you quickly transfer files of any size. In order for this application to work, it needs to be connected via Wifi direct. This application also has other features such as cloud storage service where you can move your files to the cloud once it is uploaded. The files transferred within this app are not stored on any servers and there is no limit ot the files that you can share. 
+Send anywhere app is an android application that  is a file sharing that lets you quickly transfer files of any size. In order for this application to work, it needs to be connected via Wifi direct. This application also has other features such as cloud storage service where you can move your files to the cloud once it is uploaded. The files transferred within this app are not stored on any servers and there is no limit ot the files that you can share.
 
-In conclusion, there are many advantages of having a mobile app for organisations. The Most important being the high performance of user experience and the ease of use for sharing files for business or personal reasons. The ProjectPrime App will be designed in a simple way to make it user friendly, it will have all the features that is required in a file sharing app. This app will be specially designed for users to manage and share files efficiently. With your android application you will be able to save files to the internal storage of the phone as well as upload files to the server when the user is connected to the internet. The functionality, reliability and integrity of ProjectPrime will show the superiority of the application intended for a better user experience. 
+In conclusion, there are many advantages of having a mobile app for organisations. The Most important being the high performance of user experience and the ease of use for sharing files for business or personal reasons. The ProjectPrime App will be designed in a simple way to make it user friendly, it will have all the features that is required in a file sharing app. This app will be specially designed for users to manage and share files efficiently. With your android application you will be able to save files to the internal storage of the phone as well as upload files to the server when the user is connected to the internet. The functionality, reliability and integrity of ProjectPrime will show the superiority of the application intended for a better user experience.
 
 \section{\underline{Requirements and Design}}
-Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (important but unnecessary requirements for the final product), \textit{Could Have} (lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (least critical requirements that are unrequired for project success). In addition, the subsections will show the designs that reflect the corresponding component.
+Requirements have been derived for each component. The requirements have been analysed using the MoSCoW prioritisation technique (Madsen, 2017); as a result, each requirement has been placed into one of the following categories: \textit{Must Have} (critical requirements with the highest priority), \textit{Should Have} (important but unnecessary requirements for the final product), \textit{Could Have} (lowest-priority requirements that would be implemented if time permits) and \textit{Won't Have} (least critical requirements that are not required for project success). In addition, the subsections will show the designs that reflect the corresponding component.
+
+\subsection{\underline{Server Application}}
+
+\begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
+\hline
+\multicolumn{3}{|c|}{\textbf{MoSCoW requirements for Server Application}} \\
+\hline
+\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Priority}\\
+\hline
+1 & Has to be connected to a database in order to store and retrieve files & Must Have \\
+\hline
+2 & Must be able to communicate with the Desktop and Mobile Clients simultaneously & Must Have \\
+\hline
+3 & Use HTTP requests to send data to the clients & Must Have \\
+\hline
+4 & Handle conflicts using Rsync & Should Have \\
+\hline
+5 & Use security encryption to protect the data & Could Have\\
+\hline
+\end{tabular}
+
+The server is created using Node.js. The server waits for client requests and responds to them; thus, providing a service upon their request. It is responsible for handling requests, responding to them appropriately, as well as for establishing and maintaining the database connection. Node.js is used to build the server as it allows simple writing and maintenance of JS-based backend servers with easy-to-use APIs by the clients. Along with Node.js, a flexible Node application framework called Express.js is used, which creates the middleware and helps to manage everything from routes to handling requests. To store and retrieve files, an instance of a NoSQL database - MongoDB is used. Unlike a relational database, where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas. The whole server architecture is hosted on the cloud to allow remote access in the true sense. The cloud hosting of the server is supported by Heroku - a cloud Platform as a Service provider, and a cloud based instance of the MongoDB database - MongoDB Atlas.
+
+\begin{figure}[h!]
+\includegraphics[width=12cm]{/server/expresspic}
+\captionsetup{justification=centering}
+\caption{Middleware}
+\end{figure}
 
 \subsection{\underline{Desktop Client}}
 
@@ -144,38 +172,11 @@ Working under the design philosophy, above is the use-case diagram of the deskto
 \hline
 \end{tabular}
 
-\subsection{\underline{Server Application}}
-
-\begin{tabular}{|p{3cm}|p{5cm}|p{4cm}|}
-\hline
-\multicolumn{3}{|c|}{\textbf{MoSCoW requirements for Server Application}} \\
-\hline
-\textbf{Requirement No.} & \textbf{Requirement} & \textbf{Priority}\\
-\hline
-1 & Has to be connected to a database in order to store and retrieve files & Must Have \\
-\hline
-2 & Must be able to communicate with the Desktop and Mobile Clients simultaneously & Must Have \\
-\hline
-3 & Use HTTP requests to send data to the clients & Must Have \\
-\hline
-4 & Handle conflicts using Rsync & Should Have \\
-\hline
-5 & Use security encryption to protect the data & Could Have\\
-\hline
-\end{tabular}
-
-The server was created using Node.js. The server waits for client requests and responds to them; thus, providing a service upon their request. It is responsible for handling requests, responding to them appropriately, as well as for establishing and maintaining the database connection.  We decided to use Node.js to build the server as it allows simple writing and maintenance of JS-based backend servers with easy-to-use APIs by the clients. Furthermore, we have used a flexible Node application framework called Express, which creates the middleware and helps to manage everything from routes to handling requests. To store and retrieve files we decided to use a NoSQL database - MongoDB. Unlike a relational database where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas.
-
-\begin{figure}[h!]
-\includegraphics[width=12cm]{/server/expresspic}
-\captionsetup{justification=centering}
-\caption{Middleware}
-\end{figure}
-
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-The server was developed using Node.js and the database used is a cloud service by MongoDB. The Node.js server resides in the Heroku cloud platform. In Table 1, the following packages were used for implementing the server... 
+The server is written in Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform.
 
+In table 1, the following packages were used for implementing the server application:
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
@@ -184,22 +185,21 @@ The server was developed using Node.js and the database used is a cloud service 
 \hline
 \textbf{Package Name} & \textbf{Description}\\
 \hline
-multer & Used for uploads\\
-\hline
-mongoose & Used to connect to database\\
-\hline
-method-overide & To make a delete request without making an AJAX call\\
-\hline
+Express & Web framework to support API building\\
+Multer & Used for uploads\\
+Mongoose & Used to connect to database\\
+method-override & To make a delete request without making an AJAX call\\
+GridFS & To store and retrieve files larger than 16MB\\
 \end{tabular}
 \end{center}
 \end{table}
 
-In Table 2, the following API calls were also used in the implementation of the server...
+In table 2, the following API calls were also used in the implementation of the server:
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
 \caption{API calls to the server}
-\begin{tabular}{| l | c | r |}
+\begin{tabular}{l|l|l}
 \hline
 \textbf{Name} & \textbf{URL} & \textbf{Description}\\
 \hline
@@ -208,9 +208,7 @@ Display(GET) & (/files) & Returns all files in the database\\
 Upload(POST) & (/upload) & Uploads a file to database\\
 \hline
 Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
-\hline
-Delete & (/files/:filename)  & Deletes the requested file from database.\\
-\hline
+Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
 \end{tabular}
 \end{center}
 \end{table}
@@ -269,7 +267,7 @@ After setting the foundation, the desktop subgroup concentrated on displaying fi
 
 \includegraphics[width=12cm]{/fragments/desktop/display3}
 
-Next, the subgroup wrote code that enabled the client to upload files into the database via the server. After pressing the \textit{Browse} button, the local host's file manager opens, which enables the user to choose a file and subsequently, the label of the file upload bar changes to the name of the selected file; therefore, indicating which file was selected by the user. Afterwards, the user would press the \textit{Submit} button which transmits a http post request to the server, which causes the latter to store the selected file inside the database. In addition, the label of the file upload bar will revert to its initial form (i.e. "Choose a File...") after the \textit{Submit} button is pressed. 
+Next, the subgroup wrote code that enabled the client to upload files into the database via the server. After pressing the \textit{Browse} button, the local host's file manager opens, which enables the user to choose a file and subsequently, the label of the file upload bar changes to the name of the selected file; therefore, indicating which file was selected by the user. Afterwards, the user would press the \textit{Submit} button which transmits a http post request to the server, which causes the latter to store the selected file inside the database. In addition, the label of the file upload bar will revert to its initial form (i.e. "Choose a File...") after the \textit{Submit} button is pressed.
 
 \includegraphics[width=12cm]{/fragments/desktop/upload}
 
@@ -277,11 +275,11 @@ Next, the subgroup wrote code that enabled the client to upload files into the d
 
 \includegraphics[width=12cm]{/fragments/desktop/upload3}
 
-Moving on to file deletion, the desktop subgroup wrote code that enabled the client to delete files; as a result, removing the corresponding document from the database. To add to this, deleting a file resulted in removing that file from the list of documents displayed on the client's UI. After pressing the \textit{Delete} button, the client would send a delete request to the server and this request would include the file's unique ID; therefore, the use of unique identification ensures the prevention of multiple files of the same name being deleted, for example. 
+Moving on to file deletion, the desktop subgroup wrote code that enabled the client to delete files; as a result, removing the corresponding document from the database. To add to this, deleting a file resulted in removing that file from the list of documents displayed on the client's UI. After pressing the \textit{Delete} button, the client would send a delete request to the server and this request would include the file's unique ID; therefore, the use of unique identification ensures the prevention of multiple files of the same name being deleted, for example.
 
 \includegraphics[width=12cm]{/fragments/desktop/delete}
 
-Finally, the desktop subgroup wrote code that enabled the client to download files from the database; as a result, bringing the corresponding document into the storage of the local host. After pressing the \textit{Download} button, the client sends a GET request to the server, which causes the server to return the file in the local host's file manager and the user stores the file in the local host's storage by pressing the \textit{save} button of the file manager. 
+Finally, the desktop subgroup wrote code that enabled the client to download files from the database; as a result, bringing the corresponding document into the storage of the local host. After pressing the \textit{Download} button, the client sends a GET request to the server, which causes the server to return the file in the local host's file manager and the user stores the file in the local host's storage by pressing the \textit{save} button of the file manager.
 
 \includegraphics[width=12cm]{/fragments/desktop/download}
 
@@ -306,7 +304,7 @@ Finally, the desktop subgroup wrote code that enabled the client to download fil
 \subsection{\underline{Mobile Client}}
 Android studio was used to develop the android application. Android studio is an IDE designed and developed specifically for android app development. Also with a use of a gradle based build system you have the option to preview a layout on multiple screen configurations while editing. With the use of extensible Mark-up Language (XML) it aided the development of the screen layouts. This was beneficial as it gave the ability to meet the usability and functional requirements of the application. To display the screens an android emulator was used, and an android phone was used to make sure the application was running successfully as well as provide a visual feel on how the app would feel.
 
-Nodejs was used to connect the android app to the server. Node.js is an open-source and cross-platform JavaScript runtime environment. To connect to the server numerous methods were used, one being the Android volley library. This library was used because it is an HTTP library that makes networking for Android apps easier and most importantly faster. Android Volley allowed us to do automatic scheduling of network requests and helped support for request prioritisation.  Furthermore, using Android Volley, we...
+Node.js was used to connect the android app to the server. Node.js is an open-source and cross-platform JavaScript runtime environment. To connect to the server numerous methods were used, one being the Android volley library. This library was used because it is an HTTP library that makes networking for Android apps easier and most importantly faster. Android Volley allowed us to do automatic scheduling of network requests and helped support for request prioritisation.  Furthermore, using Android Volley, we...
 \begin{itemize}
 \item Sent a simple request using the default actions of Volley
 \item Set up RequestQueue
@@ -315,11 +313,11 @@ Nodejs was used to connect the android app to the server. Node.js is an open-sou
 
 \underline{Design and Implementation}
 
-The User Experience was very important in the design of this application, so this aspect of the application was carefully considered. The navigation around the application was simple enough for the user to understand. It was decided that the application should follow a consistent design throughout, this meant determining a suitable colour scheme which will be used in all the pages of the application. A navigation menu is used for simplicity reasons to save space on the pages of the application. In the application there are 3 main sections: homepage, file options page and help page. 
+The User Experience was very important in the design of this application, so this aspect of the application was carefully considered. The navigation around the application was simple enough for the user to understand. It was decided that the application should follow a consistent design throughout, this meant determining a suitable colour scheme which will be used in all the pages of the application. A navigation menu is used for simplicity reasons to save space on the pages of the application. In the application there are 3 main sections: homepage, file options page and help page.
 
 \underline{Permissions and Dependencies}
 
-To implement the features of this application, some permissions had to be changed and libraries had to be added. In terms of permissions, we had to add three new permissions into the manifest. 
+To implement the features of this application, some permissions had to be changed and libraries had to be added. In terms of permissions, we had to add three new permissions into the manifest.
 
 \begin{itemize}
 \item INTERNET : This allows the application to connect to the internet.
@@ -327,7 +325,7 @@ To implement the features of this application, some permissions had to be change
 \item READ EXTERNAL STORAGE : This allows the application to read from the external storage.
 \end{itemize}
 
-We also had to add 2 dependencies 
+We also had to add 2 dependencies
 
 \begin{itemize}
 \item Android Volley v1.1.0 : This library was used in the Home Fragment in the retrieval of the files
@@ -336,37 +334,37 @@ We also had to add 2 dependencies
 
 \underline{Home Page}
 
-The home page consists of two main parts including a list which represents all the files and an upload button. To be able to achieve a working list view, we needed to design the layout of each entry of the list, and to code a custom adapter to fill the list view with the data received from the server. The code for the list uses the Android Volley library to send a GET request to the server to request for a JSON response. This response was then separated into 2 Array Lists, chosen due to the simplicity of adding and removing elements. The contents of each of these Array Lists were then copied to 2 String arrays, which were passed to a custom adapter. 
+The home page consists of two main parts including a list which represents all the files and an upload button. To be able to achieve a working list view, we needed to design the layout of each entry of the list, and to code a custom adapter to fill the list view with the data received from the server. The code for the list uses the Android Volley library to send a GET request to the server to request for a JSON response. This response was then separated into 2 Array Lists, chosen due to the simplicity of adding and removing elements. The contents of each of these Array Lists were then copied to 2 String arrays, which were passed to a custom adapter.
 
 \includegraphics[width=12cm]{/fragments/mobile/adapter}
 
-This custom adapter takes the data passed and assigns it to the correct parts of the list view. Lastly, an 'onclick' listener was used for each entry of the list view to enable the user to access the file options for the file selected. 
+This custom adapter takes the data passed and assigns it to the correct parts of the list view. Lastly, an 'onclick' listener was used for each entry of the list view to enable the user to access the file options for the file selected.
 
-The next part is the Upload button, an 'onclick' listener is used for when the user clicks the button, this opens a popup menu which allows the user to navigate the local folder of the device. Android has a library which we were able to use which enabled quick and easy navigation and selection of files in numerous locations such as camera, recent, download and others. 
+The next part is the Upload button, an 'onclick' listener is used for when the user clicks the button, this opens a popup menu which allows the user to navigate the local folder of the device. Android has a library which we were able to use which enabled quick and easy navigation and selection of files in numerous locations such as camera, recent, download and others.
 
 \includegraphics[width=12cm]{/fragments/mobile/uploadbtn}
 
-When a file is selected the Intent and a request code of 10 is passed using 'startActivityForResult()', which triggers the onActivityResult method. Within this method we see that a progress dialog has been started so that the user is aware that an upload is in progress, a new thread is started for the upload request so that the request is not sent on the main thread. In this new thread, the file name and path of the file are obtained by retrieving the URI from the data sent to the method. After getting the file name and file path, an OkHttpClient object is created to send the request. 
+When a file is selected the Intent and a request code of 10 is passed using 'startActivityForResult()', which triggers the onActivityResult method. Within this method we see that a progress dialog has been started so that the user is aware that an upload is in progress, a new thread is started for the upload request so that the request is not sent on the main thread. In this new thread, the file name and path of the file are obtained by retrieving the URI from the data sent to the method. After getting the file name and file path, an OkHttpClient object is created to send the request.
 
 \includegraphics[width=12cm]{/fragments/mobile/builder}
 
-This is created using a MultipartBody builder which prepares the requests body containing the selected files contents. Following this, a request is sent to the target URL with a POST method containing the request body created. If there are no errors the file should be uploaded and the Home Fragment is called again, to display the new file in the list view. 
+This is created using a MultipartBody builder which prepares the requests body containing the selected files contents. Following this, a request is sent to the target URL with a POST method containing the request body created. If there are no errors the file should be uploaded and the Home Fragment is called again, to display the new file in the list view.
 
 \underline{File Options page}
 
-When a file has been selected from the list view on the home page, a new fragment is called which will display the name of the file and two buttons ‘remove’ and ‘download’. Firstly, when the Remove button is clicked, an asynchronous task called RemoveFileTask is executed. 
+When a file has been selected from the list view on the home page, a new fragment is called which will display the name of the file and two buttons ‘remove’ and ‘download’. Firstly, when the Remove button is clicked, an asynchronous task called RemoveFileTask is executed.
 
 \includegraphics[width=12cm]{/fragments/mobile/deletecode}
 
-This will take the name of the file, which was sent between the home and file options fragment and create an HTML delete request which is then sent to the server. This is done using an httpURLConnection with request method ‘DELETE’. This code is done as an asynchronous task as having this run in the main thread would cause a UI crash. 
+This will take the name of the file, which was sent between the home and file options fragment and create an HTML delete request which is then sent to the server. This is done using an httpURLConnection with request method ‘DELETE’. This code is done as an asynchronous task as having this run in the main thread would cause a UI crash.
 
 \includegraphics[width=12cm]{/fragments/mobile/downloadbtn}
 
-Secondly, the download button on the file options page uses the android predefined class DownloadManager to request a file from the server. To ensure that it downloads the file with the correct MIME type, the request has to be set to the MIME type of the file requested, to do this a check MIME type method is used to retrieve this information. A setNotificationVisibility is also set to alert the user when the download is in progress and when it is complete. This request is then added do the downloadManager queue. 
+Secondly, the download button on the file options page uses the android predefined class DownloadManager to request a file from the server. To ensure that it downloads the file with the correct MIME type, the request has to be set to the MIME type of the file requested, to do this a check MIME type method is used to retrieve this information. A setNotificationVisibility is also set to alert the user when the download is in progress and when it is complete. This request is then added do the downloadManager queue.
 
 \underline{Help Page}
 
-This page contains text which will provide information to the user on how the application works.  
+This page contains text which will provide information to the user on how the application works.
 
 \begin{tabular}{|p{2cm}|p{2cm}|p{3cm}|p{3cm}|p{3cm}|}
 \hline
@@ -391,7 +389,7 @@ This page contains text which will provide information to the user on how the ap
 \end{tabular}
 
 \section{\underline{Teamwork}}
-Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. Whatsapp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called \textit{Project Prime Dev}. In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch seperate to the master branch and subsequently, the former would be merged into the latter branch.
+Project Prime consists of six members: Yusaf, Sandipan, Saloni, Shefali, Cameron and Manny. To balance the workload, the team was divided into three subgroups of two teammates and each subgroup was assigned to the development of one component. As a result, Yusaf and Sandipan were assigned to the desktop client, Saloni and Shefali were assigned to the server, and Manny and Cameron were assigned to the mobile client. Within these subgroups, the work was distributed between both teammates through discussion. Despite the team division, members from other subgroups were permitted to intervene in the development of a component that they weren't assigned to, in order to fix issues that the assigned subgroup couldn't correct, for example. Moving onto communication, the team remotely communicated using an instant messaging app (i.e. WhatsApp), which allowed arrangements of group sessions at a certain date-and-time, notifying teammates of open pull requests, etc. Furthermore, the sessions were conducted in booked study rooms at least once per week and these sessions involved group discussion and coding of all components. Next, the project involved Github, where the project implementation was contained in a public repository called \textit{Project Prime Dev}. In addition to Git, the team followed the feature branch workflow, where a component feature was developed inside a branch separate to the master branch and subsequently, the former would be merged into the latter branch.
 
 \section{\underline{Evaluation}}
 To start with what went well, one positive aspect was the firm strength of team communication, as all members proactively shared their thoughts and concerns in physical meetings and in the WhatsApp group. In addition, communication was carried-out in a respectful manner at all times; thus, there were no verbal conflicts during the project. Another positive aspect was the fairness in workload distribution by creating subgroups that were assigned to the development of a specific component. The rationale behind the formation of subgroups was to avoid the possibility of one member feeling overwhelmed from having lots of work. Furthermore, by assembling subgroups, this influenced the members of the subgroup to cooperate together to build the component; thus, being in a subgroup generated a sense of teamwork. Finally, a notable positive aspect was our ability to adapt to changing circumstances. For instance, it was initially planned to store files in a SQL database. Unfortunately, we discovered SQL databases were unideal for file storage since it is limited by file size. In response, we decided to migrate to MongoDB, which is a cloud service that allows the creation of document-oriented database systems that can contain files of any size.
@@ -400,11 +398,11 @@ To start with what went well, one positive aspect was the firm strength of team 
 
 \noindent Relative to the initial plan, there were differences between the rough timetable and actual progress. For instance, instead of using an SQL database, we decided to create and use a MongoDB database since it's document-oriented and has the capability to store files of any size, whereas SQL storage is limited by data type and size, and it cannot process text files properly; thus, with MongoDB being more suited to our needs, we abandoned the plan to use an SQL database and shifted to MongoDB instead. Another difference was the additional design work conducted, since as initially planned, the clients were going to only be sketched. However, to support the implementation of both clients, we decided to create use-case and architectural diagrams to know the core functionalities to build and to understand the structure of both systems, respectively.
 
-\noindent There were several cases where the project experienced change that was forced upon us or was the result of improved thinking. An example of the latter, the server was formerly stored in a laptop owned by a teammate, whom was part of the server subgroup. However, the server's IP address changed based-on the laptop's current location; therefore, locally storing the server resulted in constantly changing the server's IP address within the clients' source code. This proved to be a tedious task throughout the progression of the project. As a solution, we decided to store and run the server on Heroku, which is a platform-as-a-service (PaaS) that enables applications to operate on the cloud; thus, this removed the tediousness of changing the server's IP address in the source code of each client.  
+\noindent There were several cases where the project experienced change that was forced upon us or was the result of improved thinking. An example of the latter, the server was formerly stored in a laptop owned by a teammate, whom was part of the server subgroup. However, the server's IP address changed based-on the laptop's current location; therefore, locally storing the server resulted in constantly changing the server's IP address within the clients' source code. This proved to be a tedious task throughout the progression of the project. As a solution, we decided to store and run the server on Heroku, which is a Platform as a Service (PaaS) that enables applications to operate on the cloud; thus, this removed the tediousness of changing the server's IP address in the source code of each client.
 
-\noindent On to how the team worked together, the team was divided into three subgroups as initially planned, where each subgroup developed one component of the file synchronising system; as a result, the workload was divided fairly amongst all members. Throughout the majority of the project's lifetime, the team attended group meetings once per week where group discussion and coding was conducted. Along with group meetings, communication was also conducted in a whatsapp group where we scheduled groups meetings in booked study rooms at a certain date-and-time, notified each other about opened pull requests, reminders about incomplete work, etc. The reason for choosing whatsapp as our main form of remote communication was due to everyone's familiarity with the app and its simplicity (in terms of usability); thus, there was no need to use Skype since the team was comfortable with using whatsapp, in contrary to the original plan. Despite developing the system outside the meetings, one major weakness was scheduling meetings once per week since it delayed the completion of work, which could have been completed faster if we met more than once per week by completing tasks together. Overall, the team worked well together, as there were no conflicts and each member contributed their unique  skills to the group. For instance, since Yusaf possessed leadership experience, he was elected as team leader to command the group, ensure each member's involvement in the project's activities, etc.
+\noindent On to how the team worked together, the team was divided into three subgroups as initially planned, where each subgroup developed one component of the file synchronising system; as a result, the workload was divided fairly amongst all members. Throughout the majority of the project's lifetime, the team attended group meetings once per week where group discussion and coding was conducted. Along with group meetings, communication was also conducted in a WhatsApp group where we scheduled groups meetings in booked study rooms at a certain date-and-time, notified each other about opened pull requests, reminders about incomplete work, etc. The reason for choosing WhatsApp as our main form of remote communication was due to everyone's familiarity with the app and its simplicity (in terms of usability); thus, there was no need to use Skype since the team was comfortable with using WhatsApp, in contrary to the original plan. Despite developing the system outside the meetings, one major weakness was scheduling meetings once per week since it delayed the completion of work, which could have been completed faster if we met more than once per week by completing tasks together. Overall, the team worked well together, as there were no conflicts and each member contributed their unique  skills to the group. For instance, since Yusaf possessed leadership experience, he was elected as team leader to command the group, ensure each member's involvement in the project's activities, etc.
 
-\noindent In conclusion, this project caused the realisation that despite our computer science backgrounds, our technical prowess is still very basic and there is much for us to learn. In response to this discovery, we will commit to thoroughly relearning and practising how to use different technologies in our spare time, including programming languages and Git (e.g. BitBucket). In retrospect, if this project was repeated, our different approach would be to partner stronger members with novice ones, in terms of technological skill; thus, providing novice members with the opportunity to enhance their skills by learning whilst working on the job.   
+\noindent In conclusion, this project caused the realisation that despite our computer science backgrounds, our technical prowess is still very basic and there is much for us to learn. In response to this discovery, we will commit to thoroughly relearning and practising how to use different technologies in our spare time, including programming languages and Git (e.g. BitBucket). In retrospect, if this project was repeated, our different approach would be to partner stronger members with novice ones, in terms of technological skill; thus, providing novice members with the opportunity to enhance their skills by learning whilst working on the job.
 
 \section{\underline{Peer Assessment}}
 \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
@@ -416,7 +414,7 @@ To start with what went well, one positive aspect was the firm strength of team 
 17.5 & 16.5 & 16.5 & 16.5 & 16.5 & 16.5 \\
 \hline
 \end{tabular}
-	
+
 \section{\underline{Bibliography}}
 \begin{tabular}{|p{12.2cm}|}
 \hline
@@ -431,7 +429,7 @@ Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Ava
 Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019] \\
 \hline
 Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online] Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [Accessed on 17th March] \\
-\hline 
+\hline
 Jim, T., Pierce, B., Vouillon, J.  (2002) \textit{How to build a File Synchronizer} [online] Available at: http://web.mit.edu/6.033/2005/wwwdocs/papers/unisonimpl.pdf [Accessed on 26th March] \\
 \hline
 Chiang, J.K., 2013. Authentication, Authorization and File Synchronization for Hybrid Cloud-The Development Centric to Google Apps, Hadoop and Linux Local Hosts. \\
@@ -440,7 +438,12 @@ Send-anywhere.com. (2019). Send Anywhere. [online] Available at: https://send-an
 \hline
  Bhagwat, P., 2001. Bluetooth: technology for short-range wireless apps. IEEE Internet Computing, 5(3), pp.96-103. \\
 \hline
+Joe Karlson. (2016) Complete Guide to Node Client- Server Communication [online] Available at: https://medium.com/@joekarlsson/complete-guide-to-node-client-server-communication-b156440c029 \\
+\hline
+tutorialspoint. Http-Overview [online] Available at: https://www.tutorialspoint.com/http/http\_overview.htm \\
+\hline
 Otherinbox.com. (2019). Filey | OtherInbox, the App Store for Email. [online] Available at: https://www.otherinbox.com/filey/ [Accessed 26 Mar. 2019]. \\
 \hline
+
 \end{tabular}
 \end{document}
