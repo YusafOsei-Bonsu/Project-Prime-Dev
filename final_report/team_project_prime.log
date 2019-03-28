@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.30)  27 MAR 2019 16:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.1.31)  28 MAR 2019 19:27
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **team_project_prime.tex
 (./team_project_prime.tex
@@ -257,20 +256,42 @@ tem's func-tion-al-i-ties through
  []
 
 [9 <./images//design/desktop/UI.png> <./images//design/desktop/UseCase.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 155--155
+Underfull \hbox (badness 10000) in paragraph at lines 156--156
 []\OT1/cmr/bx/n/10 Requirement
  []
 
 
-Overfull \hbox (32.43306pt too wide) in paragraph at lines 151--174
+Overfull \hbox (32.43306pt too wide) in paragraph at lines 152--175
 [] 
  []
+
+<./images//design/mobile/UI.png, id=49, 692.8284pt x 368.577pt>
+File: ./images//design/mobile/UI.png Graphic file (type png)
+<use ./images//design/mobile/UI.png>
+Package pdftex.def Info: ./images//design/mobile/UI.png  used on input line 178
+.
+(pdftex.def)             Requested size: 341.43306pt x 181.63911pt.
+[10]
+<./images//design/mobile/architecture.png, id=53, 878.3214pt x 464.937pt>
+File: ./images//design/mobile/architecture.png Graphic file (type png)
+<use ./images//design/mobile/architecture.png>
+Package pdftex.def Info: ./images//design/mobile/architecture.png  used on inpu
+t line 182.
+(pdftex.def)             Requested size: 341.43306pt x 180.73586pt.
+ [11 <./images//design/mobile/UI.png> <./images//design/mobile/architecture.png
+>]
+<./images//design/mobile/usecase.png, id=59, 764.6166pt x 474.0912pt>
+File: ./images//design/mobile/usecase.png Graphic file (type png)
+<use ./images//design/mobile/usecase.png>
+Package pdftex.def Info: ./images//design/mobile/usecase.png  used on input lin
+e 186.
+(pdftex.def)             Requested size: 341.43306pt x 211.70418pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (74.13966pt too wide) in paragraph at lines 205--218
+Overfull \hbox (74.13966pt too wide) in paragraph at lines 216--226
  [] 
  []
 
@@ -278,623 +299,729 @@ Overfull \hbox (74.13966pt too wide) in paragraph at lines 205--218
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 227--227
-[]\OT1/cmr/m/n/10 After desk-top client at-
+Underfull \hbox (badness 5203) in paragraph at lines 235--235
+\OT1/cmr/m/n/10 re-quest through HTTP
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--229
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
+[]\OT1/cmr/m/n/10 Database con-nec-
+ []
+
+
+Underfull \hbox (badness 4859) in paragraph at lines 237--237
+[]\OT1/cmr/m/n/10 Establish and main-tain
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--239
 []\OT1/cmr/m/n/10 After desk-top client
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--231
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []\OT1/cmr/m/n/10 Upload file into
  []
 
 
-Underfull \hbox (badness 4739) in paragraph at lines 231--231
+Underfull \hbox (badness 4739) in paragraph at lines 241--241
 \OT1/cmr/m/n/10 lected and the \OT1/cmr/m/it/10 Sub-mit
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--233
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []\OT1/cmr/m/n/10 Remove database
  []
 
 
-Underfull \hbox (badness 5460) in paragraph at lines 233--233
+Underfull \hbox (badness 5460) in paragraph at lines 243--243
 \OT1/cmr/m/n/10 has been pressed, the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--235
+Underfull \hbox (badness 10000) in paragraph at lines 245--245
 []\OT1/cmr/m/n/10 Return files for
  []
 
 
-Underfull \hbox (badness 6396) in paragraph at lines 235--235
+Underfull \hbox (badness 6396) in paragraph at lines 245--245
 \OT1/cmr/m/n/10 ton has been pressed,
  []
 
 
-Overfull \hbox (76.34987pt too wide) in paragraph at lines 221--238
+Overfull \hbox (76.34987pt too wide) in paragraph at lines 229--248
 [][] 
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 245--245
-\OT1/cmr/m/n/10 ob-ject con-tain-ing
+[12 <./images//design/mobile/usecase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
+\OT1/cmr/m/n/10 upon re-quest
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 247--247
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
+\OT1/cmr/m/n/10 through HTTP
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
+\OT1/cmr/m/n/10 GET/POST re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
+[]\OT1/cmr/m/n/10 Database con-nec-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
+[]\OT1/cmr/m/n/10 Establish and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 main-tain con-
+ []
+
+
+Underfull \hbox (badness 6910) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 nec-tion with the
+ []
+
+
+Underfull \hbox (badness 6792) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 send and re-ceive
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 259--259
 []\OT1/cmr/m/n/10 After open-ing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
+Underfull \hbox (badness 10000) in paragraph at lines 259--259
 \OT1/cmr/m/n/10 mo-bile app, all
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 247--247
+Underfull \hbox (badness 1394) in paragraph at lines 259--259
 \OT1/cmr/m/n/10 database files will
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 247--247
+Underfull \hbox (badness 2150) in paragraph at lines 259--259
 \OT1/cmr/m/n/10 dis-play them-selves
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 249--249
+Underfull \hbox (badness 6825) in paragraph at lines 261--261
 []\OT1/cmr/m/n/10 Upload files into
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--249
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \OT1/cmr/m/n/10 lected from the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--249
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \OT1/cmr/m/n/10 An-droid in-ter-nal
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 249--249
+Underfull \hbox (badness 1603) in paragraph at lines 261--261
 \OT1/cmr/m/n/10 up-loaded into the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--249
+Underfull \hbox (badness 10000) in paragraph at lines 261--261
 \OT1/cmr/m/n/10 database by the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--251
+Underfull \hbox (badness 10000) in paragraph at lines 263--263
 []\OT1/cmr/m/n/10 Remove database
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--251
+Underfull \hbox (badness 10000) in paragraph at lines 263--263
 \OT1/cmr/m/n/10 will be re-moved
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 265--265
 []\OT1/cmr/m/n/10 Return files for
  []
 
 
-Underfull \hbox (badness 5817) in paragraph at lines 253--253
+Underfull \hbox (badness 5817) in paragraph at lines 265--265
 \OT1/cmr/m/it/10 Down-load \OT1/cmr/m/n/10 but-ton,
  []
 
 
-Overfull \hbox (62.12349pt too wide) in paragraph at lines 239--256
+Overfull \hbox (62.12349pt too wide) in paragraph at lines 249--268
 [][] 
  []
 
-[11]
-<./images//fragments/desktop/frontEnd.jpg, id=55, 470.50781pt x 463.7325pt>
+[13]
+<./images//fragments/desktop/frontEnd.jpg, id=68, 470.50781pt x 463.7325pt>
 File: ./images//fragments/desktop/frontEnd.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/frontEnd.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/frontEnd.jpg  used on inpu
-t line 258.
+t line 270.
 (pdftex.def)             Requested size: 341.43306pt x 336.5194pt.
- [12]
-<./images//fragments/desktop/BootstrapCSSfiles.jpg, id=59, 634.62094pt x 90.337
+ [14]
+<./images//fragments/desktop/BootstrapCSSfiles.jpg, id=72, 634.62094pt x 90.337
 5pt>
 File: ./images//fragments/desktop/BootstrapCSSfiles.jpg Graphic file (type jpg)
 
 <use ./images//fragments/desktop/BootstrapCSSfiles.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/BootstrapCSSfiles.jpg  use
-d on input line 261.
+d on input line 273.
 (pdftex.def)             Requested size: 341.44102pt x 56.90602pt.
-<./images//fragments/desktop/BootstrapJSscripts.jpg, id=60, 682.80093pt x 104.6
+<./images//fragments/desktop/BootstrapJSscripts.jpg, id=73, 682.80093pt x 104.6
 4093pt>
 File: ./images//fragments/desktop/BootstrapJSscripts.jpg Graphic file (type jpg
 )
 <use ./images//fragments/desktop/BootstrapJSscripts.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/BootstrapJSscripts.jpg  us
-ed on input line 263.
+ed on input line 275.
 (pdftex.def)             Requested size: 341.4413pt x 56.90442pt.
- [13 <./images//fragments/desktop/frontEnd.jpg> <./images//fragments/desktop/Bo
+ [15 <./images//fragments/desktop/frontEnd.jpg> <./images//fragments/desktop/Bo
 otstrapCSSfiles.jpg>]
-<./images//fragments/desktop/css.jpg, id=65, 316.93407pt x 273.27094pt>
+<./images//fragments/desktop/css.jpg, id=77, 316.93407pt x 273.27094pt>
 File: ./images//fragments/desktop/css.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/css.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/css.jpg  used on input lin
-e 265.
+e 277.
 (pdftex.def)             Requested size: 227.62653pt x 170.71884pt.
-<./images//fragments/desktop/display1.jpg, id=66, 362.85562pt x 215.30438pt>
+<./images//fragments/desktop/display1.jpg, id=78, 362.85562pt x 215.30438pt>
 File: ./images//fragments/desktop/display1.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/display1.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/display1.jpg  used on inpu
-t line 269.
+t line 281.
 (pdftex.def)             Requested size: 341.43306pt x 202.59639pt.
-<./images//fragments/desktop/display2.jpg, id=67, 515.67656pt x 75.28125pt>
+<./images//fragments/desktop/display2.jpg, id=79, 515.67656pt x 75.28125pt>
 File: ./images//fragments/desktop/display2.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/display2.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/display2.jpg  used on inpu
-t line 271.
+t line 283.
 (pdftex.def)             Requested size: 341.43306pt x 49.84543pt.
- [14 <./images//fragments/desktop/BootstrapJSscripts.jpg> <./images//fragments/
+ [16 <./images//fragments/desktop/BootstrapJSscripts.jpg> <./images//fragments/
 desktop/css.jpg> <./images//fragments/desktop/display1.jpg>]
-<./images//fragments/desktop/display3.jpg, id=71, 450.9347pt x 28.60687pt>
+<./images//fragments/desktop/display3.jpg, id=83, 450.9347pt x 28.60687pt>
 File: ./images//fragments/desktop/display3.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/display3.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/display3.jpg  used on inpu
-t line 273.
+t line 285.
 (pdftex.def)             Requested size: 341.43306pt x 21.66112pt.
-<./images//fragments/desktop/upload.jpg, id=72, 631.60968pt x 86.57344pt>
+<./images//fragments/desktop/upload.jpg, id=84, 631.60968pt x 86.57344pt>
 File: ./images//fragments/desktop/upload.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/upload.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/upload.jpg  used on input 
-line 277.
+line 289.
 (pdftex.def)             Requested size: 341.43306pt x 46.80046pt.
-<./images//fragments/desktop/upload2.jpg, id=73, 373.395pt x 305.64188pt>
+<./images//fragments/desktop/upload2.jpg, id=85, 373.395pt x 305.64188pt>
 File: ./images//fragments/desktop/upload2.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/upload2.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/upload2.jpg  used on input
- line 279.
+ line 291.
 (pdftex.def)             Requested size: 341.43306pt x 279.49167pt.
-<./images//fragments/desktop/upload3.jpg, id=74, 522.45187pt x 147.55125pt>
+<./images//fragments/desktop/upload3.jpg, id=86, 522.45187pt x 147.55125pt>
 File: ./images//fragments/desktop/upload3.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/upload3.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/upload3.jpg  used on input
- line 281.
+ line 293.
 (pdftex.def)             Requested size: 341.43306pt x 96.42949pt.
- [15 <./images//fragments/desktop/display2.jpg> <./images//fragments/desktop/di
+ [17 <./images//fragments/desktop/display2.jpg> <./images//fragments/desktop/di
 splay3.jpg> <./images//fragments/desktop/upload.jpg> <./images//fragments/deskt
 op/upload2.jpg>]
-<./images//fragments/desktop/delete.jpg, id=78, 706.13812pt x 134.00063pt>
+<./images//fragments/desktop/delete.jpg, id=90, 706.13812pt x 134.00063pt>
 File: ./images//fragments/desktop/delete.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/delete.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/delete.jpg  used on input 
-line 285.
+line 297.
 (pdftex.def)             Requested size: 341.43306pt x 64.79187pt.
-<./images//fragments/desktop/download.jpg, id=79, 634.62094pt x 132.495pt>
+<./images//fragments/desktop/download.jpg, id=91, 634.62094pt x 132.495pt>
 File: ./images//fragments/desktop/download.jpg Graphic file (type jpg)
 <use ./images//fragments/desktop/download.jpg>
 Package pdftex.def Info: ./images//fragments/desktop/download.jpg  used on inpu
-t line 289.
+t line 301.
 (pdftex.def)             Requested size: 341.43306pt x 71.28542pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
+Underfull \hbox (badness 10000) in paragraph at lines 309--309
 []\OT1/cmr/m/n/10 Connection
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--299
+Underfull \hbox (badness 10000) in paragraph at lines 311--311
 []\OT1/cmr/m/n/10 Display
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--299
+Underfull \hbox (badness 10000) in paragraph at lines 311--311
 \OT1/cmr/m/n/10 in the Mongo
  []
 
 
-Underfull \hbox (badness 2285) in paragraph at lines 301--301
+Underfull \hbox (badness 2285) in paragraph at lines 313--313
 \OT1/cmr/m/n/10 into the database
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
 \OT1/cmr/m/n/10 via server af-ter
  []
 
 
-Underfull \hbox (badness 3179) in paragraph at lines 301--301
+Underfull \hbox (badness 3179) in paragraph at lines 313--313
 \OT1/cmr/m/n/10 the list of doc-u-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 \OT1/cmr/m/n/10 via server af-ter
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 \OT1/cmr/m/n/10 press-ing \OT1/cmr/m/it/10 Delete
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 \OT1/cmr/m/n/10 dis-played with-out
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
 []\OT1/cmr/m/n/10 Download
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 305--305
+Underfull \hbox (badness 1189) in paragraph at lines 317--317
 []\OT1/cmr/m/n/10 A file gets down-
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 305--305
+Underfull \hbox (badness 2073) in paragraph at lines 317--317
 \OT1/cmr/m/n/10 ing the \OT1/cmr/m/it/10 Down-load
  []
 
 
-Overfull \hbox (84.88579pt too wide) in paragraph at lines 291--308
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 303--320
 [][] 
  []
 
-[16 <./images//fragments/desktop/upload3.jpg> <./images//fragments/desktop/dele
-te.jpg> <./images//fragments/desktop/download.jpg>] [17]
-<./images//fragments/mobile/FileList.png, id=86, 308.15125pt x 541.02126pt>
+[18 <./images//fragments/desktop/upload3.jpg> <./images//fragments/desktop/dele
+te.jpg> <./images//fragments/desktop/download.jpg>] [19]
+<./images//fragments/mobile/FileList.png, id=99, 308.15125pt x 541.02126pt>
 File: ./images//fragments/mobile/FileList.png Graphic file (type png)
 <use ./images//fragments/mobile/FileList.png>
 Package pdftex.def Info: ./images//fragments/mobile/FileList.png  used on input
- line 325.
+ line 337.
 (pdftex.def)             Requested size: 99.58464pt x 174.83919pt.
-<./images//fragments/mobile/NavBar.png, id=87, 308.15125pt x 542.025pt>
+<./images//fragments/mobile/NavBar.png, id=100, 308.15125pt x 542.025pt>
 File: ./images//fragments/mobile/NavBar.png Graphic file (type png)
 <use ./images//fragments/mobile/NavBar.png>
 Package pdftex.def Info: ./images//fragments/mobile/NavBar.png  used on input l
-ine 329.
+ine 341.
 (pdftex.def)             Requested size: 99.58464pt x 175.16356pt.
- [18 <./images//fragments/mobile/FileList.png>]
-<./images//fragments/mobile/FileOptions.png, id=92, 308.15125pt x 540.0175pt>
+ [20 <./images//fragments/mobile/FileList.png>]
+<./images//fragments/mobile/FileOptions.png, id=105, 308.15125pt x 540.0175pt>
 File: ./images//fragments/mobile/FileOptions.png Graphic file (type png)
 <use ./images//fragments/mobile/FileOptions.png>
 Package pdftex.def Info: ./images//fragments/mobile/FileOptions.png  used on in
-put line 333.
+put line 345.
 (pdftex.def)             Requested size: 99.58464pt x 174.5148pt.
- [19 <./images//fragments/mobile/NavBar.png> <./images//fragments/mobile/FileOp
+ [21 <./images//fragments/mobile/NavBar.png> <./images//fragments/mobile/FileOp
 tions.png>]
-<./images//fragments/mobile/adapter.png, id=99, 630.355pt x 272.01625pt>
+<./images//fragments/mobile/adapter.png, id=111, 630.355pt x 272.01625pt>
 File: ./images//fragments/mobile/adapter.png Graphic file (type png)
 <use ./images//fragments/mobile/adapter.png>
 Package pdftex.def Info: ./images//fragments/mobile/adapter.png  used on input 
-line 360.
+line 372.
 (pdftex.def)             Requested size: 341.43306pt x 147.339pt.
-<./images//fragments/mobile/uploadbtn.png, id=100, 633.36626pt x 163.61125pt>
+<./images//fragments/mobile/uploadbtn.png, id=112, 633.36626pt x 163.61125pt>
 File: ./images//fragments/mobile/uploadbtn.png Graphic file (type png)
 <use ./images//fragments/mobile/uploadbtn.png>
 Package pdftex.def Info: ./images//fragments/mobile/uploadbtn.png  used on inpu
-t line 366.
+t line 378.
 (pdftex.def)             Requested size: 341.43306pt x 88.20145pt.
- [20 <./images//fragments/mobile/adapter.png>]
-<./images//fragments/mobile/builder.png, id=105, 599.23875pt x 125.46875pt>
+ [22 <./images//fragments/mobile/adapter.png>]
+<./images//fragments/mobile/builder.png, id=117, 599.23875pt x 125.46875pt>
 File: ./images//fragments/mobile/builder.png Graphic file (type png)
 <use ./images//fragments/mobile/builder.png>
 Package pdftex.def Info: ./images//fragments/mobile/builder.png  used on input 
-line 370.
+line 382.
 (pdftex.def)             Requested size: 341.43306pt x 71.49112pt.
-<./images//fragments/mobile/RequestB.png, id=106, 478.78876pt x 97.36375pt>
+<./images//fragments/mobile/RequestB.png, id=118, 478.78876pt x 97.36375pt>
 File: ./images//fragments/mobile/RequestB.png Graphic file (type png)
 <use ./images//fragments/mobile/RequestB.png>
 Package pdftex.def Info: ./images//fragments/mobile/RequestB.png  used on input
- line 372.
+ line 384.
 (pdftex.def)             Requested size: 284.52756pt x 57.86008pt.
-<./images//fragments/mobile/deletecode.png, id=107, 646.415pt x 155.58125pt>
+<./images//fragments/mobile/deletecode.png, id=119, 646.415pt x 155.58125pt>
 File: ./images//fragments/mobile/deletecode.png Graphic file (type png)
 <use ./images//fragments/mobile/deletecode.png>
 Package pdftex.def Info: ./images//fragments/mobile/deletecode.png  used on inp
-ut line 380.
+ut line 392.
 (pdftex.def)             Requested size: 341.43306pt x 82.17752pt.
- [21 <./images//fragments/mobile/uploadbtn.png> <./images//fragments/mobile/bui
+ [23 <./images//fragments/mobile/uploadbtn.png> <./images//fragments/mobile/bui
 lder.png> <./images//fragments/mobile/RequestB.png>]
-<./images//fragments/mobile/downloadbtn.png, id=114, 851.18pt x 248.93pt>
+<./images//fragments/mobile/downloadbtn.png, id=126, 851.18pt x 248.93pt>
 File: ./images//fragments/mobile/downloadbtn.png Graphic file (type png)
 <use ./images//fragments/mobile/downloadbtn.png>
 Package pdftex.def Info: ./images//fragments/mobile/downloadbtn.png  used on in
-put line 384.
+put line 396.
 (pdftex.def)             Requested size: 341.43306pt x 99.8551pt.
 
-Underfull \hbox (badness 5403) in paragraph at lines 399--399
+Underfull \hbox (badness 5403) in paragraph at lines 411--411
 []\OT1/cmr/m/n/10 Get list of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
+Underfull \hbox (badness 10000) in paragraph at lines 411--411
 \OT1/cmr/m/n/10 files from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--399
+Underfull \hbox (badness 10000) in paragraph at lines 411--411
 []\OT1/cmr/m/n/10 List view would
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 []\OT1/cmr/m/n/10 Smooth
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 401--401
+Underfull \hbox (badness 1231) in paragraph at lines 413--413
 \OT1/cmr/m/n/10 and ef-fi-cient
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 \OT1/cmr/m/n/10 nav-i-ga-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--401
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 \OT1/cmr/m/n/10 be-tween
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 401--401
+Underfull \hbox (badness 3724) in paragraph at lines 413--413
 \OT1/cmr/m/n/10 app with smooth
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--403
+Underfull \hbox (badness 10000) in paragraph at lines 415--415
 []\OT1/cmr/m/n/10 Clicking on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--403
+Underfull \hbox (badness 10000) in paragraph at lines 415--415
 \OT1/cmr/m/n/10 file in list
  []
 
 
-Underfull \hbox (badness 7221) in paragraph at lines 403--403
+Underfull \hbox (badness 7221) in paragraph at lines 415--415
 []\OT1/cmr/m/n/10 file op-tions frag-
  []
 
 
-Underfull \hbox (badness 5288) in paragraph at lines 403--403
+Underfull \hbox (badness 5288) in paragraph at lines 415--415
 \OT1/cmr/m/n/10 ment opens with
  []
 
 
-Underfull \hbox (badness 1735) in paragraph at lines 403--403
+Underfull \hbox (badness 1735) in paragraph at lines 415--415
 \OT1/cmr/m/n/10 se-lected file name
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--405
+Underfull \hbox (badness 10000) in paragraph at lines 417--417
 []\OT1/cmr/m/n/10 Download
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 405--405
+Underfull \hbox (badness 1102) in paragraph at lines 417--417
 \OT1/cmr/m/n/10 but-ton (File
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--405
+Underfull \hbox (badness 10000) in paragraph at lines 417--417
 \OT1/cmr/m/n/10 op-tions
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 405--405
+Underfull \hbox (badness 1648) in paragraph at lines 417--417
 []\OT1/cmr/m/n/10 Pressing down-load
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--405
+Underfull \hbox (badness 10000) in paragraph at lines 417--417
 \OT1/cmr/m/n/10 down-load-ing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--407
+Underfull \hbox (badness 10000) in paragraph at lines 419--419
 []\OT1/cmr/m/n/10 Remove
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 407--407
+Underfull \hbox (badness 7099) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 but-ton pt.1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--407
+Underfull \hbox (badness 10000) in paragraph at lines 419--419
 []\OT1/cmr/m/n/10 Pressing Re-move
  []
 
 
-Underfull \hbox (badness 2828) in paragraph at lines 407--407
+Underfull \hbox (badness 2828) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 will re-sult in re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--407
+Underfull \hbox (badness 10000) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 mov-ing only the
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 407--407
+Underfull \hbox (badness 4279) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 file se-lected from
  []
 
 
-Underfull \hbox (badness 4036) in paragraph at lines 407--407
+Underfull \hbox (badness 4036) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 how-ever the con-
  []
 
 
-Underfull \hbox (badness 4060) in paragraph at lines 407--407
+Underfull \hbox (badness 4060) in paragraph at lines 419--419
 \OT1/cmr/m/n/10 time to com-plete
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 []\OT1/cmr/m/n/10 Remove
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 409--409
+Underfull \hbox (badness 7099) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 but-ton pt.2
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 409--409
+Underfull \hbox (badness 1112) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 sent straight back
  []
 
 
-Underfull \hbox (badness 3138) in paragraph at lines 409--409
+Underfull \hbox (badness 3138) in paragraph at lines 421--421
 []\OT1/cmr/m/n/10 After the re-quest
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 changed back to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 the Home page,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 how-ever the UI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 the re-quest, a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 thread.delay() is
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 409--409
+Underfull \hbox (badness 1297) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 the UI change to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 421--421
 \OT1/cmr/m/n/10 give the server
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 411--411
+Underfull \hbox (badness 1231) in paragraph at lines 423--423
 []\OT1/cmr/m/n/10 Upload but-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--411
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
 \OT1/cmr/m/n/10 ton (Home
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--411
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
 []\OT1/cmr/m/n/10 Pressing up-load
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--411
+Underfull \hbox (badness 10000) in paragraph at lines 423--423
 \OT1/cmr/m/n/10 up-loaded to the
  []
 
 
-Overfull \hbox (84.88579pt too wide) in paragraph at lines 393--416
+Overfull \hbox (84.88579pt too wide) in paragraph at lines 405--428
  [] 
  []
 
-[22 <./images//fragments/mobile/deletecode.png> <./images//fragments/mobile/dow
+[24 <./images//fragments/mobile/deletecode.png> <./images//fragments/mobile/dow
 nloadbtn.png>]
 Overfull \vbox (60.99994pt too high) has occurred while \output is active []
 
 
-[23]
-Overfull \hbox (4.66736pt too wide) in paragraph at lines 419--420
+[25]
+Overfull \hbox (4.66736pt too wide) in paragraph at lines 431--432
 \OT1/cmr/m/n/10 Project Prime con-sists of six mem-bers: Yusaf, Sandi-pan, Sa-l
 oni, She-fali, Cameron
  []
 
-[24] [25]
-Overfull \hbox (3.64003pt too wide) in paragraph at lines 439--439
+[26] [27]
+Overfull \hbox (3.64003pt too wide) in paragraph at lines 451--451
 []\OT1/cmr/bx/n/10 Sandipan| 
  []
 
 
-Overfull \hbox (2.94563pt too wide) in paragraph at lines 439--439
+Overfull \hbox (2.94563pt too wide) in paragraph at lines 451--451
 []\OT1/cmr/bx/n/10 Cameron| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
-[]\OT1/cmr/m/n/10 Bootstrap (n.d.) \OT1/cmr/m/it/10 In-tro-duc-tion \OT1/cmr/m/
-n/10 [on-line] Avail-able at:
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
  []
 
 
-Underfull \hbox (badness 2368) in paragraph at lines 460--461
-\OT1/cmr/m/n/10 Avail-able at: https://www.projectmanager.com/training/prioriti
-ze-moscow-
+Underfull \hbox (badness 10000) in paragraph at lines 461--463
+
  []
 
 
-Underfull \hbox (badness 2941) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
+
+ []
+
+
+Overfull \hbox (4.9729pt too wide) in paragraph at lines 470--471
+\OT1/cmr/m/n/10 able at: https://www.projectmanager.com/training/prioritize-mos
+cow-technique
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
+
+ []
+
+[28]
+Overfull \hbox (19.30634pt too wide) in paragraph at lines 472--474
 \OT1/cmr/m/n/10 https://blogs.dropbox.com/tech/2014/07/streaming-file-synchroni
-zation/ [Ac-
+zation/ [Ac-cessed
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 468--469
+Underfull \hbox (badness 10000) in paragraph at lines 472--474
+
+ []
+
+
+Overfull \hbox (0.1953pt too wide) in paragraph at lines 475--476
+\OT1/cmr/m/n/10 Avail-able at: http://web.mit.edu/6.033/2005/wwwdocs/papers/uni
+sonimpl.pdf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 475--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Overfull \hbox (6.83406pt too wide) in paragraph at lines 479--480
 []\OT1/cmr/m/n/10 Send-anywhere.com. (2019). Send Any-where. [on-line] Avail-ab
-le at:
+le at: https://send-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--473
-[]\OT1/cmr/m/n/10 tutorialspoint. Http-Overview [on-line] Avail-able at:
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
+
  []
 
 
-Overfull \hbox (14.12354pt too wide) in paragraph at lines 446--477
-[] 
+Underfull \hbox (badness 10000) in paragraph at lines 481--482
+
  []
 
-[26] [27] (./team_project_prime.aux) ) 
+
+Overfull \hbox (2.93597pt too wide) in paragraph at lines 483--485
+[]\OT1/cmr/m/n/10 tutorialspoint. Http-Overview [on-line] Avail-able at: https:
+//www.tutorialspoint.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--485
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
+
+ []
+
+[29] (./team_project_prime.aux) ) 
 Here is how much of TeX's memory you used:
- 2676 strings out of 492649
- 45944 string characters out of 6129622
- 114149 words of memory out of 5000000
- 6520 multiletter control sequences out of 15000+600000
+ 2691 strings out of 492649
+ 46479 string characters out of 6129622
+ 115149 words of memory out of 5000000
+ 6532 multiletter control sequences out of 15000+600000
  8856 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,38p,1531b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmti10.pfb>
-Output written on team_project_prime.pdf (27 pages, 1437009 bytes).
+ 41i,8n,38p,1531b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmti10.pfb>
+Output written on team_project_prime.pdf (29 pages, 1691127 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 172 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
