@@ -9,7 +9,7 @@
 \begin{document}
  \maketitle
  \section{\underline{Introduction}}
-In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, a mobile client and desktop client. The server is the \textit{hub} while the clients are the \textit{spokes}. The server was created using Node.js, where it adopted the role of an interface between the clients and MongoDB database. In addition, the server is stored in the Heroku cloud platform to provide both clients with universal file access and processing. The Node.js server can also process HTTP requests to allow both clients to upload, delete and download files. The mobile client was developed using Java and XML on Android Studio, whereas the desktop client was developed using Javascript, HTML and CSS on Electron. The output of the project is a fully-functioning file synchroniser that interacts with both clients via the Node.js server. This project addresses the problem of long durations to complete tasks; thus, the solution will take the form of two clients that minimise the duration to complete tasks as low as possible.
+In this project, we were tasked with building a multi-host file synchroniser consisting of three components: a server, a mobile client and desktop client. The server is the \textit{hub} while the clients are the \textit{spokes}. The server was created using Node.js, where it adopted the role of an interface between the clients and MongoDB database. In addition, the server is stored in the Heroku cloud platform to provide both clients with universal file access and processing. The Node.js server can also process HTTP requests to allow both clients to upload, delete and download files. The mobile client was developed using Java and XML on Android Studio, whereas the desktop client was developed using JavaScript, HTML and CSS on Electron. The output of the project is a fully-functioning file synchroniser that interacts with both clients via the Node.js server. This project addresses the problem of long durations to complete tasks; thus, the solution will take the form of two clients that minimise the duration to complete tasks as low as possible.
 \includegraphics[width=12cm]{/server/serverpic}
 
 \section{\underline{Review}}
@@ -21,28 +21,28 @@ The different techniques which can be used by the the server and client can comm
 \item \textbf{WebSocket:} WebSocket is a communication protocol, which provides full duplex communication channel i.e. bi-directional communication between the client and server.
 \item \textbf{Hypertext Transfer Protocol (HTTP):} HTTP is a request-response protocol and is stateless. The user initiates requests and the server responds accordingly.
 
-Moving on, according to Jim, Pierce and Vouillon (2002), the connection between client and server can be done in two ways: Socket mode and Tunneling mode. In socket mode, both processes are manually started and the client connects to the server on a predetermined port. In tunneling mode, the client process starts first, it uses SSH to start the server process and communication is conducted using pipes. For example, Unison is more client-oriented which adopts a simple client-server architecture.
+Moving on, according to Jim, Pierce and Vouillon (2002), the connection between client and server can be done in two ways: Socket mode and Tunnelling mode. In socket mode, both processes are manually started and the client connects to the server on a predetermined port. In tunnelling mode, the client process starts first, it uses SSH to start the server process and communication is conducted using pipes. For example, Unison is more client-oriented which adopts a simple client-server architecture.
 \end{itemize}
 
 Another application that is commonly used is Dropbox. Dropbox is more server-oriented. According to the Dropbox website (Dropbox Business, n.d), Dropbox possesses different server components:
 \begin{itemize}
 \item Block servers
-\item Metadata servers
+\item Meta data servers
 \item Storage Servers
 \item Paper application servers
 \item Paper image servers
 \end{itemize}
 
-In our application, the communication is between a server and two clients: desktop and mobile. The clients send a HTTP request to the server and the server responds to the request accordingly. HTTP is a generic stateless protocol. The server recieves the request and responds to the clients with certain results and subsequently, the connection disconnects. So the client and server know about each other during current request and response only. Any kind of media can be sent using HTTP.
+In our application, the communication is between a server and two clients: desktop and mobile. The clients send a HTTP request to the server and the server responds to the request accordingly. HTTP is a generic stateless protocol. The server receives the request and responds to the clients with certain results and subsequently, the connection disconnects. So the client and server know about each other during current request and response only. Any kind of media can be sent using HTTP.
 
 \subsection{\underline{Desktop Client}}
 The common file hosting service, Dropbox, uses a method which they call “Sync” to keep its files updated across mobile and desktop clients. Its split into two stages: upload and download.
-Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their metadata database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Metadata Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the metadata here is that the main contents of the files are less vulnerable to threats because they won’t need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d).
+Once a file is uploaded through the server, it is added to their database before other clients are notified of its existence. According to (Koorapati, 2014), the host client does not use a traditional file system directory and allocates a namespace for each user. Their meta data database also known as the Server File Journal stores this information and connects directly to one of Dropbox’s server types: Meta data Server. The actual contents of the file are stored in block data servers. The advantage of having a separate database for the meta data here is that the main contents of the files are less vulnerable to threats because they won't need to be referenced as often as the metadata for reviewing updates about the files. Furthermore, a good file synchronisation software is defined by how robust its security is and their block data servers are all encrypted using “256-Bit Advanced Encryption Standard” as mentioned in (Dropbox, n.d).
 Therefore, the protocol described in (Koorapati, 2014) for Dropbox’s desktop client is as follows:
 \begin{itemize}
-\item The upload client commits to the metadata server first to check if there exists a namespace for the file stored in the block server already.
-\item For new files, the metadata server would return “need blocks” and the client then directly talks with the block data server to store the new file.
-\item The process is repeated and any updates to the file can be checked by only talking to the metadata server.
+\item The upload client commits to the meta data server first to check if there exists a namespace for the file stored in the block server already.
+\item For new files, the meta data server would return “need blocks” and the client then directly talks with the block data server to store the new file.
+\item The process is repeated and any updates to the file can be checked by only talking to the meta data server.
 \item To download a file, the downloading client pings the metadata server to retrieve a list of updates. The Server File journal notifies the client that a new file was added.
 \item The download client now contacts the block data server directly to access the new file.
 \end{itemize}
@@ -50,16 +50,16 @@ This protocol shows that both the desktop client and server application in Dropb
 
 In (Jim, Pierce and Vouillon, 2002), it is mentioned that “most of Unison’s functionality is concentrated on the client side”. At the start of a process, two roots are specified (to a create a replica) and then the client goes through the following steps:
 \begin{itemize}
-\item \textbf{Update Detection:} The metadata from older version of the files are compared to their current states and each host is notified whether the contents of the files are changed or not.
-\item \textbf{Reconciliation:} The list of changed contents are merged together into a “task list” and used to handle conflicts. A conflict is detected if a path is updated in the replica, whether its descendants have also been updated in the other replica, or the contents in the two replicas are not equal. The task list is then displayed to the user through the UI.
+\item \textbf{Update Detection:} The meta data from older version of the files are compared to their current states and each host is notified whether the contents of the files are changed or not.
+\item \textbf{Reconciliation:} The list of changed contents are merged together into a “task list" and used to handle conflicts. A conflict is detected if a path is updated in the replica, whether its descendants have also been updated in the other replica, or the contents in the two replicas are not equal. The task list is then displayed to the user through the UI.
 \item \textbf{Propagation:} The changes in the task list are propagated through both the replicas and the server is then notified about the new contents of the file paths that were updated in the process.
 \end{itemize}
 The advantage of having a heavy client-side functionality is robustness. Having less burden on their server increases their crash resistance as indicated in (Jim, Pierce, Vouillon, 2002).
 
 \subsection{\underline{Mobile Client}}
-File synchronization (file sync) is a method of keeping files that are stored in several different physical locations up to date. Cloud and storage vendors often offer software that helps with this process. Recent Studies have shown that file synchronisation has rapidly increased for enterprises/organisations to use the cloud as a means for collaboration. (Bhagwat, 2001) File sync is also commonly used for backup and for mobile access to files. Using a mobile device, you can access the files from anywhere if the user has access to the internet. However, file synching often presents security concerns to enterprises whose employees use consumer-grade applications to access business files. With the use of file synchronisation for public cloud, businesses and organisations are able to utilise their business in lower costs and higher efficiency. (Chiang, 2013) It ensures that the data is kept secure and manages integrity between local storages and the cloud server. However, there are issues that have arisen for example if third parties are able to access the information and the information management crisis.
+File synchronization (file sync) is a method of keeping files that are stored in several different physical locations up to date. Cloud and storage vendors often offer software that helps with this process. Recent Studies have shown that file synchronisation has rapidly increased for enterprises/organisations to use the cloud as a means for collaboration. (Bhagwat, 2001) File sync is also commonly used for backup and for mobile access to files. Using a mobile device, you can access the files from anywhere if the user has access to the internet. However, file syncing often presents security concerns to enterprises whose employees use consumer-grade applications to access business files. With the use of file synchronisation for public cloud, businesses and organisations are able to utilise their business in lower costs and higher efficiency. (Chiang, 2013) It ensures that the data is kept secure and manages integrity between local storages and the cloud server. However, there are issues that have arisen for example if third parties are able to access the information and the information management crisis.
 
-There are many existing applications that use file synchronisers. For example FreeFileSync uses a synchronisation software that creates and manages backup copies of all your important files. Instead of copying each file every time, FreeFileSync determines the differences between a source and a target folder and transfers only the minimum amount of data needed. FreeFileSync is a open source Software. Moreover, another example of an app in the market is FileyApp. This app allows you to get all you email attachments in one place and can be available in different platforms such as iphone, ipad and windows. (Otherinbox.com, 2019).  FileyApp has many features for instance, automatically download of attachments, track file versions over emails, get notified of new files and share your files and attachments. With all these features implemented in the app, the user has more options rather than just downloading or opening a file.
+There are many existing applications that use file synchronisers. For example FreeFileSync uses a synchronisation software that creates and manages backup copies of all your important files. Instead of copying each file every time, FreeFileSync determines the differences between a source and a target folder and transfers only the minimum amount of data needed. FreeFileSync is a open source Software. Moreover, another example of an app in the market is FileyApp. This app allows you to get all you email attachments in one place and can be available in different platforms such as iPhone, iPad and Windows. (Otherinbox.com, 2019).  FileyApp has many features for instance, automatically download of attachments, track file versions over emails, get notified of new files and share your files and attachments. With all these features implemented in the app, the user has more options rather than just downloading or opening a file.
 
 \subsubsection{\underline{Send Anywhere app}}
 
@@ -90,7 +90,7 @@ Requirements have been derived for each component. The requirements have been an
 \hline
 \end{tabular}
 
-The server is created using Node.js. The server waits for client requests and responds to them; thus, providing a service upon their request. It is responsible for handling requests, responding to them appropriately, as well as for establishing and maintaining the database connection. Node.js is used to build the server as it allows simple writing and maintenance of JS-based backend servers with easy-to-use APIs by the clients. Along with Node.js, a flexible Node application framework called Express.js is used, which creates the middleware and helps to manage everything from routes to handling requests. To store and retrieve files, an instance of a NoSQL database - MongoDB is used. Unlike a relational database, where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas. The whole server architecture is hosted on the cloud to allow remote access in the true sense. The cloud hosting of the server is supported by Heroku - a cloud Platform as a Service provider, and a cloud based instance of the MongoDB database - MongoDB Atlas.
+The server is created using Node.js. The server waits for client requests and responds to them; thus, providing a service upon their request. It is responsible for handling requests, responding to them appropriately, as well as for establishing and maintaining the database connection. Node.js is used to build the server as it allows simple writing and maintenance of JS-based back-end servers with easy-to-use APIs by the clients. Along with Node.js, a flexible Node application framework called Express.js is used, which creates the middle-ware and helps to manage everything from routes to handling requests. To store and retrieve files, an instance of a NoSQL database - MongoDB is used. Unlike a relational database, where data is stored in rows and columns, MongoDB stores BSON documents in collections with dynamic schemas. The whole server architecture is hosted on the cloud to allow remote access in the true sense. The cloud hosting of the server is supported by Heroku - a cloud Platform as a Service provider, and a cloud based instance of the MongoDB database - MongoDB Atlas.
 
 \begin{figure}[h!]
 \includegraphics[width=12cm]{/server/expresspic}
@@ -135,17 +135,17 @@ The server is created using Node.js. The server waits for client requests and re
 
 Above is an architectural diagram of the desktop client. After analysing the requirements, the main functionalities chosen were \textit{Upload}, \textit{Download}, \textit{Delete} and \textit{Display}. The rationale behind this was wanting to focus on the core functionalities to ensure the working client could be tested with the server.
 
-The user will interact with the client through the UI containing three buttons: upload, download and delete. In addition, they will view the files in the server as a list. Interacting with the upload button would access the user’s local filesystem and allow them to select any type of file. Once a file is selected, the client will send a POST request to the server asking it to store the file. The Download button sends a GET Request to the server asking for the specific file to be retrieved and opens the user’s local filesystem to save the file. Delete simply sends a DELETE request to the server asking it to remove the file from the database.
+The user will interact with the client through the UI containing three buttons: upload, download and delete. In addition, they will view the files in the server as a list. Interacting with the upload button would access the user's local file system and allow them to select any type of file. Once a file is selected, the client will send a POST request to the server asking it to store the file. The Download button sends a GET Request to the server asking for the specific file to be retrieved and opens the user's local file system to save the file. Delete simply sends a DELETE request to the server asking it to remove the file from the database.
 
 The Display functionality displays all the files in the system by sending a GET request to the server. This allows the user to check for any changes to the metadata such as the filename or any additions/ deletions of files.
 
 \includegraphics[width=9cm]{/design/desktop/UI}
 
-The above mock UI was sketched using MockFlow. This sketch provided a prediction of the client's appearence. In addition, it supported the desktop subgroup during the implementation of the client's front-end. 
+The above mock UI was sketched using MockFlow. This sketch provided a prediction of the client's appearance. In addition, it supported the desktop subgroup during the implementation of the client's front-end. 
 
 \includegraphics[width=8cm]{/design/desktop/UseCase}
 
-A use-case diagram is a diagram that illustrates a system's functionalities through the end-user's perspective (Gibilisco, 2015). The above use-case diagram represents the desktop client's functionalities, which allows the user to selec files through their local file manager, upload files into the database via the server, delete database files using the server and download database files into the user's local storage.
+A use-case diagram is a diagram that illustrates a system's functionalities through the end-user's perspective (Gibilisco, 2015). The above use-case diagram represents the desktop client's functionalities, which allows the user to select files through their local file manager, upload files into the database via the server, delete database files using the server and download database files into the user's local storage.
 
 \subsection{\underline{Mobile Client}}
 \subsubsection{\underline{Requirements for Mobile Client}}
@@ -167,7 +167,7 @@ A use-case diagram is a diagram that illustrates a system's functionalities thro
 \hline
 6 & All the application's functions should be accessible from the main page & Should Have \\
 \hline
-7 & All files files should be listed with both filename and time of last modification clearly visible to the user & Should Have \\
+7 & All files files should be listed with both file name and time of last modification clearly visible to the user & Should Have \\
 \hline
 8 & Include a search bar to quickly search through the list of files & Could Have \\
 \hline
@@ -177,11 +177,11 @@ A use-case diagram is a diagram that illustrates a system's functionalities thro
 
 \includegraphics[width=12cm]{/design/mobile/UI}
 
-There are three pages in the mobile applicaiton. The app will have a navigation menu, which can be accessed by clicking on the hamburger menu on the top left of the app. Once the menu is pressed, a slider will appear and display all options the user can navigate through. The app has the following options: \textit{Home}, \textit{Download}, \textit{Upload} and \textit{Help}. In the main page, it will display all files residing in the database. The files will be displayed in a listview. The user also has the option to remove the file by clicking on the \textit{Remove} button. The UI is designed in an understandable fashion for the user to naviage through the app.
+There are three pages in the mobile application. The app will have a navigation menu, which can be accessed by clicking on the hamburger menu on the top left of the app. Once the menu is pressed, a slider will appear and display all options the user can navigate through. The app has the following options: \textit{Home}, \textit{Download}, \textit{Upload} and \textit{Help}. In the main page, it will display all files residing in the database. The files will be displayed in a listview. The user also has the option to remove the file by clicking on the \textit{Remove} button. The UI is designed in an understandable fashion for the user to navigate through the app.
 
 \includegraphics[width=12cm]{/design/mobile/architecture}
 
-The mobile architecture consists of the user navigating through the app. The user will have many features that they can select. If they want to upload a file, a POST request will be made to the Node Js Server. If clicked on upload or download a get request will be made to the Node js server. If the user wants to delete a file, a DELETE request will be sent to the server, which removes the corresponding file in the database.
+The mobile architecture consists of the user navigating through the app. The user will have many features that they can select. If they want to upload a file, a POST request will be made to the Node.js Server. If clicked on upload or download a get request will be made to the Node.js server. If the user wants to delete a file, a DELETE request will be sent to the server, which removes the corresponding file in the database.
 
 \includegraphics[width=12cm]{/design/mobile/usecase}
 
@@ -189,23 +189,19 @@ A use case diagram was created to describe the interactions between the user and
 
 \section{\underline{Implementation}}
 \subsection{\underline{Server Application}}
-The server is written in Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform. Table 1 shows the packages involved in the implementation of the server, whereas table 2 shows the API calls involved in the implementation...
+The server is written in Node.js and the database used is a cloud service by MongoDB. The Node.js server is stored in the Heroku cloud platform. Table 1 shows the packages involved in the implementation of the server, while table 2 shows the API calls involved in the implementation.
 \begin{table}[h!]
 \begin {center}
 \captionsetup{justification=centering}
 \caption{List of packages used}
-\begin{tabular}{| l | l |}
+\begin{tabular}{ l | l }
 \hline
 \textbf{Package Name} & \textbf{Description}\\
 \hline
 Express & Web framework to support API building\\
-\hline
 Multer & Used for uploads\\
-\hline
 Mongoose & Used to connect to database\\
-\hline
 method-override & To make a delete request without making an AJAX call\\
-\hline
 GridFS & To store and retrieve files larger than 16MB\\
 \hline
 \end{tabular}
@@ -217,16 +213,13 @@ GridFS & To store and retrieve files larger than 16MB\\
 \begin {center}
 \captionsetup{justification=centering}
 \caption{API calls to the server}
-\begin{tabular}{| l | l | l |}
+\begin{tabular}{ l | l | l }
 \hline
 \textbf{Name} & \textbf{URL} & \textbf{Description}\\
 \hline
 Display(GET) & (/files) & Returns all files in the database\\
-\hline
 Upload(POST) & (/upload) & Uploads a file to database\\
-\hline
 Download(GET) & (/download/:filename) & Downloads the requested file from the database\\
-\hline
 Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
 \hline
 \end{tabular}
@@ -239,15 +232,17 @@ Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
 \hline
 \textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\
 \hline
-1 & Server connection & After desktop client attempts to upload a file, return JSON object containing each file to indicate connection between server and client. & As expected & PASS \\
+1 & Server connection & Connects to client upon request through HTTP GET/POST requests  & As expected & PASS \\
 \hline
-2 & Return files for display & After desktop client opens, all database files will display themselves in a list. & As expected & PASS \\
+2 & Database connection & Establish and maintain connection with the MongoDB instance, send and receive data & As expected & PASS \\
 \hline
-3 & Upload file into database & After a file has been selected and the \textit{Submit} button has been pressed, the file will appear in the database & As expected & PASS \\
+3 & Return files for display & After desktop client opens, all database files will display themselves in a list & As expected & PASS \\
 \hline
-4 & Remove database file & After the \textit{Delete} button has been pressed, the server will remove the corresponding database file & As expected & PASS \\
+4 & Upload file into database & After a file has been selected and the \textit{Submit} button has been pressed, the file will appear in the database & As expected & PASS \\
 \hline
-5 & Return files for download & After the \textit{Download} button has been pressed, the server will return the corresponding file to the  host's file manager to be saved. & As expected & PASS \\
+5 & Remove database file & After the \textit{Delete} button has been pressed, the server will remove the corresponding database file & As expected & PASS \\
+\hline
+6 & Return files for download & After the \textit{Download} button has been pressed, the server will return the corresponding file to the  host's file manager to be saved & As expected & PASS \\
 \hline
 \end{tabular}
 
@@ -257,22 +252,24 @@ Delete(DELETE) & (/files/:id)  & Deletes the requested file from database.\\
 \hline
 \textbf{Test ID} & \textbf{Test Name} & \textbf{Expected} & \textbf{Actual} & \textbf{Pass/Fail} \\
 \hline
-1 & Server connection & After mobile client attempts to upload a file, return JSON object containing each file to indicate connection between server and client & As expected & PASS \\
+1 & Server connection & Connects to client upon request through HTTP GET/POST requests  & As expected & PASS \\
 \hline
-2 & Return files for display &  After opening the mobile app, all database files will display themselves in a list. & As expected & PASS \\
+2 & Database connection & Establish and maintain connection with the MongoDB instance, send and receive data & As expected & PASS \\
 \hline
-3 & Upload files into database & After a file is selected from the Android internal storage, it will be uploaded into the database by the server. & As expected & PASS \\
+3 & Return files for display &  After opening the mobile app, all database files will display themselves in a list & As expected & PASS \\
 \hline
-4 & Remove database files & After pressing the \textit{Delete} button next to a file, the corresponding document will be removed from the database by the server. & As expected & PASS \\
+4 & Upload files into database & After a file is selected from the Android internal storage, it will be uploaded into the database by the server & As expected & PASS \\
 \hline
-5 & Return files for download & After pressing the \textit{Download} button, the server returns a file into the phone's internal storage & As expected & PASS \\
+5 & Remove database files & After pressing the \textit{Delete} button next to a file, the corresponding document will be removed from the database by the server & As expected & PASS \\
+\hline
+6 & Return files for download & After pressing the \textit{Download} button, the server returns a file into the phone's internal storage & As expected & PASS \\
 \hline
 \end{tabular}
 
 \subsection{\underline{Desktop Client}}
 \includegraphics[width=12cm]{/fragments/desktop/frontEnd}
 
-The desktop client was developed using  HTML, Javascript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
+The desktop client was developed using  HTML, JavaScript and CSS on Electron. Electron provides pre-written HTML code (Electron, n.d.) that creates a basic desktop app; the pre-written code was used as the foundation for the development of the desktop client. Afterwards, the client's front-end was modified using JS, HTML and CSS to reflect the project designs. On to the desktop client's front-end, Bootstrap CSS files and JS scripts (Bootstrap, n.d.) were also included to add and format certain elements (e.g. file upload bar and button), along with CSS files written by the desktop subgroup.
 \includegraphics[width=12cm, height=2cm]{/fragments/desktop/BootstrapCSSfiles}
 
 \includegraphics[width=12cm, height=2cm]{/fragments/desktop/BootstrapJSscripts}
@@ -458,35 +455,34 @@ To start with what went well, one positive aspect was the firm strength of team 
 \end{tabular}
 
 \section{\underline{Bibliography}}
-\begin{tabular}{|p{12.2cm}|}
-\hline
-\multicolumn{1}{|c|}{\textbf{Reference List}} \\
-\hline
+
 Bhagwat, P., 2001. Bluetooth: technology for short-range wireless apps. IEEE Internet Computing, 5(3), pp.96-103. \\
-\hline
-Bootstrap (n.d.) \textit{Introduction} [online] Available at: https://getbootstrap.com/docs/4.3/getting-started/introduction/ [Accessed on 25th March] \\
-\hline
+
+Bootstrap (n.d.) \textit{Introduction} [online] Available at: https://getbootstrap.com/
+docs/4.3/getting-started/introduction/ [Accessed on 25th March] \\
+
 Dropbox Business. (n.d) \textit{Under the hood: Architecture Overview} [online] Available at: https://www.dropbox.com/business/trust/security/architecture [Accessed on 17th March] \\
-\hline
+
 Electron (n.d.) \textit{Writing your First Electron App | Electron} [online] Available at: https://electronjs.org/docs/tutorial/first-app [Accessed on 12 March 2019] \\
-\hline
+
 Gibilisco, S. (2015) \textit{use case diagram (UML use case diagram)} [online] Available at: https://whatis.techtarget.com/definition/use-case-diagram [Accessed on 27 March 2019]\\
-\hline
+
 Madsen, S. (2017) \textit{How to Prioritize with the MoSCoW Technique} [online] Available at: https://www.projectmanager.com/training/prioritize-moscow-technique [Accessed on 10 March 2019] \\
-\hline
-Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online] Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/ [Accessed on 17th March] \\
-\hline
+
+Nipuun Koorpati. (2014) \textit{Streaming File Synchronization } [online] Available at: https://blogs.dropbox.com/tech/2014/07/streaming-file-synchronization/
+[Accessed on 17th March] \\
+
 Jim, T., Pierce, B., Vouillon, J.  (2002) \textit{How to build a File Synchronizer} [online] Available at: http://web.mit.edu/6.033/2005/wwwdocs/papers/unisonimpl.pdf [Accessed on 26th March] \\
-\hline
+
 Chiang, J.K., 2013. Authentication, Authorization and File Synchronization for Hybrid Cloud-The Development Centric to Google Apps, Hadoop and Linux Local Hosts. \\
-\hline
+
 Send-anywhere.com. (2019). Send Anywhere. [online] Available at: https://send-anywhere.com [Accessed 24 Mar. 2019]. \\
-\hline
+
 Joe Karlson. (2016) Complete Guide to Node Client- Server Communication [online] Available at: https://medium.com/@joekarlsson/complete-guide-to-node-client-server-communication-b156440c029 \\
-\hline
-tutorialspoint. Http-Overview [online] Available at: https://www.tutorialspoint.com/http/http\_overview.htm \\
-\hline
+
+tutorialspoint. Http-Overview [online] Available at: https://www.tutorialspoint.
+com/http/http\_overview.htm \\
+
 Otherinbox.com. (2019). Filey | OtherInbox, the App Store for Email. [online] Available at: https://www.otherinbox.com/filey/ [Accessed 26 Mar. 2019]. \\
-\hline
-\end{tabular}
+
 \end{document}
