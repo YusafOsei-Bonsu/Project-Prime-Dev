@@ -72,16 +72,6 @@ app.get('/files', (req, res) => {
 // @route POST /upload
 // @desc  Upload single file object
 app.post('/upload', upload.single('file'), (req, res) => {
-  filename = (req.file.filename)
-  console.log("FILENAME === " + filename)
-  gfs.files.find({ filename }).count(function(err, result) {
-    if (err) throw err;
-    if(result > 1) {
-      gfs.files.findOneAndDelete({ filename })
-      console.log(filename + " === DELETED")
-    }
-  })
-  
   console.log('POST request to /upload')
   console.log("File uploaded")
 })
