@@ -44,7 +44,7 @@ public class EditFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     //execute the removefile asynchronous task, this is to avoid UI freezing when executed on main thread
-                    URL url = new URL("https://rocky-plateau-19773.herokuapp.com/files/" + fileName.getText() + "?_method=DELETE");
+                    URL url = new URL("https://safe-chamber-55196.herokuapp.com/files/" + fileName.getText() + "?_method=DELETE");
                     new RemoveFileTask().execute(url);
 
                 }catch(Exception e){
@@ -76,7 +76,7 @@ public class EditFragment extends Fragment {
                 public void onClick(View view) {
                     //set up download manager and pass uri of the file intended to download
                     downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
-                    Uri uri = Uri.parse("https://rocky-plateau-19773.herokuapp.com/download/" + fileName.getText());
+                    Uri uri = Uri.parse("https://safe-chamber-55196.herokuapp.com/download/" + fileName.getText());
                     DownloadManager.Request request = new DownloadManager.Request(uri);
                     //set mime download type as the mime type of the file requested
                     request.setMimeType(getMimeType(String.valueOf(fileName.getText())));

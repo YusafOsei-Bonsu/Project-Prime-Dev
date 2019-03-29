@@ -158,7 +158,7 @@ public class HomeFragment extends Fragment {
                         }
 
 
-                        //reference the selected
+                        //reference the selected file
                         File f = new File( Environment.getExternalStorageDirectory() + "/download/"+ displayName);
                         String content_type = getMimeType(displayName);
                         String file_path = f.getAbsolutePath();
@@ -177,12 +177,12 @@ public class HomeFragment extends Fragment {
 
                         //build the request
                         okhttp3.Request request = new okhttp3.Request.Builder()
-                                .url("https://rocky-plateau-19773.herokuapp.com/upload/")
+                                .url("https://safe-chamber-55196.herokuapp.com/upload/")
                                 .post(request_body)
                                 .build();
 
                         try {
-                            //attempt request
+                            //attempt request and response
                             okhttp3.Response response = client.newCall(request).execute();
 
                             if (!response.isSuccessful()) {
@@ -227,7 +227,7 @@ public class HomeFragment extends Fragment {
 
         //new requestqueue queue
         queue = Volley.newRequestQueue(this.getContext());
-        String url = "https://rocky-plateau-19773.herokuapp.com/files";
+        String url = "https://safe-chamber-55196.herokuapp.com/files";
 
         //create arraylists to fill from the json file
         final ArrayList<String> nameAL = new ArrayList<String>();
