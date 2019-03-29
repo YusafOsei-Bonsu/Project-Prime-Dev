@@ -19,7 +19,7 @@
             <h1 class="title display-4 my-4">Project Prime Desktop</h1>
             
             <!--Uploads a file into the DB via the node.js server (in the Heroku cloud) after pressing Submit-->
-            <form action="https://rocky-plateau-19773.herokuapp.com/upload" method="POST" enctype="multipart/form-data">
+            <form action="https://safe-chamber-55196.herokuapp.com/upload" method="POST" enctype="multipart/form-data">
               <div class="custom-file mb-3 ">
                 <label id="fileLabel" for="file" class="custom-file-label">Choose a File...</label>
                 <input id="file" name="file" type="file" class="custom-file-input" onclick="changeLabel()">
@@ -80,7 +80,7 @@
                       // Deletes the file by removing it from the DB via the server
                       deleteForm = document.createElement('form');
                       deleteForm.setAttribute('method', 'POST');
-                      deleteForm.setAttribute('action','https://rocky-plateau-19773.herokuapp.com/files/'+ fileObj[i]._id + '?_method=DELETE');
+                      deleteForm.setAttribute('action','https://safe-chamber-55196.herokuapp.com/files/'+ fileObj[i]._id + '?_method=DELETE');
                       deleteBtn = document.createElement('input');
                       deleteBtn.setAttribute('type', 'submit');
                       deleteBtn.setAttribute('class', 'btn btn-danger btn-block mb-2');
@@ -90,7 +90,7 @@
                       // Downloads the file from the DB via the server
                       dwnldForm = document.createElement('form');
                       dwnldForm.setAttribute('method', 'GET');
-                      dwnldForm.setAttribute('action', 'https://rocky-plateau-19773.herokuapp.com/download/'+ fileObj[i].filename);
+                      dwnldForm.setAttribute('action', 'https://safe-chamber-55196.herokuapp.com/download/'+ fileObj[i].filename);
                       dwnldBtn = document.createElement('input');
                       dwnldBtn.setAttribute('type', 'submit');
                       dwnldBtn.setAttribute('class', 'btn btn-primary btn-block');
@@ -105,7 +105,7 @@
                     }
                   }
                 }
-                xmlhttp.open("GET", "https://rocky-plateau-19773.herokuapp.com/files", true);
+                xmlhttp.open("GET", "https://safe-chamber-55196.herokuapp.com/files", true);
                 xmlhttp.send();
               </script>
             </div>
