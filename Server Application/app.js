@@ -1,13 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 const crypto = require('crypto')
 const mongoose = require('mongoose')
 const multer = require('multer')
 const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
-const rsync = require('rsync')
 
 const app = express()
 
@@ -75,8 +73,19 @@ app.get('/files', (req, res) => {
 // @route POST /upload
 // @desc  Uploads file to DB
 app.post('/upload', upload.single('file'), (req, res) => {
+  filename = (req.file.filename)
+  console.log("FILENAME === " + filename)
+  gfs.files.find({ filename }).count(function(err, result) {
+    if (err) throw err;
+    if(result > 1) {
+      console.log("COUNT === " + result)
+      gfs.files.findOneAndDelete({ filename })
+      console.log(filename + " === DELETED")
+    }
+  })
+  
   console.log('POST request to /upload')
-   //res.json({ file: req.file })
+  console.log("File uploaded")
 })
 
 // @route GET /files/:filename
