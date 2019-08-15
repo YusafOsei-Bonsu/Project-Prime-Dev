@@ -11,12 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "4.0.2",
+    "electron": "^4.0.2",
     "electron-packager": "^13.0.1",
     "nodemon": "^1.18.10"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "ejs-electron": "^2.0.3",
